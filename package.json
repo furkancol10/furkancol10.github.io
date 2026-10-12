@@ -1,0 +1,17 @@
+{
+  "name": "furkancol-me",
+  "version": "1.0.0",
+  "description": "furkancol.me kişisel site",
+  "scripts": {
+    "build": "node build.mjs && tailwindcss -i src/input.css -o assets/css/site.css --minify",
+    "dev": "node build.mjs && tailwindcss -i src/input.css -o assets/css/site.css --watch",
+    "serve": "python -m http.server 8000"
+  },
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "private": true
+}

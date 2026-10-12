@@ -1,0 +1,274 @@
+{
+	"lang": "tr",
+	"path": "/",
+	"alt": {
+		"lang": "en",
+		"path": "/en/",
+		"label": "EN",
+		"name": "English"
+	},
+	"meta": {
+		"title": "Furkan Çöl · OCR, otomasyon ve web geliştirme",
+		"description": "Fiş ve taranmış PDF'lerden Excel'e otomatik veri aktarımı; web uygulamaları ve otomasyon. Freelance yazılım geliştirici Furkan Çöl."
+	},
+	"nav": {
+		"services": "Hizmetler",
+		"projects": "Projeler",
+		"about": "Hakkımda",
+		"experience": "Deneyim",
+		"blog": "Blog",
+		"contact": "İletişim",
+		"skip": "İçeriğe geç",
+		"menu": "Menü",
+		"close": "Kapat"
+	},
+	"hero": {
+		"badge": "Yeni projelere açığım",
+		"eyebrow": "Yazılım geliştirici · OCR, otomasyon, web",
+		"title": "Belgelerden veriye,<br><span class=\"text-gradient\">fikirden çalışan yazılıma.</span>",
+		"cta_primary": "Projeleri gör",
+		"cta_secondary": "İletişime geç",
+		"stack_label": "Kullandığım teknolojiler",
+		"lead": "Fiş ve taranmış PDF'leri elle girmekten kurtaran OCR araçları; işletmelerin günlük işini yürüten web uygulamaları ve otomasyonlar geliştiriyorum. Teslim ettiğim her işi ölçer, raporlarım."
+	},
+	"services": {
+		"title": "Neler yapıyorum",
+		"items": [
+			{
+				"title": "Belge → Excel (OCR)",
+				"text": "Fiş ve taranmış PDF'lerdeki firma, tarih, KDV, toplam ya da tablo verisini Excel/JSON'a aktaran araçlar. Sizin bilgisayarınızda ya da sunucunuzda çalışır; belgeler buluta gönderilmez. Okunan değerler birbiriyle kontrol edilir, emin olunamayan belge işaretlenir.",
+				"tags": ["Python", "OCR", "Excel", "JSON"]
+			},
+			{
+				"title": "Web ve masaüstü uygulamaları",
+				"text": "Stok ve sipariş panelleri, yönetim ekranları, fiyat hesaplayıcı ve sipariş siteleri. Rol bazlı yetki, raporlar, mobil uyumlu arayüz; Vercel, Render ya da Cloudflare üzerinde yayında. Masaüstünde internet gerektirmeyen tek .exe programlar (ör. alacak ve taksit takibi).",
+				"tags": ["Svelte", ".NET", "Django", "PostgreSQL", "Flet", "SQLite"]
+			},
+			{
+				"title": "Otomasyon ve API",
+				"text": "Tekrarlayan işleri betiklere devretmek: veri toplama, rapor ve Excel üretimi. Araçlarınızı sunucunuza API olarak kurmak: HTTPS, API anahtarı, güvenlik ayarları, yük testi ve doküman.",
+				"tags": ["FastAPI", "Nginx", "Linux", "Yük testi"]
+			}
+		],
+		"eyebrow": "Hizmetler"
+	},
+	"projects": {
+		"title": "Projeler",
+		"labels": {
+			"problem": "Sorun",
+			"solution": "Çözüm",
+			"result": "Sonuç",
+			"live": "Canlı demo",
+			"code": "Kaynak kod"
+		},
+		"items": [
+			{
+				"id": "fis-ocr",
+				"publish": true,
+				"title": "Fiş OCR",
+				"kind": "Müşteri projesi",
+				"year": "2026",
+				"img": "fis-ocr.webp",
+				"alt": "Bir market fişinden okunan alanlar ve JSON çıktısı",
+				"problem": "Muhasebe için yüzlerce fişin firma, VKN, tarih, KDV ve toplam bilgisi elle giriliyordu.",
+				"solution": "Bulut ya da yapay zekâ servisi kullanmadan, yalnızca işlemcide çalışan OCR ve kural tabanlı alan çıkarımı. Dönük ve yan yana fişler otomatik ayrılır; KDV ve toplamlar birbiriyle doğrulanır. Ardından müşterinin sunucusuna HTTPS'li bir API olarak kuruldu ve yük testiyle ölçüldü.",
+				"result": "Fotoğraf klasöre atılır, sonuç JSON olarak çıkar. Tutarları tutmayan fiş sessizce yazılmaz, \"kontrol et\" diye işaretlenir.",
+				"stats": [
+					["277", "gerçek fotoğrafla test"],
+					["%72", "vergi fişinde otomatik doğrulama"],
+					["1,8 sn", "fiş başına"]
+				],
+				"tags": ["Python", "RapidOCR", "OpenCV", "FastAPI", "Nginx", "Locust"],
+				"links": [],
+				"note": "Kaynak kod müşteriye teslim edildi; demo için iletişime geçin."
+			},
+			{
+				"id": "cari-takip",
+				"publish": true,
+				"title": "Cari Takip: Alacak ve Taksit Takibi",
+				"kind": "Örnek proje",
+				"year": "2026",
+				"img": "cari-takip.webp",
+				"alt": "Cari Takip programında müşteri detayı: taksit tablosu, ödeme al ve WhatsApp hatırlatma düğmeleri",
+				"problem": "Veresiye ve taksitli satış yapan küçük işletmelerde alacaklar defterde ya da Excel'de tutulduğunda gecikenleri görmek ve hatırlatmak zor.",
+				"solution": "Masaüstünde çalışan, internet gerektirmeyen bir program: taksit planı kaydetmeden önce önizlenir, kısmi ödeme alınır, geciken müşteriye WhatsApp'tan hazır mesaj açılır. Tutarlar kuruş cinsinden tam sayı olarak saklanır; kuruş farkı son taksite eklenir, vadeler ay sonuna uyar (31 Ocak, 28 Şubat, 31 Mart).",
+				"result": "Tek .exe olarak çalışır, veriler kullanıcının bilgisayarında kalır. İş kuralları arayüzden ayrı yazıldı ve 49 otomatik testle doğrulandı.",
+				"stats": [
+					["49", "otomatik test"],
+					["4", "ekran"],
+					["1", "tek .exe"]
+				],
+				"tags": ["Python", "Flet", "SQLite", "pytest"],
+				"links": [],
+				"note": "Örnek projedir, gerçek müşteri verisi içermez. Kendi işletmenize uyarlanmış hâlini konuşmak için iletişime geçin."
+			},
+			{
+				"id": "pdf-excel",
+				"publish": true,
+				"title": "Taranmış PDF → Excel",
+				"kind": "Araç",
+				"year": "2026",
+				"img": "pdf-excel.webp",
+				"alt": "Taranmış bir malzeme listesi ve ondan üretilen Excel tablosu",
+				"problem": "Taranmış PDF'lerdeki tablolar kopyalanamıyor; Türk sayı biçimi (1.250,50) çoğu dönüştürücüde metin olarak kalıyor ve Excel'de toplanamıyor.",
+				"solution": "Metin katmanı olan sayfalar doğrudan, taranmış sayfalar OCR ile okunur; sütunlar sayfadaki boşluk koridorlarından bulunur. Web (sürükle-bırak) ve masaüstü arayüzü aynı çekirdeği kullanır.",
+				"result": "Örnek belge 1,2 saniyede Excel'e dönüştü; sayılar gerçek sayı olarak yazıldığı için formüller anında çalışıyor.",
+				"stats": [
+					["1,2 sn", "örnek belge"],
+					["1.250,50", "Türk sayı biçimi"]
+				],
+				"tags": ["Python", "Tesseract", "pdfplumber", "Flask", "Tkinter"],
+				"links": [],
+				"note": "Kaynak kod paylaşılmıyor; kendi belgenizle denemek için iletişime geçin."
+			},
+			{
+				"id": "intshop",
+				"publish": true,
+				"title": "INTSHOP: Stok ve Sipariş Paneli",
+				"kind": "Staj projesi",
+				"year": "2026",
+				"img": "intshop.webp",
+				"alt": "INTSHOP mağaza ekranı: ürün kartları ve en uygun bayi fiyatları",
+				"problem": "Admin, bayi ve müşterinin aynı ürün kataloğu üzerinde farklı yetkilerle çalışması gerekiyordu.",
+				"solution": "Üç rollü uygulama: admin kataloğu ve fiyat değişikliği taleplerini yönetir, bayiler kendi stok ve fiyatını belirler, müşteriler mağazadan alışveriş yapar. Stok hareketleri, giriş logları ve grafikli raporlar.",
+				"result": "Canlıda çalışan uygulama: arayüz Vercel'de, API ve veritabanı Render'da. Yerelde Docker Compose ile tek komutla ayağa kalkıyor.",
+				"stats": [
+					["3", "rol"],
+					["Docker", "tek komutla kurulum"]
+				],
+				"tags": [".NET 8", "Dapper", "Svelte 5", "Tailwind", "PostgreSQL", "Docker"],
+				"links": [
+					["live", "https://stok-panel-three.vercel.app"],
+					["code", "https://github.com/furkancol10/INTSHOP"]
+				]
+			},
+			{
+				"id": "sql-mastery",
+				"publish": true,
+				"title": "SQL Mastery",
+				"kind": "Açık kaynak",
+				"year": "2026",
+				"img": "sql-teacher.webp",
+				"alt": "SQL Mastery ders ekranı: ders listesi ve ilerleme çubuğu",
+				"problem": "SQL'e yeni başlayanlar için kurulum gerektirmeyen, sırayla ilerleyen bir kaynak yoktu.",
+				"solution": "Tarayıcıda açılan tek sayfalık uygulama: 13 ders, sözdizimi renklendirmeli örnekler, tablo şemaları ve tarayıcıda saklanan ilerleme takibi. Hiçbir kütüphaneye bağımlı değil.",
+				"result": "CREATE TABLE'dan pencere fonksiyonlarına ve saklı yordamlara kadar 50'den fazla örnek.",
+				"stats": [
+					["13", "ders"],
+					["50+", "örnek"],
+					["0", "bağımlılık"]
+				],
+				"tags": ["HTML", "CSS", "JavaScript"],
+				"links": [["code", "https://github.com/furkancol10/SQL_Teacher"]]
+			}
+		],
+		"eyebrow": "Seçilmiş işler"
+	},
+	"about": {
+		"eyebrow": "Hakkımda",
+		"intro_title": "Merhaba, ben Furkan.",
+		"location_title": "Türkiye'den uzaktan çalışıyorum",
+		"location_text": "Türkçe ve İngilizce iletişim.",
+		"now_title": "Şu an",
+		"now_text": "Bitirme tezi ve freelance projeler.",
+		"title": "Hakkımda",
+		"paragraphs": [
+			"Mühendislik son sınıf öğrencisiyim. Derslerim sinyal işleme, gömülü sistemler (STM32) ve makine öğrenmesi ağırlıklı; şu an bitirme tezim üzerinde çalışıyorum.",
+			"Freelance işlerde küçük işletmelerin ve muhasebe süreçlerinin elle yapılan, tekrarlayan işlerini yazılıma devrediyorum. Her teslimatta neyin ne kadar iyi çalıştığını ölçüp raporluyorum; bir aracın sınırlarını da açıkça yazıyorum."
+		],
+		"skills_title": "Kullandığım araçlar",
+		"skills": [
+			["Diller", "Python, C#, JavaScript/TypeScript, SQL, C"],
+			["Web", "Svelte/SvelteKit, .NET Web API, Django, FastAPI, Tailwind"],
+			["Veri", "PostgreSQL, OCR (RapidOCR, Tesseract), OpenCV, Excel otomasyonu"],
+			["Altyapı", "Linux, Nginx, Docker, Vercel, Render, Cloudflare"]
+		]
+	},
+	"contact": {
+		"title": "Bir işiniz mi var?",
+		"text": "Örnek belgelerinizi gönderin, ücretsiz deneyip sonucu göstereyim. Bionluk üzerinden sipariş verebilir ya da doğrudan e-posta atabilirsiniz.",
+		"bionluk": "Bionluk profilim",
+		"email": "E-posta",
+		"eyebrow": "İletişim",
+		"channels_title": "Doğrudan ulaşın",
+		"github": "GitHub",
+		"form": {
+			"name": "Adınız",
+			"email": "E-posta adresiniz",
+			"message": "Projenizden kısaca bahsedin",
+			"send": "Gönder",
+			"sending": "Gönderiliyor…",
+			"success": "Mesajınız ulaştı, en kısa sürede dönüş yapacağım.",
+			"error": "Mesaj gönderilemedi. Lütfen e-posta ile yazın."
+		}
+	},
+	"footer": "SvelteKit ve Tailwind ile yapıldı, GitHub Pages'te yayınlanıyor.",
+	"experience": {
+		"eyebrow": "Yolculuk",
+		"title": "Deneyim",
+		"items": [
+			{
+				"publish": true,
+				"period": "2026 – Şimdi",
+				"title": "Freelance yazılım geliştirici",
+				"org": "Bionluk ve doğrudan müşteriler",
+				"text": "Fiş OCR'ı bir müşteriye program ve sunucusunda çalışan HTTPS API olarak teslim ettim. Alacak takibi ve PDF→Excel araçları geliştiriyorum.",
+				"tags": ["Python", "OCR", "FastAPI", "Svelte"]
+			},
+			{
+				"publish": false,
+				"period": "",
+				"title": "Yazılım stajyeri",
+				"org": "",
+				"text": "INTSHOP: üç rollü stok ve sipariş paneli.",
+				"tags": [".NET 8", "Svelte 5", "PostgreSQL"]
+			},
+			{
+				"publish": true,
+				"period": "Son sınıf",
+				"title": "Mühendislik öğrencisi",
+				"org": "Lisans",
+				"text": "Sinyal işleme, gömülü sistemler (STM32) ve makine öğrenmesi; bitirme tezi aşamasındayım.",
+				"tags": []
+			}
+		]
+	},
+	"process": {
+		"eyebrow": "Süreç",
+		"title": "Nasıl çalışırım",
+		"steps": [
+			{
+				"title": "Örneklerinize bakarım",
+				"text": "Fiş, PDF ya da Excel'inizden birkaç örnek alır, neyin otomatikleşebileceğini açıkça söylerim."
+			},
+			{
+				"title": "Küçük bir demo",
+				"text": "Kendi verinizle çalışan bir ön sürüm görürsünüz. Karar ondan sonra verilir."
+			},
+			{
+				"title": "Ölçülmüş teslim",
+				"text": "Program, kurulum adımları ve ne kadar iyi çalıştığını gösteren bir test raporuyla teslim ederim."
+			},
+			{
+				"title": "Teslim sonrası destek",
+				"text": "Anlaşılan süre boyunca hata düzeltmeleri ve sorularınız için ulaşabilirsiniz."
+			}
+		]
+	},
+	"testimonials": {
+		"eyebrow": "Yorumlar",
+		"title": "Müşteriler ne diyor",
+		"items": []
+	},
+	"blog": {
+		"eyebrow": "Blog",
+		"title": "Yazılar",
+		"lead": "Yaptığım işlerin arkasındaki teknik kararlar ve ölçümler.",
+		"read": "Yazıyı oku",
+		"empty": "İlk yazı hazırlanıyor.",
+		"back": "Tüm yazılar",
+		"lang_note": "Türkçe",
+		"minutes": "dk okuma",
+		"draft": "Taslak"
+	}
+}

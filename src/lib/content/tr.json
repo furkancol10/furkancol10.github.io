@@ -216,12 +216,12 @@
 				"tags": ["Python", "OCR", "FastAPI", "Svelte"]
 			},
 			{
-				"publish": false,
-				"period": "",
+				"publish": true,
+				"period": "2026",
 				"title": "Yazılım stajyeri",
-				"org": "",
-				"text": "INTSHOP: üç rollü stok ve sipariş paneli.",
-				"tags": [".NET 8", "Svelte 5", "PostgreSQL"]
+				"org": "Koru Sigorta Genel Müdürlüğü",
+				"text": "Staj projesi olarak INTSHOP'u geliştirdim: admin, bayi ve müşteri rolleri olan bir stok ve sipariş paneli (.NET 8 API, Svelte 5 arayüz, PostgreSQL).",
+				"tags": [".NET 8", "Svelte 5", "PostgreSQL", "Docker"]
 			},
 			{
 				"publish": true,

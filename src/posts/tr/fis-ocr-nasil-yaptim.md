@@ -2,7 +2,6 @@
 title: "Fiş OCR'ı nasıl yaptım: bulutsuz, yapay zekâsız, ölçülerek"
 date: '2026-10-12'
 description: 'Fiş fotoğraflarından firma, VKN, tarih, KDV ve toplamı çıkaran yerel bir aracı nasıl geliştirdiğimi, nasıl test ettiğimi ve bir sunucuya API olarak nasıl kurduğumu anlatıyorum.'
-draft: true
 image: '/assets/img/fis-ocr.webp'
 ---
 

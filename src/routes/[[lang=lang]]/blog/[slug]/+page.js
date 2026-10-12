@@ -4,7 +4,7 @@ import { dev } from '$app/env';
 // Yazı bileşenleri yalnızca bu sayfada, tembel yüklenir.
 const posts = import.meta.glob('/src/posts/*/*.md');
 
-export async function load({ params, parent }) {
+export async function load({ params, parent, data }) {
 	const { lang } = await parent();
 	const loader = posts[`/src/posts/${lang}/${params.slug}.md`];
 	if (!loader) error(404, 'Not found');
@@ -15,5 +15,5 @@ export async function load({ params, parent }) {
 		);
 	if (mod.metadata.draft && !dev) error(404, 'Not found');
 
-	return { component: mod.default, meta: mod.metadata, slug: params.slug };
+	return { ...data, component: mod.default, meta: mod.metadata, slug: params.slug };
 }

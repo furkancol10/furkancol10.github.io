@@ -80,7 +80,7 @@
 									<a
 										href={url}
 										rel="noopener"
-										class="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-4 py-2 text-sm transition-colors hover:bg-white/[0.06]"
+										class="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-4 py-2 text-sm transition-colors hover:bg-ink/[0.06]"
 									>
 										{L[/** @type {'live' | 'code'} */ (kind)]} <span aria-hidden="true">↗</span>
 									</a>

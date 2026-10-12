@@ -44,7 +44,8 @@
 							<span>{p.minutes} {b.minutes}</span>
 							{#if p.note}<span class="rounded-full border border-line px-2 py-0.5">{p.note}</span
 								>{/if}
-							{#if p.draft}<span class="rounded-full bg-amber-400/15 px-2 py-0.5 text-amber-300"
+							{#if p.draft}<span
+									class="rounded-full bg-amber-400/15 px-2 py-0.5 text-amber-700 dark:text-amber-300"
 									>{b.draft}</span
 								>{/if}
 						</p>

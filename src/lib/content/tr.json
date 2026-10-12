@@ -20,7 +20,9 @@
 		"contact": "İletişim",
 		"skip": "İçeriğe geç",
 		"menu": "Menü",
-		"close": "Kapat"
+		"close": "Kapat",
+		"theme": "Temayı değiştir",
+		"language": "Dil"
 	},
 	"hero": {
 		"badge": "Yeni projelere açığım",
@@ -270,5 +272,10 @@
 		"lang_note": "Türkçe",
 		"minutes": "dk okuma",
 		"draft": "Taslak"
+	},
+	"suggest": {
+		"text": "Bu sitenin Türkçe sürümü de var.",
+		"cta": "Türkçe'ye geç",
+		"dismiss": "Kapat"
 	}
 }

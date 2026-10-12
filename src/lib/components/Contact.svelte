@@ -30,12 +30,12 @@
 	}
 
 	const field =
-		'mt-2 w-full rounded-xl border border-line bg-white/[0.03] px-4 py-3 text-ink placeholder:text-muted/60 focus:border-violet/60 focus:outline-none';
+		'mt-2 w-full rounded-xl border border-line bg-ink/[0.03] px-4 py-3 text-ink placeholder:text-muted/60 focus:border-violet/60 focus:outline-none';
 </script>
 
 <section class="relative isolate overflow-hidden py-24 md:py-32" aria-labelledby="iletisim">
 	<div
-		class="pointer-events-none absolute bottom-[-30%] left-1/2 -z-10 h-[40rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(124_58_237/0.22),transparent)] blur-2xl"
+		class="pointer-events-none absolute bottom-[-30%] left-1/2 -z-10 h-[40rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,var(--hero-a),transparent)] blur-2xl"
 		aria-hidden="true"
 	></div>
 
@@ -58,7 +58,7 @@
 				<li>
 					<EmailLink
 						showAddress
-						class="group flex items-center justify-between rounded-xl border border-line px-5 py-4 transition-colors hover:border-line-strong hover:bg-white/[0.03]"
+						class="group flex items-center justify-between rounded-xl border border-line px-5 py-4 transition-colors hover:border-line-strong hover:bg-ink/[0.03]"
 					>
 						<span class="text-sm text-muted">{c.contact.email}</span>
 					</EmailLink>
@@ -67,7 +67,7 @@
 					<a
 						href={site.bionluk}
 						rel="noopener"
-						class="flex items-center justify-between rounded-xl border border-line px-5 py-4 transition-colors hover:border-line-strong hover:bg-white/[0.03]"
+						class="flex items-center justify-between rounded-xl border border-line px-5 py-4 transition-colors hover:border-line-strong hover:bg-ink/[0.03]"
 					>
 						<span class="text-sm text-muted">Bionluk</span>
 						<span>{c.contact.bionluk} <span aria-hidden="true">↗</span></span>
@@ -77,7 +77,7 @@
 					<a
 						href={site.github}
 						rel="me noopener"
-						class="flex items-center justify-between rounded-xl border border-line px-5 py-4 transition-colors hover:border-line-strong hover:bg-white/[0.03]"
+						class="flex items-center justify-between rounded-xl border border-line px-5 py-4 transition-colors hover:border-line-strong hover:bg-ink/[0.03]"
 					>
 						<span class="text-sm text-muted">{c.contact.github}</span>
 						<span>@furkancol10 <span aria-hidden="true">↗</span></span>
@@ -112,8 +112,12 @@
 						{status === 'sending' ? f.sending : f.send}
 					</button>
 					<p class="mt-4 min-h-6 text-sm" role="status">
-						{#if status === 'ok'}<span class="text-emerald-400">{f.success}</span>
-						{:else if status === 'error'}<span class="text-rose-400">{f.error}</span>{/if}
+						{#if status === 'ok'}<span class="text-emerald-700 dark:text-emerald-400"
+								>{f.success}</span
+							>
+						{:else if status === 'error'}<span class="text-rose-700 dark:text-rose-400"
+								>{f.error}</span
+							>{/if}
 					</p>
 				</form>
 			</div>

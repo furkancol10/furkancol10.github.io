@@ -5,6 +5,29 @@
 	const LAT = 39;
 	const LON = 35;
 
+	/**
+	 * Tema renkleri: açık temada açık küre ve koyu mor noktalar, koyu temada tersi.
+	 * @param {boolean} dark
+	 * @returns {Pick<import('cobe').COBEOptions, 'dark' | 'mapBrightness' | 'baseColor' | 'markerColor' | 'glowColor'>}
+	 */
+	const palette = (dark) =>
+		dark
+			? {
+					dark: 1,
+					mapBrightness: 5,
+					baseColor: [0.28, 0.24, 0.45],
+					markerColor: [0.75, 0.65, 1],
+					glowColor: [0.32, 0.28, 0.62]
+				}
+			: {
+					dark: 0,
+					mapBrightness: 9,
+					baseColor: [0.96, 0.95, 1],
+					markerColor: [0.43, 0.16, 0.85],
+					glowColor: [0.86, 0.84, 1]
+				};
+	const isDark = () => document.documentElement.classList.contains('dark');
+
 	/** @type {HTMLCanvasElement} */
 	let canvas;
 	let ready = $state(false);
@@ -40,13 +63,9 @@
 					height: size,
 					phi,
 					theta: 0.32,
-					dark: 1,
 					diffuse: 1.2,
 					mapSamples: 14000,
-					mapBrightness: 5,
-					baseColor: [0.28, 0.24, 0.45],
-					markerColor: [0.75, 0.65, 1],
-					glowColor: [0.32, 0.28, 0.62],
+					...palette(isDark()),
 					markers: [{ location: [LAT, LON], size: 0.09 }]
 				});
 				ready = true;
@@ -56,7 +75,12 @@
 		});
 		io.observe(canvas);
 
+		// Tema değişince (html.dark) küre yeniden oluşturulmadan renkleri güncellenir.
+		const themeWatch = new MutationObserver(() => globe?.update(palette(isDark())));
+		themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
 		return () => {
+			themeWatch.disconnect();
 			io.disconnect();
 			cancelAnimationFrame(frame);
 			globe?.destroy();

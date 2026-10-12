@@ -23,11 +23,11 @@
 	<!-- Arka plan: ızgara + spotlight ışıkları + fareyi izleyen hale -->
 	<div class="pointer-events-none absolute inset-0 -z-10 grid-bg" aria-hidden="true"></div>
 	<div
-		class="pointer-events-none absolute top-0 left-[18%] -z-10 h-[46rem] w-[34rem] animate-spotlight rounded-full bg-[radial-gradient(closest-side,rgb(124_58_237/0.38),transparent)] opacity-0 blur-2xl"
+		class="pointer-events-none absolute top-0 left-[18%] -z-10 h-[46rem] w-[34rem] animate-spotlight rounded-full bg-[radial-gradient(closest-side,var(--hero-a),transparent)] opacity-0 blur-2xl"
 		aria-hidden="true"
 	></div>
 	<div
-		class="pointer-events-none absolute -top-40 right-[-10%] -z-10 h-[36rem] w-[36rem] animate-drift rounded-full bg-[radial-gradient(closest-side,rgb(59_130_246/0.25),transparent)] blur-2xl"
+		class="pointer-events-none absolute -top-40 right-[-10%] -z-10 h-[36rem] w-[36rem] animate-drift rounded-full bg-[radial-gradient(closest-side,var(--hero-b),transparent)] blur-2xl"
 		aria-hidden="true"
 	></div>
 	<div
@@ -37,7 +37,7 @@
 
 	<div class="mx-auto max-w-6xl px-5 md:px-8">
 		<p
-			class="inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] px-3.5 py-1.5 text-xs text-muted backdrop-blur"
+			class="inline-flex items-center gap-2.5 rounded-full border border-line bg-ink/[0.03] px-3.5 py-1.5 text-xs text-muted backdrop-blur"
 		>
 			<span class="size-2 animate-pulse-dot rounded-full bg-emerald-400" aria-hidden="true"></span>
 			{c.hero.badge}
@@ -63,7 +63,7 @@
 			</a>
 			<a
 				href="#iletisim"
-				class="inline-flex items-center rounded-full border border-line-strong bg-white/[0.03] px-6 py-3 font-medium backdrop-blur transition-colors hover:bg-white/[0.07]"
+				class="inline-flex items-center rounded-full border border-line-strong bg-ink/[0.03] px-6 py-3 font-medium backdrop-blur transition-colors hover:bg-ink/[0.07]"
 			>
 				{c.hero.cta_secondary}
 			</a>
@@ -83,7 +83,7 @@
 			<ul class="flex shrink-0 animate-marquee gap-3 pr-3 hover:[animation-play-state:paused]">
 				{#each [...stack, ...stack] as s, i (i)}
 					<li
-						class="rounded-full border border-line bg-white/[0.02] px-4 py-2 font-mono text-sm whitespace-nowrap text-muted"
+						class="rounded-full border border-line bg-ink/[0.02] px-4 py-2 font-mono text-sm whitespace-nowrap text-muted"
 						aria-hidden={i >= stack.length ? 'true' : undefined}
 					>
 						{s}

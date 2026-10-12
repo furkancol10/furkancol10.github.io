@@ -3,10 +3,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#07070c" />
+		<meta name="theme-color" content="#f8f8fb" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-		<!-- JS varsa reveal animasyonları gizli başlar; JS yoksa ya da uygulama 3 sn içinde açılmazsa içerik hep görünür -->
+		<!-- Tema: varsayılan açık; kullanıcı koyuyu seçtiyse sayfa çizilmeden önce uygulanır (yanıp sönme olmaz).
+		     JS varsa reveal animasyonları gizli başlar; JS yoksa ya da uygulama 3 sn içinde açılmazsa içerik hep görünür. -->
 		<script>
+			try {
+				if (localStorage.getItem('theme') === 'dark') {
+					document.documentElement.classList.add('dark');
+					document.querySelector('meta[name="theme-color"]').content = '#07070c';
+				}
+			} catch (e) {}
 			document.documentElement.classList.add('js');
 			setTimeout(function () {
 				if (!window.__hydrated) document.documentElement.classList.remove('js');

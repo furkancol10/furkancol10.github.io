@@ -17,7 +17,7 @@
 		</p>
 		<a
 			href={en ? '/en/' : '/'}
-			class="mt-8 inline-block rounded-full border border-line-strong px-6 py-3 hover:bg-white/[0.06]"
+			class="mt-8 inline-block rounded-full border border-line-strong px-6 py-3 hover:bg-ink/[0.06]"
 		>
 			{en ? 'Back to home' : 'Ana sayfaya dön'}
 		</a>

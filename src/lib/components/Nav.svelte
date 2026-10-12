@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/state';
 	import { prefix, site } from '#lib/content/index.js';
+	import { langPaths, rememberLang } from '#lib/i18n.js';
 
 	/** @type {{ c: import('#lib/content/index.js').Content, lang: string }} */
 	let { c, lang } = $props();
@@ -17,14 +18,24 @@
 		{ href: `${prefix(lang)}/blog/`, label: c.nav.blog }
 	]);
 
-	// Diğer dildeki karşılık: aynı yol, önek değişir. Yazı sayfasında diğer dilin blog listesine gider
-	// (yazının çevirisi olmayabilir).
-	const altHref = $derived.by(() => {
-		let path = page.url.pathname;
-		if (/\/blog\/[^/]+\/?$/.test(path)) path = path.replace(/\/blog\/[^/]+\/?$/, '/blog/');
-		const bare = path.replace(/^\/en(?=\/|$)/, '') || '/';
-		return lang === 'en' ? bare : `/en${bare}`;
-	});
+	const paths = $derived(langPaths(page.url.pathname, page.data.alternates));
+	const langs = $derived([
+		{ code: 'tr', label: 'TR', name: 'Türkçe', href: paths.tr },
+		{ code: 'en', label: 'EN', name: 'English', href: paths.en }
+	]);
+
+	/** Açık/koyu tema geçişi; seçim tarayıcıda saklanır (app.html sayfa açılırken uygular). */
+	function toggleTheme() {
+		const dark = document.documentElement.classList.toggle('dark');
+		try {
+			localStorage.setItem('theme', dark ? 'dark' : 'light');
+		} catch {
+			// gizli pencere vb.: yalnızca bu oturumda geçerli
+		}
+		document
+			.querySelector('meta[name="theme-color"]')
+			?.setAttribute('content', dark ? '#07070c' : '#f8f8fb');
+	}
 </script>
 
 <svelte:window
@@ -42,11 +53,11 @@
 <header
 	class="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 {scrolled ||
 	open
-		? 'border-b border-line bg-bg/70 backdrop-blur-xl'
+		? 'border-b border-line bg-bg/75 backdrop-blur-xl'
 		: 'border-b border-transparent'}"
 >
-	<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
-		<a href={home} class="group flex items-center gap-2.5 font-medium tracking-tight">
+	<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 md:px-8">
+		<a href={home} class="group flex shrink-0 items-center gap-2.5 font-medium tracking-tight">
 			<span
 				class="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-violet-deep to-blue font-serif text-lg text-white shadow-[0_0_24px_-4px] shadow-violet/60"
 				aria-hidden="true">F</span
@@ -65,15 +76,78 @@
 		</ul>
 
 		<div class="flex items-center gap-2">
-			<a
-				href={altHref}
-				hreflang={c.alt.lang}
-				class="rounded-full border border-line px-3 py-1.5 font-mono text-xs text-muted transition-colors hover:border-line-strong hover:text-ink"
-				aria-label={c.alt.name}>{c.alt.label}</a
+			<!-- Dil seçici: iki seçenek de görünür, etkin olan dolu -->
+			<div
+				class="flex items-center rounded-full border border-line bg-ink/[0.03] p-0.5 text-xs font-medium"
+				role="group"
+				aria-label={c.nav.language}
 			>
+				<svg
+					viewBox="0 0 24 24"
+					class="mx-1.5 hidden size-3.5 text-muted sm:block"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					aria-hidden="true"
+				>
+					<circle cx="12" cy="12" r="9" /><path
+						d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"
+					/>
+				</svg>
+				{#each langs as l (l.code)}
+					<a
+						href={l.href}
+						hreflang={l.code}
+						lang={l.code}
+						title={l.name}
+						aria-current={l.code === lang ? 'true' : undefined}
+						onclick={() => rememberLang(l.code)}
+						class="rounded-full px-2.5 py-1 transition-colors {l.code === lang
+							? 'bg-ink text-bg'
+							: 'text-muted hover:text-ink'}"
+					>
+						<span class="sm:hidden">{l.label}</span><span class="hidden sm:inline">{l.name}</span>
+					</a>
+				{/each}
+			</div>
+
+			<!-- Tema düğmesi: simge CSS ile değişir (dark: ön eki), JS durumuna gerek yok -->
+			<button
+				type="button"
+				onclick={toggleTheme}
+				class="grid size-9 place-items-center rounded-full border border-line text-muted transition-colors hover:border-line-strong hover:text-ink"
+				aria-label={c.nav.theme}
+				title={c.nav.theme}
+			>
+				<svg
+					viewBox="0 0 24 24"
+					class="size-4 dark:hidden"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					aria-hidden="true"
+				>
+					<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" stroke-linejoin="round" />
+				</svg>
+				<svg
+					viewBox="0 0 24 24"
+					class="hidden size-4 dark:block"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					aria-hidden="true"
+				>
+					<circle cx="12" cy="12" r="4" />
+					<path
+						d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+						stroke-linecap="round"
+					/>
+				</svg>
+			</button>
+
 			<a
 				href="{home}#iletisim"
-				class="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-bg transition-transform hover:scale-[1.03] sm:inline-block"
+				class="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-bg transition-transform hover:scale-[1.03] md:inline-block"
 				>{c.nav.contact}</a
 			>
 			<button
@@ -108,7 +182,7 @@
 				<li>
 					<a
 						href={l.href}
-						class="block rounded-xl px-4 py-3 text-muted hover:bg-white/5 hover:text-ink"
+						class="block rounded-xl px-4 py-3 text-muted hover:bg-ink/5 hover:text-ink"
 						onclick={() => (open = false)}>{l.label}</a
 					>
 				</li>

@@ -28,6 +28,7 @@
 	description={m.description}
 	{path}
 	lang={data.lang}
+	alternates={data.alternates.length > 1 ? data.alternates : []}
 	type="article"
 	image={m.image ?? '/assets/img/og.png'}
 	jsonld={article}
@@ -40,7 +41,8 @@
 	<header class="mt-8">
 		<p class="font-mono text-xs text-muted">
 			<time datetime={m.date}>{fmt.format(new Date(m.date))}</time>
-			{#if m.draft}<span class="ml-2 rounded-full bg-amber-400/15 px-2 py-0.5 text-amber-300"
+			{#if m.draft}<span
+					class="ml-2 rounded-full bg-amber-400/15 px-2 py-0.5 text-amber-700 dark:text-amber-300"
 					>{b.draft}</span
 				>{/if}
 		</p>
@@ -51,7 +53,7 @@
 	</header>
 
 	<div
-		class="prose mt-12 max-w-none prose-invert prose-headings:tracking-tight prose-a:text-violet prose-img:rounded-xl prose-img:border prose-img:border-line"
+		class="prose mt-12 max-w-none dark:prose-invert prose-headings:tracking-tight prose-a:text-violet prose-img:rounded-xl prose-img:border prose-img:border-line"
 	>
 		<Post />
 	</div>

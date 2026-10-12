@@ -20,7 +20,9 @@
 		"contact": "Contact",
 		"skip": "Skip to content",
 		"menu": "Menu",
-		"close": "Close"
+		"close": "Close",
+		"theme": "Toggle theme",
+		"language": "Language"
 	},
 	"hero": {
 		"badge": "Available for new projects",
@@ -270,5 +272,10 @@
 		"lang_note": "Turkish only",
 		"minutes": "min read",
 		"draft": "Draft"
+	},
+	"suggest": {
+		"text": "This site is also available in English.",
+		"cta": "Switch to English",
+		"dismiss": "Dismiss"
 	}
 }

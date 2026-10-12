@@ -1,6 +1,7 @@
 <script>
 	import Nav from '#lib/components/Nav.svelte';
 	import Footer from '#lib/components/Footer.svelte';
+	import LangSuggest from '#lib/components/LangSuggest.svelte';
 
 	let { data, children } = $props();
 </script>
@@ -10,3 +11,4 @@
 	{@render children()}
 </main>
 <Footer c={data.c} year={data.year} />
+<LangSuggest lang={data.lang} suggest={data.suggest} />

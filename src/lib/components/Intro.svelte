@@ -13,8 +13,9 @@
 	/** @type {HTMLDivElement} */
 	let holder;
 
-	const DRAW_MS = 1900; // son harfin dolgusu bitene kadar (app.css'teki gecikmelerle uyumlu)
 	const MOVE_MS = 850;
+	const HOLD_MS = 180; // yazı bittikten sonra kısa bir duraklama
+	const SAFETY_MS = 4500; // animasyon bilgisi alınamazsa en geç bu anda kay
 
 	onMount(() => {
 		const root = document.documentElement;
@@ -36,7 +37,10 @@
 			removeEventListener('keydown', finish);
 		};
 
+		let flying = false;
 		const fly = () => {
+			if (flying || done) return;
+			flying = true;
 			const target = document.querySelector('[data-signature-target]');
 			const svg = holder.querySelector('svg');
 			if (!target || !svg) return finish();
@@ -50,7 +54,13 @@
 			timers.push(window.setTimeout(finish, MOVE_MS + 60));
 		};
 
-		timers.push(window.setTimeout(fly, DRAW_MS));
+		// Çizim CSS ile sayfa açılır açılmaz başlar; JS ise ağdan sonra gelir. Sabit süre beklemek yerine
+		// harflerin animasyonlarının bitmesi beklenir (JS geç yüklenirse çizim çoktan bitmiş olabilir).
+		const anims = holder.querySelector('svg')?.getAnimations?.({ subtree: true }) ?? [];
+		Promise.all(anims.map((a) => a.finished))
+			.catch(() => {})
+			.then(() => timers.push(window.setTimeout(fly, HOLD_MS)));
+		timers.push(window.setTimeout(fly, SAFETY_MS));
 		addEventListener('keydown', finish);
 		return () => {
 			timers.forEach(clearTimeout);

@@ -9,7 +9,7 @@
   },
   "meta": {
     "title": "Furkan Çöl · OCR, otomasyon ve web geliştirme",
-    "description": "Fiş, fatura ve taranmış PDF'lerden Excel'e otomatik veri aktarımı; web uygulamaları ve otomasyon. Freelance yazılım geliştirici Furkan Çöl."
+    "description": "Fiş ve taranmış PDF'lerden Excel'e otomatik veri aktarımı; web uygulamaları ve otomasyon. Freelance yazılım geliştirici Furkan Çöl."
   },
   "nav": {
     "services": "Hizmetler",
@@ -21,7 +21,7 @@
   "hero": {
     "eyebrow": "Freelance yazılım geliştirici",
     "title": "Belgelerden veriye,<br>fikirden çalışan yazılıma.",
-    "lead": "Fiş, fatura ve taranmış PDF'leri elle girmekten kurtaran OCR araçları; işletmelerin günlük işini yürüten web uygulamaları ve otomasyonlar geliştiriyorum. Teslim ettiğim her işi ölçer, raporlarım.",
+    "lead": "Fiş ve taranmış PDF'leri elle girmekten kurtaran OCR araçları; işletmelerin günlük işini yürüten web uygulamaları ve otomasyonlar geliştiriyorum. Teslim ettiğim her işi ölçer, raporlarım.",
     "cta_primary": "Bionluk'ta iş ver",
     "cta_secondary": "E-posta gönder"
   },
@@ -30,7 +30,7 @@
     "items": [
       {
         "title": "Belge → Excel (OCR)",
-        "text": "Fiş, fatura ve taranmış PDF'lerdeki firma, tarih, KDV, toplam ya da tablo verisini Excel/JSON'a aktaran araçlar. Sizin bilgisayarınızda ya da sunucunuzda çalışır; belgeler buluta gönderilmez. Okunan değerler birbiriyle kontrol edilir, emin olunamayan belge işaretlenir.",
+        "text": "Fiş ve taranmış PDF'lerdeki firma, tarih, KDV, toplam ya da tablo verisini Excel/JSON'a aktaran araçlar. Sizin bilgisayarınızda ya da sunucunuzda çalışır; belgeler buluta gönderilmez. Okunan değerler birbiriyle kontrol edilir, emin olunamayan belge işaretlenir.",
         "tags": [
           "Python",
           "OCR",
@@ -39,13 +39,15 @@
         ]
       },
       {
-        "title": "Web uygulamaları",
-        "text": "Stok ve sipariş panelleri, yönetim ekranları, fiyat hesaplayıcı ve sipariş siteleri. Rol bazlı yetki, raporlar, mobil uyumlu arayüz; Vercel, Render ya da Cloudflare üzerinde yayında.",
+        "title": "Web ve masaüstü uygulamaları",
+        "text": "Stok ve sipariş panelleri, yönetim ekranları, fiyat hesaplayıcı ve sipariş siteleri. Rol bazlı yetki, raporlar, mobil uyumlu arayüz; Vercel, Render ya da Cloudflare üzerinde yayında. Masaüstünde internet gerektirmeyen tek .exe programlar (ör. alacak ve taksit takibi).",
         "tags": [
           "Svelte",
           ".NET",
           "Django",
-          "PostgreSQL"
+          "PostgreSQL",
+          "Flet",
+          "SQLite"
         ]
       },
       {

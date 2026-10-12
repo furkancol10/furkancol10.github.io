@@ -9,7 +9,7 @@
   },
   "meta": {
     "title": "Furkan Çöl · OCR, automation and web development",
-    "description": "Automated data entry from receipts, invoices and scanned PDFs into Excel; web applications and automation. Freelance software developer Furkan Çöl."
+    "description": "Automated data entry from receipts and scanned PDFs into Excel; web applications and automation. Freelance software developer Furkan Çöl."
   },
   "nav": {
     "services": "Services",
@@ -21,7 +21,7 @@
   "hero": {
     "eyebrow": "Freelance software developer",
     "title": "From documents to data,<br>from idea to working software.",
-    "lead": "I build OCR tools that end manual data entry from receipts, invoices and scanned PDFs, plus the web applications and automations that run a small business's daily work. Every delivery comes measured and documented.",
+    "lead": "I build OCR tools that end manual data entry from receipts and scanned PDFs, plus the web applications and automations that run a small business's daily work. Every delivery comes measured and documented.",
     "cta_primary": "Hire me on Bionluk",
     "cta_secondary": "Send an email"
   },
@@ -30,7 +30,7 @@
     "items": [
       {
         "title": "Documents → Excel (OCR)",
-        "text": "Tools that extract company, date, VAT, totals or table data from receipts, invoices and scanned PDFs into Excel/JSON. They run on your own computer or server; documents never go to the cloud. Values are cross-checked, and anything uncertain is flagged.",
+        "text": "Tools that extract company, date, VAT, totals or table data from receipts and scanned PDFs into Excel/JSON. They run on your own computer or server; documents never go to the cloud. Values are cross-checked, and anything uncertain is flagged.",
         "tags": [
           "Python",
           "OCR",
@@ -39,13 +39,15 @@
         ]
       },
       {
-        "title": "Web applications",
-        "text": "Stock and order panels, admin dashboards, price calculators and ordering sites. Role-based access, reports, mobile-friendly UI; deployed on Vercel, Render or Cloudflare.",
+        "title": "Web & desktop applications",
+        "text": "Stock and order panels, admin dashboards, price calculators and ordering sites. Role-based access, reports, mobile-friendly UI; deployed on Vercel, Render or Cloudflare. Offline desktop programs as a single .exe (e.g. receivables and installment tracking).",
         "tags": [
           "Svelte",
           ".NET",
           "Django",
-          "PostgreSQL"
+          "PostgreSQL",
+          "Flet",
+          "SQLite"
         ]
       },
       {

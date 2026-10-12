@@ -217,8 +217,8 @@
 			},
 			{
 				"publish": true,
-				"period": "2026",
-				"title": "Software intern",
+				"period": "July – August 2026",
+				"title": "IT Intern",
 				"org": "Koru Sigorta, head office",
 				"text": "Built INTSHOP as my internship project: a stock and order panel with admin, dealer and customer roles (.NET 8 API, Svelte 5 frontend, PostgreSQL).",
 				"tags": [".NET 8", "Svelte 5", "PostgreSQL", "Docker"]

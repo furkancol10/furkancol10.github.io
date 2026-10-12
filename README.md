@@ -76,9 +76,11 @@ RSS (`/rss.xml`, `/en/rss.xml`) ve `sitemap.xml` derlemede otomatik üretilir.
 
 ## Logo ve imza
 
-Menüdeki el yazısı "Furkan Çöl", FC logosu ve `static/favicon.svg`, Great Vibes yazı tipinden
-(`scripts/fonts/`, OFL lisansı) üretilir. Yazı ya da logo değişecekse `scripts/signature.mjs` içinde metni
-düzenle ve `node scripts/signature.mjs` çalıştır. opentype.js 1.3.4 kullanılır; 2.x bu yazı tipini eksik çiziyor.
+Menüdeki el yazısı "Furkan Çöl", FC logosu, `static/favicon.svg` ve paylaşım görseli
+`static/assets/img/og.png`, Meow Script yazı tipinden (`scripts/fonts/`, OFL lisansı) üretilir.
+Metni ya da yazı tipini değiştirmek için `scripts/signature.mjs` dosyasını düzenleyip
+`node scripts/signature.mjs` çalıştır. Paylaşım görseli `scripts/og.html` şablonundan Edge ile çekilir
+(Edge yoksa betik ne yapılacağını yazar). opentype.js 1.3.4 kullanılır; 2.x bazı el yazısı tiplerini eksik çiziyor.
 
 Giriş animasyonu oturumda bir kez oynar (`sessionStorage`), "hareketi azalt" açıksa hiç oynamaz.
 Tıklayınca ya da bir tuşa basınca atlanır.

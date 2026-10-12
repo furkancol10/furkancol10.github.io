@@ -267,7 +267,7 @@ html.intro [data-signature-target] {
 }
 /* Harf harf yazılma: önce kontur çizilir, sonra içi dolar */
 html.intro .sig-draw path {
-	stroke-width: 1.1;
+	stroke-width: 2.2;
 	stroke-dasharray: 1;
 	stroke-dashoffset: 1;
 	fill-opacity: 0;

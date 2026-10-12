@@ -12,6 +12,8 @@
 	const uid = $props.id();
 	const gid = `sig-${uid}`;
 	const paint = $derived(gradient ? `url(#${gid})` : 'currentColor');
+	// Gradyan tüm yazıya yayılır (harf başına değil), yoksa her harf kendi içinde renk değiştirir.
+	const [vx, , vw] = name.viewBox.split(' ').map(Number);
 </script>
 
 <svg
@@ -23,14 +25,15 @@
 >
 	{#if gradient}
 		<defs>
-			<linearGradient id={gid} x1="0" y1="0" x2="1" y2="0">
+			<linearGradient id={gid} gradientUnits="userSpaceOnUse" x1={vx} y1="0" x2={vx + vw} y2="0">
 				<stop offset="0" stop-color="var(--grad-a)" />
 				<stop offset="0.55" stop-color="var(--grad-b)" />
 				<stop offset="1" stop-color="var(--grad-c)" />
 			</linearGradient>
 		</defs>
 	{/if}
-	<g fill={paint} stroke={draw ? paint : 'none'}>
+	<!-- İnce el yazısı küçük boyutta kaybolmasın diye hafif kontur (çizim animasyonunda app.css yönetir) -->
+	<g fill={paint} stroke={paint} stroke-width="2.2" stroke-linejoin="round">
 		{#each name.glyphs as d, i (i)}
 			<path {d} pathLength="1" style="--i:{i}" />
 		{/each}

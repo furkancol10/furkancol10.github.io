@@ -4,6 +4,7 @@
 	import Hero from '#lib/components/Hero.svelte';
 	import Services from '#lib/components/Services.svelte';
 	import Projects from '#lib/components/Projects.svelte';
+	import Demo from '#lib/components/Demo.svelte';
 	import About from '#lib/components/About.svelte';
 	import Experience from '#lib/components/Experience.svelte';
 	import Process from '#lib/components/Process.svelte';
@@ -38,6 +39,7 @@
 <Hero {c} />
 <Services {c} />
 <Projects {c} />
+<Demo {c} lang={data.lang} />
 <About {c} />
 <Experience {c} />
 <Process {c} />

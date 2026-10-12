@@ -81,7 +81,7 @@
 					["1.8 s", "per receipt"]
 				],
 				"tags": ["Python", "RapidOCR", "OpenCV", "FastAPI", "Nginx", "Locust"],
-				"links": [],
+				"links": [["live", "#demo"]],
 				"note": "Source code delivered to the client; contact me for a demo."
 			},
 			{
@@ -277,5 +277,45 @@
 		"text": "This site is also available in English.",
 		"cta": "Switch to English",
 		"dismiss": "Dismiss"
+	},
+	"demo": {
+		"eyebrow": "Live demo",
+		"title": "Try receipt OCR",
+		"lead": "Pick a receipt and see the fields the program reads from the photo, and how it checks them against each other.",
+		"disclaimer": "These receipts were drawn for this demo and are fictional. The results on the right are the real output of the receipt OCR program for these photos, with no manual corrections.",
+		"pick": "Sample receipt",
+		"fields": {
+			"firma": "Company",
+			"vkn": "Tax ID",
+			"tarih": "Date",
+			"saat": "Time",
+			"fis_no": "Receipt no",
+			"odeme": "Payment"
+		},
+		"kdv_head": ["Rate", "Net", "VAT", "Total"],
+		"toplam_kdv": "Total VAT",
+		"genel_toplam": "Grand total",
+		"status": {
+			"OK": "Verified",
+			"DUZELTILDI": "Corrected",
+			"EKSIK": "Incomplete"
+		},
+		"status_help": {
+			"OK": "VAT and totals add up.",
+			"DUZELTILDI": "One line on the receipt was inconsistent; the program recomputed it from the other numbers and left a note.",
+			"EKSIK": "Some fields could not be read; the receipt is flagged for review."
+		},
+		"notes": "Program notes",
+		"json": "Show raw JSON output",
+		"card": "Card",
+		"cash": "Cash",
+		"names": {
+			"yildiz-gida": "Yıldız Gıda",
+			"kuzey-kirtasiye": "Kuzey Kırtasiye",
+			"deniz-eczanesi": "Deniz Eczanesi"
+		},
+		"note_map": {
+			"TOPKDV ürün satırlarından hesaplandı": "Total VAT recomputed from the item lines"
+		}
 	}
 }

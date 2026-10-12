@@ -1,0 +1,107 @@
+{
+	"kaynak": "Fiş OCR (main.py) gerçek çıktısı, uydurma fişler",
+	"fisler": [
+		{
+			"id": "yildiz-gida",
+			"img": "yildiz-gida.webp",
+			"w": 720,
+			"h": 1164,
+			"sonuc": [
+				{
+					"fis_sirasi": 1,
+					"durum": "OK",
+					"notlar": [],
+					"firma": "YILDIZ GIDA SAN. VE TiC. A.S.",
+					"vkn": "9990001112",
+					"tarih": "2026-03-14",
+					"saat": "18:42",
+					"fis_no": "0217",
+					"kdv": [
+						{
+							"oran": 1,
+							"matrah": 247.82,
+							"kdv": 2.48,
+							"toplam": 250.3
+						},
+						{
+							"oran": 20,
+							"matrah": 191.79,
+							"kdv": 38.36,
+							"toplam": 230.15
+						}
+					],
+					"toplam_matrah": 439.61,
+					"toplam_kdv": 40.84,
+					"genel_toplam": 480.45,
+					"odeme": "KART",
+					"kart_son4": "4417",
+					"banka": null
+				}
+			]
+		},
+		{
+			"id": "kuzey-kirtasiye",
+			"img": "kuzey-kirtasiye.webp",
+			"w": 720,
+			"h": 927,
+			"sonuc": [
+				{
+					"fis_sirasi": 1,
+					"durum": "OK",
+					"notlar": [],
+					"firma": "KUZEY KIRTASIYE",
+					"vkn": "9990002235",
+					"tarih": "2026-03-15",
+					"saat": "10:07",
+					"fis_no": "0093",
+					"kdv": [
+						{
+							"oran": 20,
+							"matrah": 105.0,
+							"kdv": 21.0,
+							"toplam": 126.0
+						}
+					],
+					"toplam_matrah": 105.0,
+					"toplam_kdv": 21.0,
+					"genel_toplam": 126.0,
+					"odeme": "NAKIT",
+					"kart_son4": null,
+					"banka": null
+				}
+			]
+		},
+		{
+			"id": "deniz-eczanesi",
+			"img": "deniz-eczanesi.webp",
+			"w": 720,
+			"h": 888,
+			"sonuc": [
+				{
+					"fis_sirasi": 1,
+					"durum": "DUZELTILDI",
+					"notlar": ["TOPKDV ürün satırlarından hesaplandı"],
+					"firma": "DENIZ ECZANESI",
+					"vkn": "9990004471",
+					"tarih": "2026-03-15",
+					"saat": "19:55",
+					"fis_no": "1142",
+					"kdv": [
+						{
+							"oran": 10,
+							"matrah": 90.91,
+							"kdv": 9.09,
+							"toplam": 100.0
+						}
+					],
+					"toplam_matrah": 90.91,
+					"toplam_kdv": 9.09,
+					"genel_toplam": 100.0,
+					"odeme": null,
+					"kart_son4": null,
+					"banka": null
+				}
+			]
+		}
+	]
+}

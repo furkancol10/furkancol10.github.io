@@ -81,7 +81,7 @@
 					["1,8 sn", "fiş başına"]
 				],
 				"tags": ["Python", "RapidOCR", "OpenCV", "FastAPI", "Nginx", "Locust"],
-				"links": [],
+				"links": [["live", "#demo"]],
 				"note": "Kaynak kod müşteriye teslim edildi; demo için iletişime geçin."
 			},
 			{
@@ -277,5 +277,43 @@
 		"text": "Bu sitenin Türkçe sürümü de var.",
 		"cta": "Türkçe'ye geç",
 		"dismiss": "Kapat"
+	},
+	"demo": {
+		"eyebrow": "Canlı demo",
+		"title": "Fiş OCR'ı deneyin",
+		"lead": "Bir fiş seçin; programın fotoğraftan okuduğu alanları ve kendi rakamlarıyla yaptığı kontrolü görün.",
+		"disclaimer": "Fişler bu demo için çizilmiş uydurma fişlerdir. Sağdaki sonuçlar Fiş OCR programının bu fotoğraflardan ürettiği gerçek çıktıdır, elle düzeltilmedi.",
+		"pick": "Örnek fiş",
+		"fields": {
+			"firma": "Firma",
+			"vkn": "VKN",
+			"tarih": "Tarih",
+			"saat": "Saat",
+			"fis_no": "Fiş no",
+			"odeme": "Ödeme"
+		},
+		"kdv_head": ["Oran", "Matrah", "KDV", "Toplam"],
+		"toplam_kdv": "Toplam KDV",
+		"genel_toplam": "Genel toplam",
+		"status": {
+			"OK": "Doğrulandı",
+			"DUZELTILDI": "Düzeltildi",
+			"EKSIK": "Eksik"
+		},
+		"status_help": {
+			"OK": "KDV ve toplamlar birbirini tutuyor.",
+			"DUZELTILDI": "Fişte tutarsız bir satır vardı; program doğrusunu diğer rakamlardan hesapladı ve not düştü.",
+			"EKSIK": "Bazı alanlar okunamadı; fiş kontrol için işaretlendi."
+		},
+		"notes": "Programın notları",
+		"json": "Ham JSON çıktısını göster",
+		"card": "Kart",
+		"cash": "Nakit",
+		"names": {
+			"yildiz-gida": "Yıldız Gıda",
+			"kuzey-kirtasiye": "Kuzey Kırtasiye",
+			"deniz-eczanesi": "Deniz Eczanesi"
+		},
+		"note_map": {}
 	}
 }

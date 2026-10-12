@@ -77,17 +77,20 @@
 						{#if p.links.length}
 							<div class="flex flex-wrap gap-3">
 								{#each p.links as [kind, url] (url)}
+									<!-- '#' ile başlayan: sayfa içi (ör. canlı demo), diğerleri dış bağlantı -->
 									<a
 										href={url}
-										rel="noopener"
+										rel={url.startsWith('#') ? undefined : 'noopener'}
 										class="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-4 py-2 text-sm transition-colors hover:bg-ink/[0.06]"
 									>
-										{L[/** @type {'live' | 'code'} */ (kind)]} <span aria-hidden="true">↗</span>
+										{L[/** @type {'live' | 'code'} */ (kind)]}
+										<span aria-hidden="true">{url.startsWith('#') ? '↓' : '↗'}</span>
 									</a>
 								{/each}
 							</div>
-						{:else if p.note}
-							<p class="text-sm text-muted">{p.note}</p>
+						{/if}
+						{#if p.note}
+							<p class="text-sm text-muted {p.links.length ? 'mt-3' : ''}">{p.note}</p>
 						{/if}
 					</div>
 				</div>

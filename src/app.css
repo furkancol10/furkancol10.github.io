@@ -286,3 +286,43 @@ html.intro .sig-draw path {
 		fill-opacity: 1;
 	}
 }
+
+/* Fiş OCR demosu: fişin üstünden geçen tarama ışığı, ardından okunan alanlar belirir */
+.demo-scan {
+	position: absolute;
+	inset-inline: 0;
+	top: 0;
+	height: 18%;
+	background: linear-gradient(to bottom, transparent, rgb(103 232 249 / 0.32));
+	border-bottom: 2px solid #67e8f9;
+	box-shadow: 0 8px 22px rgb(103 232 249 / 0.55);
+	pointer-events: none;
+	opacity: 0;
+	animation: demo-scan 1.3s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+@keyframes demo-scan {
+	0% {
+		transform: translateY(-100%);
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(560%);
+		opacity: 0;
+	}
+}
+.demo-result {
+	animation: demo-in 0.5s ease 0.9s both;
+}
+@keyframes demo-in {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}

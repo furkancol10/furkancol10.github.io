@@ -26,7 +26,7 @@
 
 		<!-- Konum + dünya -->
 		<article
-			class="reveal glow-card flex flex-col overflow-hidden p-7 md:col-span-2 md:row-span-2"
+			class="reveal glow-card flex flex-col overflow-clip p-7 md:col-span-2 md:row-span-2"
 			use:reveal={100}
 			use:spotlight
 		>

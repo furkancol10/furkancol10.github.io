@@ -33,7 +33,7 @@
 		'mt-2 w-full rounded-xl border border-line bg-ink/[0.03] px-4 py-3 text-ink placeholder:text-muted/60 focus:border-violet/60 focus:outline-none';
 </script>
 
-<section class="relative isolate overflow-hidden py-24 md:py-32" aria-labelledby="iletisim">
+<section class="relative isolate overflow-clip py-24 md:py-32" aria-labelledby="iletisim">
 	<div
 		class="pointer-events-none absolute bottom-[-30%] left-1/2 -z-10 h-[40rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,var(--hero-a),transparent)] blur-2xl"
 		aria-hidden="true"

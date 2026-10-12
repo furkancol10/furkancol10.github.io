@@ -23,7 +23,7 @@
 			>
 				<div class={i % 2 ? 'lg:order-last' : ''}>
 					<div
-						class="overflow-hidden rounded-xl border border-line bg-surface shadow-[0_30px_80px_-30px] shadow-violet-deep/50"
+						class="overflow-clip rounded-xl border border-line bg-surface shadow-[0_30px_80px_-30px] shadow-violet-deep/50"
 						use:tilt
 					>
 						<img

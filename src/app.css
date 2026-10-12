@@ -158,7 +158,8 @@
 @utility glow-card {
 	position: relative;
 	isolation: isolate;
-	overflow: hidden;
+	/* clip: hidden gibi kırpar ama kaydırılabilir kutu oluşturmaz; bağlantı/odak içeriği kaydıramaz */
+	overflow: clip;
 	border-radius: 1.25rem;
 	border: 1px solid var(--color-line);
 	background: linear-gradient(180deg, var(--card-a), var(--card-b));

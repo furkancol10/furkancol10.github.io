@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { prefix, site } from '#lib/content/index.js';
 	import { langPaths, rememberLang } from '#lib/i18n.js';
@@ -8,6 +9,8 @@
 
 	let open = $state(false);
 	let scrolled = $state(false);
+	// Sayfa kaydırılmış konumda açılırsa (bağlantıda #bölüm, yenileme) arka plan hemen gelsin
+	onMount(() => (scrolled = window.scrollY > 12));
 
 	const home = $derived(`${prefix(lang)}/`);
 	const links = $derived([

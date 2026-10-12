@@ -16,7 +16,7 @@
 </script>
 
 <section
-	class="relative isolate overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28"
+	class="relative isolate overflow-clip pt-36 pb-20 md:pt-44 md:pb-28"
 	aria-labelledby="hero-baslik"
 	use:spotlight
 >
@@ -78,7 +78,7 @@
 			{c.hero.stack_label}
 		</p>
 		<div
-			class="mt-5 flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
+			class="mt-5 flex overflow-clip [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
 		>
 			<ul class="flex shrink-0 animate-marquee gap-3 pr-3 hover:[animation-play-state:paused]">
 				{#each [...stack, ...stack] as s, i (i)}

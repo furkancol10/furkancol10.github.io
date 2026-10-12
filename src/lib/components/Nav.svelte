@@ -3,6 +3,8 @@
 	import { page } from '$app/state';
 	import { prefix, site } from '#lib/content/index.js';
 	import { langPaths, rememberLang } from '#lib/i18n.js';
+	import Mark from './Mark.svelte';
+	import Signature from './Signature.svelte';
 
 	/** @type {{ c: import('#lib/content/index.js').Content, lang: string }} */
 	let { c, lang } = $props();
@@ -60,12 +62,9 @@
 		: 'border-b border-transparent'}"
 >
 	<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 md:px-8">
-		<a href={home} class="group flex shrink-0 items-center gap-2.5 font-medium tracking-tight">
-			<span
-				class="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-violet-deep to-blue font-serif text-lg text-white shadow-[0_0_24px_-4px] shadow-violet/60"
-				aria-hidden="true">F</span
-			>
-			<span>{site.name}</span>
+		<a href={home} class="flex shrink-0 items-center gap-2" aria-label={site.name}>
+			<Mark class="size-9 drop-shadow-[0_4px_14px_rgb(124_58_237/0.35)]" />
+			<Signature gradient target class="h-8 w-auto" />
 		</a>
 
 		<ul class="hidden items-center gap-1 text-sm text-muted lg:flex">

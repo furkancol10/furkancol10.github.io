@@ -241,3 +241,48 @@
 		filter: none;
 	}
 }
+
+/* Giriş animasyonu: app.html oturumdaki ilk açılışta html'e .intro ekler (hareket azaltma açıksa eklemez). */
+.intro-overlay {
+	display: none;
+}
+html.intro {
+	overflow: hidden;
+}
+html.intro .intro-overlay {
+	display: grid;
+}
+/* Menüdeki imza, büyük imza üstüne gelene kadar gizli */
+html.intro [data-signature-target] {
+	opacity: 0;
+}
+.intro-bg {
+	transition: opacity 0.85s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.intro-leaving {
+	pointer-events: none;
+}
+.intro-leaving .intro-bg {
+	opacity: 0;
+}
+/* Harf harf yazılma: önce kontur çizilir, sonra içi dolar */
+html.intro .sig-draw path {
+	stroke-width: 1.1;
+	stroke-dasharray: 1;
+	stroke-dashoffset: 1;
+	fill-opacity: 0;
+	animation:
+		sig-stroke 0.7s cubic-bezier(0.6, 0, 0.3, 1) forwards,
+		sig-fill 0.45s ease forwards;
+	animation-delay: calc(var(--i) * 0.11s), calc(var(--i) * 0.11s + 0.5s);
+}
+@keyframes sig-stroke {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes sig-fill {
+	to {
+		fill-opacity: 1;
+	}
+}

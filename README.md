@@ -71,3 +71,14 @@ RSS (`/rss.xml`, `/en/rss.xml`) ve `sitemap.xml` derlemede otomatik üretilir.
 | `src/lib/components/` | Bölümler (Hero, Projects, About...) ve ortak parçalar |
 | `src/lib/actions.js` | Kaydırınca görünme, ışık takibi ve eğim efektleri |
 | `src/app.css` | Renkler, yazı tipleri, animasyonlar; hareket azaltma ayarına uyar |
+| `src/lib/i18n.js` | Dil adresleri ve dil tercihi (öneri bandı) |
+| `src/lib/signature.js` | El yazısı imza ve FC logosunun SVG yolları (otomatik üretilir) |
+
+## Logo ve imza
+
+Menüdeki el yazısı "Furkan Çöl", FC logosu ve `static/favicon.svg`, Great Vibes yazı tipinden
+(`scripts/fonts/`, OFL lisansı) üretilir. Yazı ya da logo değişecekse `scripts/signature.mjs` içinde metni
+düzenle ve `node scripts/signature.mjs` çalıştır. opentype.js 1.3.4 kullanılır; 2.x bu yazı tipini eksik çiziyor.
+
+Giriş animasyonu oturumda bir kez oynar (`sessionStorage`), "hareketi azalt" açıksa hiç oynamaz.
+Tıklayınca ya da bir tuşa basınca atlanır.

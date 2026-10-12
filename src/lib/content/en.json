@@ -400,5 +400,61 @@
 				"a": "It depends on the scope. Once I see the number of pages and features, I give an exact timeline and price. Brochure sites usually take a few days."
 			}
 		]
+	},
+	"pricing": {
+		"publish": false,
+		"eyebrow": "Pricing",
+		"title": "Starting prices",
+		"lead": "The exact price depends on your project and samples. These are the prices for the basic scope.",
+		"from": "TL and up",
+		"quote": "Get a quote",
+		"currency": "TL",
+		"items": [
+			{
+				"id": "ocr",
+				"title": "Receipt and document OCR",
+				"price": 1500,
+				"features": [
+					"A program that turns receipts/PDFs into Excel or JSON",
+					"Free trial with your own documents",
+					"Tuning to your documents + test report: 3,000 TL",
+					"HTTPS API on your server + load test: 5,500 TL"
+				],
+				"cta": {
+					"label": "Order on Bionluk",
+					"href": "BIONLUK"
+				}
+			},
+			{
+				"id": "desktop",
+				"title": "Desktop program",
+				"price": null,
+				"features": [
+					"A single .exe for receivables, installments, stock and similar work",
+					"Works offline, your data stays with you",
+					"Adapted to your business",
+					"Source code on request"
+				],
+				"cta": {
+					"label": "Request a quote",
+					"href": "#iletisim"
+				}
+			},
+			{
+				"id": "web",
+				"title": "WordPress to custom site",
+				"price": null,
+				"features": [
+					"Brochure, corporate and blog sites",
+					"Content is migrated automatically",
+					"URLs kept, complete SEO settings",
+					"Free or low-cost static hosting"
+				],
+				"cta": {
+					"label": "Details",
+					"href": "/en/wordpress/"
+				}
+			}
+		]
 	}
 }

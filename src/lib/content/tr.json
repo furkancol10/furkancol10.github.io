@@ -398,5 +398,61 @@
 				"a": "Kapsama bağlı. Sayfa sayısını ve özellikleri gördükten sonra kesin süre ve fiyat veririm. Tanıtım siteleri genellikle birkaç gün sürer."
 			}
 		]
+	},
+	"pricing": {
+		"publish": false,
+		"eyebrow": "Fiyatlar",
+		"title": "Başlangıç fiyatları",
+		"lead": "Kesin fiyat, işinizi ve örneklerinizi gördükten sonra belli olur. Aşağıdakiler en temel kapsamın fiyatıdır.",
+		"from": "TL'den başlayan",
+		"quote": "Teklif alın",
+		"currency": "TL",
+		"items": [
+			{
+				"id": "ocr",
+				"title": "Fiş ve belge OCR",
+				"price": 1500,
+				"features": [
+					"Fiş/PDF'den Excel ya da JSON'a aktaran program",
+					"Kendi belgelerinizle ücretsiz deneme",
+					"Belgelerinize göre ayar ve test raporu: 3.000 TL",
+					"Sunucunuza HTTPS API + yük testi: 5.500 TL"
+				],
+				"cta": {
+					"label": "Bionluk'ta sipariş ver",
+					"href": "BIONLUK"
+				}
+			},
+			{
+				"id": "desktop",
+				"title": "Masaüstü program",
+				"price": null,
+				"features": [
+					"Alacak, taksit, stok gibi işler için tek .exe program",
+					"İnternet gerektirmez, veriler sizde kalır",
+					"İşletmenize göre uyarlama",
+					"İsterseniz kaynak kod teslimi"
+				],
+				"cta": {
+					"label": "Teklif iste",
+					"href": "#iletisim"
+				}
+			},
+			{
+				"id": "web",
+				"title": "WordPress'ten özel siteye geçiş",
+				"price": null,
+				"features": [
+					"Tanıtım, kurumsal ve blog siteleri",
+					"İçerik otomatik aktarılır",
+					"Adresler korunur, SEO ayarları eksiksiz",
+					"Ücretsiz/ucuz statik barındırma"
+				],
+				"cta": {
+					"label": "Ayrıntılar",
+					"href": "/wordpress/"
+				}
+			}
+		]
 	}
 }

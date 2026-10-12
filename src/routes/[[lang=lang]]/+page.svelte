@@ -8,6 +8,7 @@
 	import About from '#lib/components/About.svelte';
 	import Experience from '#lib/components/Experience.svelte';
 	import Process from '#lib/components/Process.svelte';
+	import Pricing from '#lib/components/Pricing.svelte';
 	import Testimonials from '#lib/components/Testimonials.svelte';
 	import Contact from '#lib/components/Contact.svelte';
 
@@ -43,5 +44,6 @@
 <About {c} />
 <Experience {c} />
 <Process {c} />
+<Pricing {c} lang={data.lang} />
 <Testimonials {c} />
 <Contact {c} />

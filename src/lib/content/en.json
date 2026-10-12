@@ -402,7 +402,7 @@
 		]
 	},
 	"pricing": {
-		"publish": false,
+		"publish": true,
 		"eyebrow": "Pricing",
 		"title": "Starting prices",
 		"lead": "The exact price depends on your project and samples. These are the prices for the basic scope.",
@@ -417,8 +417,8 @@
 				"features": [
 					"A program that turns receipts/PDFs into Excel or JSON",
 					"Free trial with your own documents",
-					"Tuning to your documents + test report: 3,000 TL",
-					"HTTPS API on your server + load test: 5,500 TL"
+					"No cloud or AI service needed, documents stay with you",
+					"Optional setup as an HTTPS API on your server"
 				],
 				"cta": {
 					"label": "Order on Bionluk",
@@ -428,7 +428,7 @@
 			{
 				"id": "desktop",
 				"title": "Desktop program",
-				"price": null,
+				"price": 500,
 				"features": [
 					"A single .exe for receivables, installments, stock and similar work",
 					"Works offline, your data stays with you",
@@ -436,8 +436,8 @@
 					"Source code on request"
 				],
 				"cta": {
-					"label": "Request a quote",
-					"href": "#iletisim"
+					"label": "Order on Bionluk",
+					"href": "BIONLUK"
 				}
 			},
 			{

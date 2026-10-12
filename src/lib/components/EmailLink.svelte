@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
 	import { site } from '#lib/content/index.js';
 
 	/**
@@ -8,7 +9,8 @@
 	 */
 	let { label, showAddress = false, class: klass = '', children } = $props();
 
-	let href = $state('#iletisim');
+	// JS yüklenmeden önce: ana sayfadaki iletişim bölümü (her sayfada geçerli bir hedef)
+	let href = $state(`${page.url.pathname.startsWith('/en') ? '/en' : ''}/#iletisim`);
 	let address = $state(`${site.email_user} [at] ${site.email_domain}`);
 
 	onMount(() => {

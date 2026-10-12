@@ -44,7 +44,11 @@
 			{
 				"title": "Web ve masaüstü uygulamaları",
 				"text": "Stok ve sipariş panelleri, yönetim ekranları, fiyat hesaplayıcı ve sipariş siteleri. Rol bazlı yetki, raporlar, mobil uyumlu arayüz; Vercel, Render ya da Cloudflare üzerinde yayında. Masaüstünde internet gerektirmeyen tek .exe programlar (ör. alacak ve taksit takibi).",
-				"tags": ["Svelte", ".NET", "Django", "PostgreSQL", "Flet", "SQLite"]
+				"tags": ["Svelte", ".NET", "Django", "PostgreSQL", "Flet", "SQLite"],
+				"link": {
+					"label": "WordPress'ten geçiş",
+					"href": "/wordpress/"
+				}
 			},
 			{
 				"title": "Otomasyon ve API",
@@ -315,5 +319,84 @@
 			"deniz-eczanesi": "Deniz Eczanesi"
 		},
 		"note_map": {}
+	},
+	"wp": {
+		"meta": {
+			"title": "WordPress'ten özel kodlanmış siteye geçiş · Furkan Çöl",
+			"description": "WordPress sitenizi hızlı açılan, güvenli ve bakımı kolay özel kodlanmış bir siteye taşıyorum. İçerik otomatik aktarılır, adresler ve arama görünürlüğü korunur."
+		},
+		"eyebrow": "Hizmet",
+		"title": "WordPress'ten hızlı, <span class=\"text-gradient\">özel kodlanmış</span> bir siteye",
+		"lead": "Tema ve eklenti yükünden kurtulun. Sitenizi aynı içerikle, daha hızlı açılan, daha güvenli ve barındırması ucuz bir yapıya taşıyorum. İçerikler WordPress'ten otomatik aktarılır, eski adresleriniz korunur.",
+		"cta": "Ücretsiz ön değerlendirme",
+		"cta_note": "Site adresinizi gönderin, neyin taşınacağını ve tahmini süreyi yazayım.",
+		"why_title": "Neden geçmeli?",
+		"why": [
+			{
+				"title": "Hızlı açılır",
+				"text": "Sayfalar önceden üretilir, her ziyarette veritabanı ve eklenti çalışmaz. Ziyaretçi beklemeden içeriği görür."
+			},
+			{
+				"title": "Daha güvenli",
+				"text": "Sunucuda çalışan PHP, eklenti ya da yönetim girişi yoktur. Eklenti açıklarından kaynaklanan saldırılar ortadan kalkar."
+			},
+			{
+				"title": "Barındırma ucuz",
+				"text": "Statik siteler Cloudflare Pages ya da GitHub Pages gibi servislerde ücretsiz ya da çok düşük maliyetle yayınlanabilir."
+			},
+			{
+				"title": "Tasarım sizin",
+				"text": "Bir temanın sınırlarına bağlı kalmazsınız. Animasyon, çok dil, blog, form: ihtiyacınız olan her şey sitenize özel yazılır."
+			}
+		],
+		"steps_title": "Nasıl taşıyorum",
+		"steps": [
+			{
+				"title": "İnceleme",
+				"text": "Sayfalarınızı, blog yazılarınızı, formlarınızı ve kullandığınız eklentileri çıkarırım. Neyin aynen, neyin farklı yapılacağını yazılı olarak paylaşırım."
+			},
+			{
+				"title": "Otomatik içerik aktarımı",
+				"text": "Yazılar, sayfalar ve görseller WordPress'in kendi arayüzü (REST API) üzerinden betikle çekilir. Elle kopyalama yok, içerik kaybı yok."
+			},
+			{
+				"title": "Tasarım ve kodlama",
+				"text": "Siteyi modern bir yapıyla (SvelteKit) kodlarım: hızlı, mobil uyumlu, SEO ayarları eksiksiz."
+			},
+			{
+				"title": "Adresler ve yayın",
+				"text": "Eski adresler aynen korunur ya da kalıcı yönlendirme (301) yapılır; arama görünürlüğünüz zarar görmez. Alan adınızı bağlayıp yayına alırım."
+			}
+		],
+		"kept_title": "Neler korunur?",
+		"kept": [
+			"Sayfa ve blog içerikleri, görseller",
+			"Sayfa adresleri ya da yönlendirmeleri",
+			"Başlıklar, açıklamalar ve paylaşım görselleri (SEO)",
+			"İletişim formları (form servisiyle)",
+			"Alan adınız ve e-postanız"
+		],
+		"case_title": "Kendi sitemi de böyle yaptım",
+		"case_text": "furkancol.me, eski bir statik üreticiden SvelteKit'e taşındı: adresler korundu; iki dil, blog, RSS, açık/koyu tema ve animasyonlar eklendi. GitHub Pages'te ücretsiz barındırılıyor ve her değişiklik otomatik yayınlanıyor.",
+		"case_link": "Siteyi inceleyin",
+		"faq_title": "Sık sorulanlar",
+		"faq": [
+			{
+				"q": "İçeriği kendim düzenleyebilecek miyim?",
+				"a": "Evet. İsterseniz siteye ücretsiz bir içerik yönetim paneli eklerim; yazı ve sayfaları WordPress'e benzer bir ekrandan düzenlersiniz. Panel istemezseniz içerik güncellemelerini ben yaparım."
+			},
+			{
+				"q": "Google sıralamam düşer mi?",
+				"a": "Adresleriniz korunur ya da 301 yönlendirmesiyle yeni adrese bağlanır; başlık ve açıklamalar da taşınır. Bu, arama görünürlüğünü korumanın standart yoludur. Daha hızlı açılan sayfalar da bir artıdır."
+			},
+			{
+				"q": "E-ticaret (WooCommerce) sitesi de taşınır mı?",
+				"a": "Ödeme, sepet ve üyelik içeren siteler ayrı bir iştir; önce ihtiyaçlarınızı inceleyip ayrı bir teklif veririm. Bu sayfadaki hızlı geçiş tanıtım, kurumsal ve blog siteleri içindir."
+			},
+			{
+				"q": "Ne kadar sürer?",
+				"a": "Kapsama bağlı. Sayfa sayısını ve özellikleri gördükten sonra kesin süre ve fiyat veririm. Tanıtım siteleri genellikle birkaç gün sürer."
+			}
+		]
 	}
 }

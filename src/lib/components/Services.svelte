@@ -42,6 +42,11 @@
 						</li>
 					{/each}
 				</ul>
+				{#if s.link}
+					<a href={s.link.href} class="mt-5 text-sm text-violet hover:underline"
+						>{s.link.label} <span aria-hidden="true">→</span></a
+					>
+				{/if}
 			</article>
 		{/each}
 	</div>

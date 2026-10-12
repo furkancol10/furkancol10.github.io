@@ -44,7 +44,11 @@
 			{
 				"title": "Web & desktop applications",
 				"text": "Stock and order panels, admin dashboards, price calculators and ordering sites. Role-based access, reports, mobile-friendly UI; deployed on Vercel, Render or Cloudflare. Offline desktop programs as a single .exe (e.g. receivables and installment tracking).",
-				"tags": ["Svelte", ".NET", "Django", "PostgreSQL", "Flet", "SQLite"]
+				"tags": ["Svelte", ".NET", "Django", "PostgreSQL", "Flet", "SQLite"],
+				"link": {
+					"label": "Moving from WordPress",
+					"href": "/en/wordpress/"
+				}
 			},
 			{
 				"title": "Automation & APIs",
@@ -317,5 +321,84 @@
 		"note_map": {
 			"TOPKDV ürün satırlarından hesaplandı": "Total VAT recomputed from the item lines"
 		}
+	},
+	"wp": {
+		"meta": {
+			"title": "Move from WordPress to a custom-coded site · Furkan Çöl",
+			"description": "I move your WordPress site to a fast, secure, low-maintenance custom-coded site. Content is migrated automatically; URLs and search visibility are preserved."
+		},
+		"eyebrow": "Service",
+		"title": "From WordPress to a fast, <span class=\"text-gradient\">custom-coded</span> site",
+		"lead": "Leave theme and plugin bloat behind. I move your site, with the same content, to a setup that loads faster, is more secure and costs less to host. Content is migrated from WordPress automatically and your existing URLs are kept.",
+		"cta": "Free assessment",
+		"cta_note": "Send me your site address and I'll tell you what will be moved and how long it will take.",
+		"why_title": "Why move?",
+		"why": [
+			{
+				"title": "Loads fast",
+				"text": "Pages are generated ahead of time; no database or plugins run on each visit. Visitors see the content without waiting."
+			},
+			{
+				"title": "More secure",
+				"text": "No PHP, plugins or admin login run on the server, so attacks that exploit plugin vulnerabilities disappear."
+			},
+			{
+				"title": "Cheap hosting",
+				"text": "Static sites can be hosted for free or at very low cost on services like Cloudflare Pages or GitHub Pages."
+			},
+			{
+				"title": "Your design",
+				"text": "You are not bound by a theme's limits. Animation, multiple languages, blog, forms: everything is built for your site."
+			}
+		],
+		"steps_title": "How I move it",
+		"steps": [
+			{
+				"title": "Review",
+				"text": "I list your pages, blog posts, forms and plugins, and share in writing what stays the same and what changes."
+			},
+			{
+				"title": "Automatic content migration",
+				"text": "Posts, pages and images are pulled by script through WordPress's own REST API. No manual copying, no lost content."
+			},
+			{
+				"title": "Design and build",
+				"text": "I build the site on a modern stack (SvelteKit): fast, mobile-friendly, with complete SEO settings."
+			},
+			{
+				"title": "URLs and launch",
+				"text": "Old URLs are kept as they are or permanently redirected (301), so your search visibility is not hurt. I connect your domain and launch."
+			}
+		],
+		"kept_title": "What is kept?",
+		"kept": [
+			"Page and blog content, images",
+			"Page URLs or redirects",
+			"Titles, descriptions and share images (SEO)",
+			"Contact forms (through a form service)",
+			"Your domain and email"
+		],
+		"case_title": "I did the same with my own site",
+		"case_text": "furkancol.me was moved from an old static generator to SvelteKit: URLs were kept, and two languages, a blog, RSS, light/dark themes and animations were added. It is hosted for free on GitHub Pages and every change is published automatically.",
+		"case_link": "Look around the site",
+		"faq_title": "FAQ",
+		"faq": [
+			{
+				"q": "Will I be able to edit the content myself?",
+				"a": "Yes. If you like, I add a free content management panel; you edit posts and pages in a screen similar to WordPress. If you don't need a panel, I handle content updates."
+			},
+			{
+				"q": "Will my Google ranking drop?",
+				"a": "Your URLs are kept or connected to the new ones with 301 redirects, and titles and descriptions move too. That is the standard way to preserve search visibility. Faster pages are a plus."
+			},
+			{
+				"q": "Can an e-commerce (WooCommerce) site be moved too?",
+				"a": "Sites with payments, carts and accounts are a separate project; I review your needs first and send a separate quote. The quick migration on this page is for brochure, corporate and blog sites."
+			},
+			{
+				"q": "How long does it take?",
+				"a": "It depends on the scope. Once I see the number of pages and features, I give an exact timeline and price. Brochure sites usually take a few days."
+			}
+		]
 	}
 }

@@ -6,7 +6,7 @@ export const trailingSlash = 'never';
 
 export function GET() {
 	const today = new Date().toISOString().slice(0, 10);
-	const pages = ['/', '/en/', '/wordpress/', '/en/wordpress/', '/blog/', '/en/blog/'].map((p) => ({
+	const pages = ['/', '/en/', '/ben-kimim/', '/en/about/', '/wordpress/', '/en/wordpress/', '/blog/', '/en/blog/'].map((p) => ({
 		loc: p,
 		lastmod: today
 	}));

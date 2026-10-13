@@ -7,7 +7,7 @@
 
 <footer class="border-t border-line">
 	<div
-		class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between md:px-8"
+		class="mx-auto flex max-w-[1320px] px-[clamp(20px,4vw,56px)] flex-col gap-4 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between"
 	>
 		<p>© {year} {site.name}. {c.footer}</p>
 		<div class="flex gap-5">

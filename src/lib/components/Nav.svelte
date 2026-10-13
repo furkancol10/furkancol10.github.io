@@ -18,8 +18,7 @@
 	const links = $derived([
 		{ href: `${home}#hizmetler`, label: c.nav.services },
 		{ href: `${home}#projeler`, label: c.nav.projects },
-		{ href: `${home}#hakkimda`, label: c.nav.about },
-		{ href: `${home}#deneyim`, label: c.nav.experience },
+		{ href: `${prefix(lang)}/${lang === 'en' ? 'about' : 'ben-kimim'}/`, label: c.nav.whoami },
 		{ href: `${prefix(lang)}/blog/`, label: c.nav.blog }
 	]);
 
@@ -39,7 +38,7 @@
 		}
 		document
 			.querySelector('meta[name="theme-color"]')
-			?.setAttribute('content', dark ? '#07070c' : '#f8f8fb');
+			?.setAttribute('content', dark ? '#060610' : '#f6f6fc');
 	}
 </script>
 
@@ -58,10 +57,12 @@
 <header
 	class="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 {scrolled ||
 	open
-		? 'border-b border-line bg-bg/75 backdrop-blur-xl'
+		? 'border-b border-line bg-bg/70 backdrop-blur-xl'
 		: 'border-b border-transparent'}"
 >
-	<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 md:px-8">
+	<nav
+		class="mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-3 px-[clamp(20px,4vw,56px)]"
+	>
 		<a href={home} class="flex shrink-0 items-center gap-2" aria-label={site.name}>
 			<Mark class="size-9 drop-shadow-[0_4px_14px_rgb(124_58_237/0.35)]" />
 			<Signature gradient target class="h-8 w-auto" />
@@ -147,10 +148,7 @@
 				</svg>
 			</button>
 
-			<a
-				href="{home}#iletisim"
-				class="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-bg transition-transform hover:scale-[1.03] md:inline-block"
-				>{c.nav.contact}</a
+			<a href="{home}#iletisim" class="pill hidden !py-2 text-sm md:inline-block">{c.nav.contact}</a
 			>
 			<button
 				type="button"
@@ -179,7 +177,10 @@
 	</nav>
 
 	{#if open}
-		<ul id="mobil-menu" class="mx-auto max-w-6xl space-y-1 px-5 pb-5 lg:hidden">
+		<ul
+			id="mobil-menu"
+			class="mx-auto max-w-[1320px] space-y-1 px-[clamp(20px,4vw,56px)] pb-5 lg:hidden"
+		>
 			{#each [...links, { href: `${home}#iletisim`, label: c.nav.contact }] as l (l.href)}
 				<li>
 					<a

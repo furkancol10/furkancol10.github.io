@@ -4,6 +4,7 @@
 	import '@fontsource/instrument-serif/400.css';
 	import '@fontsource/instrument-serif/400-italic.css';
 	import '../app.css';
+	import '../v2.css';
 	import { onMount } from 'svelte';
 
 	/** @type {{ children: import('svelte').Snippet }} */

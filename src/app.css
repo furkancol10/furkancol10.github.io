@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-/* Koyu tema <html class="dark"> ile açılır (varsayılan açık); dark: ön eki buna bağlı. */
+/* Koyu tema <html class="dark"> ile açılır (varsayılan koyu); dark: ön eki buna bağlı. */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Renkler temaya göre değişen CSS değişkenlerinden gelir (aşağıda :root ve :root.dark). */
@@ -63,53 +63,7 @@
 	}
 }
 
-/* Açık tema (varsayılan) */
-:root {
-	color-scheme: light;
-	--bg: #f8f8fb;
-	--surface: #ffffff;
-	--line: rgb(15 15 30 / 0.09);
-	--line-strong: rgb(15 15 30 / 0.18);
-	--ink: #11111b;
-	--muted: #55556a;
-	--violet: #6d28d9;
-	--blue: #2563eb;
-
-	--grid-line: rgb(15 15 30 / 0.05);
-	--card-a: rgb(255 255 255 / 0.95);
-	--card-b: rgb(255 255 255 / 0.7);
-	--card-shadow: 0 1px 2px rgb(15 15 30 / 0.04), 0 12px 32px -16px rgb(15 15 30 / 0.12);
-	--glow-fill: rgb(124 58 237 / 0.07);
-	--hero-a: rgb(124 58 237 / 0.2);
-	--hero-b: rgb(59 130 246 / 0.16);
-	--grad-a: #7c3aed;
-	--grad-b: #2563eb;
-	--grad-c: #0891b2;
-}
-
-/* Koyu tema */
-:root.dark {
-	color-scheme: dark;
-	--bg: #07070c;
-	--surface: #0c0c15;
-	--line: rgb(255 255 255 / 0.08);
-	--line-strong: rgb(255 255 255 / 0.16);
-	--ink: #ececf3;
-	--muted: #a3a3b8;
-	--violet: #a78bfa;
-	--blue: #60a5fa;
-
-	--grid-line: rgb(255 255 255 / 0.045);
-	--card-a: rgb(255 255 255 / 0.045);
-	--card-b: rgb(255 255 255 / 0.015);
-	--card-shadow: none;
-	--glow-fill: rgb(124 58 237 / 0.12);
-	--hero-a: rgb(124 58 237 / 0.38);
-	--hero-b: rgb(59 130 246 / 0.25);
-	--grad-a: #c4b5fd;
-	--grad-b: #93c5fd;
-	--grad-c: #67e8f9;
-}
+/* Renk değişkenleri (açık/koyu) src/v2.css içinde tanımlıdır. */
 
 @layer base {
 	html {

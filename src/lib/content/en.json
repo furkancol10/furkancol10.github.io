@@ -22,7 +22,8 @@
 		"menu": "Menu",
 		"close": "Close",
 		"theme": "Toggle theme",
-		"language": "Language"
+		"language": "Language",
+		"whoami": "About me"
 	},
 	"hero": {
 		"badge": "Available for new projects",
@@ -179,7 +180,7 @@
 		"now_text": "Graduation thesis and freelance projects.",
 		"title": "About",
 		"paragraphs": [
-			"I'm a final-year engineering student. My coursework focuses on signal processing, embedded systems (STM32) and machine learning; I'm currently working on my graduation thesis.",
+			"I'm a final-year engineering student, currently working on my graduation thesis. I interned as a software developer at Altınay Robot Technologies' head office in July–August 2025 and as an IT intern at Koru Sigorta's head office in July–August 2026.",
 			"As a freelancer I hand the repetitive, manual work of small businesses and bookkeeping processes over to software. With every delivery I measure and report how well things work, and I state a tool's limits openly."
 		],
 		"skills_title": "Tools I use",
@@ -215,11 +216,19 @@
 		"items": [
 			{
 				"publish": true,
-				"period": "2026 – Present",
-				"title": "Freelance software developer",
-				"org": "Bionluk and direct clients",
-				"text": "Delivered receipt OCR to a client as a program and an HTTPS API running on their server. Building receivables tracking and PDF→Excel tools.",
-				"tags": ["Python", "OCR", "FastAPI", "Svelte"]
+				"period": "Final year",
+				"title": "Engineering student",
+				"org": "Bachelor's degree",
+				"text": "Working on my graduation thesis.",
+				"tags": []
+			},
+			{
+				"publish": true,
+				"period": "July 2025 – August 2025",
+				"title": "Software intern",
+				"org": "Altınay Robot Technologies, head office",
+				"text": "My first internship, during my engineering degree.",
+				"tags": []
 			},
 			{
 				"publish": true,
@@ -231,11 +240,11 @@
 			},
 			{
 				"publish": true,
-				"period": "Final year",
-				"title": "Engineering student",
-				"org": "Bachelor's degree",
-				"text": "Signal processing, embedded systems (STM32) and machine learning; currently working on my graduation thesis.",
-				"tags": []
+				"period": "2026 – Present",
+				"title": "Freelance software developer",
+				"org": "Bionluk and direct clients",
+				"text": "Delivered receipt OCR to a client as a program and an HTTPS API running on their server. Building receivables tracking and PDF→Excel tools.",
+				"tags": ["Python", "OCR", "FastAPI", "Svelte"]
 			}
 		]
 	},
@@ -456,5 +465,59 @@
 				}
 			}
 		]
+	},
+	"v2": {
+		"hero": {
+			"l1": "Documents into data,",
+			"l2": "ideas into working",
+			"l3": "software.",
+			"or_write": "or write to me:"
+		},
+		"receipt": {
+			"alt": "A fictional grocery receipt: Yıldız Gıda, 14 March 2026, total 480.45",
+			"ledger": {
+				"company": "Company",
+				"tax": "Tax ID",
+				"date": "Date",
+				"vat1": "VAT 1%",
+				"vat20": "VAT 20%",
+				"vat": "Total VAT",
+				"total": "Grand total"
+			},
+			"verified": "Verified.",
+			"verdict": "2.48 + 38.36 = 40.84 and 250.30 + 230.15 = 480.45: the program cross-checked the numbers it read.",
+			"caption": "The receipt is fictional; the values on the right are the real output of the Receipt OCR program for this photo, not edited by hand."
+		},
+		"measure": {
+			"statement": "I hand the repetitive, manual work of small businesses and bookkeeping over to software.",
+			"photos": "real photos tested",
+			"verified": "of tax receipts auto-verified",
+			"speed": "per receipt, CPU only"
+		},
+		"about_more": "About me",
+		"who": {
+			"title1": "About",
+			"title2": "me",
+			"sub": "Furkan Çöl. Software developer and final-year engineering student; from documents to data, from idea to working software.",
+			"meta_title": "About me · Furkan Çöl",
+			"meta_description": "Furkan Çöl: software developer and final-year engineering student. My journey, how I work and the tools I use.",
+			"short": "In short",
+			"nums_label_ocr": "real photos tested (Receipt OCR)",
+			"nums_label_tests": "automated tests (Receivables Tracker)",
+			"nums_label_projects": "published projects",
+			"beliefs": [
+				["I measure and report.", "With every delivery I measure and report how well things work."],
+				["I state the limits.", "I also tell you what a tool can't do, so there are no surprises."],
+				[
+					"Your documents stay yours.",
+					"The tools run on your computer or server; documents are never sent to the cloud."
+				],
+				[
+					"We try first.",
+					"Send me your sample documents; I'll test them for free and show you the result."
+				]
+			],
+			"see_projects": "See my projects"
+		}
 	}
 }

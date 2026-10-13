@@ -59,7 +59,7 @@
 	}
 </script>
 
-<section class="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32" aria-labelledby="demo">
+<section class="mx-auto max-w-[1320px] px-[clamp(20px,4vw,56px)] py-24 md:py-32" aria-labelledby="demo">
 	<SectionHeading id="demo" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
 
 	<div class="reveal" use:reveal>

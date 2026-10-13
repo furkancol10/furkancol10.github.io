@@ -22,7 +22,17 @@ export default defineConfig({
 				// XML uçları sayfalardan <a> ile bağlanmadığı için açıkça listelenir.
 				entries: ['*', '/en/', '/blog/', '/en/blog/', '/rss.xml', '/en/rss.xml', '/sitemap.xml'],
 				// Yalnızca taslak yazı varken blog/[slug] hiç taranmaz; bu beklenen durum.
-				handleUnseenRoutes: 'warn'
+				handleUnseenRoutes: 'warn',
+				// Dile özgü adresler: /ben-kimim/ yalnızca TR, /en/about/ yalnızca EN. Karşı dildeki eşleşmeler
+				// 404 döner (bilerek); '*' girişi bunları da denediği için yalnızca bu ikisine izin verilir.
+				handleHttpError: ({ path, status, message }) => {
+					if (
+						status === 404 &&
+						['/about', '/about/', '/en/ben-kimim', '/en/ben-kimim/'].includes(path)
+					)
+						return;
+					throw new Error(message);
+				}
 			}
 		})
 	]

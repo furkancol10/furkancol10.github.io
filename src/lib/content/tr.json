@@ -22,7 +22,8 @@
 		"menu": "Menü",
 		"close": "Kapat",
 		"theme": "Temayı değiştir",
-		"language": "Dil"
+		"language": "Dil",
+		"whoami": "Ben kimim"
 	},
 	"hero": {
 		"badge": "Yeni projelere açığım",
@@ -179,7 +180,7 @@
 		"now_text": "Bitirme tezi ve freelance projeler.",
 		"title": "Hakkımda",
 		"paragraphs": [
-			"Mühendislik son sınıf öğrencisiyim. Derslerim sinyal işleme, gömülü sistemler (STM32) ve makine öğrenmesi ağırlıklı; şu an bitirme tezim üzerinde çalışıyorum.",
+			"Mühendislik son sınıf öğrencisiyim; şu an bitirme tezim üzerinde çalışıyorum. Temmuz–Ağustos 2025'te Altınay Robot Teknolojileri genel merkezinde yazılım stajyeri, Temmuz–Ağustos 2026'da Koru Sigorta Genel Müdürlüğü'nde bilgi teknolojileri stajyeri olarak çalıştım.",
 			"Freelance işlerde küçük işletmelerin ve muhasebe süreçlerinin elle yapılan, tekrarlayan işlerini yazılıma devrediyorum. Her teslimatta neyin ne kadar iyi çalıştığını ölçüp raporluyorum; bir aracın sınırlarını da açıkça yazıyorum."
 		],
 		"skills_title": "Kullandığım araçlar",
@@ -215,11 +216,19 @@
 		"items": [
 			{
 				"publish": true,
-				"period": "2026 – Şimdi",
-				"title": "Freelance yazılım geliştirici",
-				"org": "Bionluk ve doğrudan müşteriler",
-				"text": "Fiş OCR'ı bir müşteriye program ve sunucusunda çalışan HTTPS API olarak teslim ettim. Alacak takibi ve PDF→Excel araçları geliştiriyorum.",
-				"tags": ["Python", "OCR", "FastAPI", "Svelte"]
+				"period": "Son sınıf",
+				"title": "Mühendislik öğrencisi",
+				"org": "Lisans",
+				"text": "Bitirme tezi aşamasındayım.",
+				"tags": []
+			},
+			{
+				"publish": true,
+				"period": "Temmuz 2025 – Ağustos 2025",
+				"title": "Yazılım stajyeri",
+				"org": "Altınay Robot Teknolojileri, genel merkez",
+				"text": "Mühendislik eğitimim sırasında yaptığım ilk staj.",
+				"tags": []
 			},
 			{
 				"publish": true,
@@ -231,11 +240,11 @@
 			},
 			{
 				"publish": true,
-				"period": "Son sınıf",
-				"title": "Mühendislik öğrencisi",
-				"org": "Lisans",
-				"text": "Sinyal işleme, gömülü sistemler (STM32) ve makine öğrenmesi; bitirme tezi aşamasındayım.",
-				"tags": []
+				"period": "2026 – Şimdi",
+				"title": "Freelance yazılım geliştirici",
+				"org": "Bionluk ve doğrudan müşteriler",
+				"text": "Fiş OCR'ı bir müşteriye program ve sunucusunda çalışan HTTPS API olarak teslim ettim. Alacak takibi ve PDF→Excel araçları geliştiriyorum.",
+				"tags": ["Python", "OCR", "FastAPI", "Svelte"]
 			}
 		]
 	},
@@ -454,5 +463,62 @@
 				}
 			}
 		]
+	},
+	"v2": {
+		"hero": {
+			"l1": "Belgelerden veriye,",
+			"l2": "fikirden çalışan",
+			"l3": "yazılıma.",
+			"or_write": "ya da yazın:"
+		},
+		"receipt": {
+			"alt": "Uydurma bir market fişi: Yıldız Gıda, 14.03.2026, toplam 480,45",
+			"ledger": {
+				"company": "Firma",
+				"tax": "VKN",
+				"date": "Tarih",
+				"vat1": "KDV %1",
+				"vat20": "KDV %20",
+				"vat": "Toplam KDV",
+				"total": "Genel toplam"
+			},
+			"verified": "Doğrulandı.",
+			"verdict": "2,48 + 38,36 = 40,84 ve 250,30 + 230,15 = 480,45: program, okuduğu rakamları birbiriyle kontrol etti.",
+			"caption": "Fiş uydurma; sağdaki değerler Fiş OCR programının bu fotoğraftan ürettiği gerçek çıktı, elle düzeltilmedi."
+		},
+		"measure": {
+			"statement": "Freelance işlerde küçük işletmelerin ve muhasebe süreçlerinin elle yapılan, tekrarlayan işlerini yazılıma devrediyorum.",
+			"photos": "gerçek fotoğrafla test",
+			"verified": "vergi fişinde otomatik doğrulama",
+			"speed": "fiş başına, yalnızca işlemcide"
+		},
+		"about_more": "Ben kimim?",
+		"who": {
+			"title1": "Ben",
+			"title2": "kimim?",
+			"sub": "Furkan Çöl. Yazılım geliştirici ve mühendislik son sınıf öğrencisi; belgelerden veriye, fikirden çalışan yazılıma.",
+			"meta_title": "Ben kimim? · Furkan Çöl",
+			"meta_description": "Furkan Çöl: yazılım geliştirici ve mühendislik son sınıf öğrencisi. Yolculuğum, çalışma ilkelerim ve kullandığım araçlar.",
+			"short": "Kısaca",
+			"nums_label_ocr": "gerçek fotoğrafla test (Fiş OCR)",
+			"nums_label_tests": "otomatik test (Cari Takip)",
+			"nums_label_projects": "yayınlanmış proje",
+			"beliefs": [
+				[
+					"Ölçerim, raporlarım.",
+					"Her teslimatta neyin ne kadar iyi çalıştığını ölçüp raporluyorum."
+				],
+				[
+					"Sınırları açıkça yazarım.",
+					"Bir aracın neyi yapamadığını da söylerim; müşteri sürprizle karşılaşmasın."
+				],
+				[
+					"Belgeleriniz sizde kalır.",
+					"Araçlar sizin bilgisayarınızda ya da sunucunuzda çalışır; belgeler buluta gönderilmez."
+				],
+				["Önce deneriz.", "Örnek belgelerinizi gönderin, ücretsiz deneyip sonucu göstereyim."]
+			],
+			"see_projects": "Projelerime bak"
+		}
 	}
 }

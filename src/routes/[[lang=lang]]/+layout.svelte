@@ -4,8 +4,15 @@
 	import LangSuggest from '#lib/components/LangSuggest.svelte';
 	import Intro from '#lib/components/Intro.svelte';
 	import { site } from '#lib/content/index.js';
+	import { page } from '$app/state';
 
 	let { data, children } = $props();
+	// Ana sayfa ve Ben kimim sayfası kapanış (iletişim) bölümüyle biter; küçük altbilgi yalnızca diğer sayfalarda
+	const closing = $derived(
+		['/[[lang=lang]]', '/[[lang=lang]]/ben-kimim', '/[[lang=lang]]/about'].includes(
+			page.route.id ?? ''
+		)
+	);
 </script>
 
 <svelte:head>
@@ -28,5 +35,7 @@
 <main id="icerik" tabindex="-1" class="outline-none">
 	{@render children()}
 </main>
-<Footer c={data.c} year={data.year} />
+{#if !closing}
+	<Footer c={data.c} year={data.year} />
+{/if}
 <LangSuggest lang={data.lang} suggest={data.suggest} />

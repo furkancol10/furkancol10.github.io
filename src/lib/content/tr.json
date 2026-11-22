@@ -131,7 +131,7 @@
 			},
 			{
 				"id": "intshop",
-				"publish": true,
+				"publish": false,
 				"title": "INTSHOP: Stok ve Sipariş Paneli",
 				"kind": "Staj projesi",
 				"year": "2026",

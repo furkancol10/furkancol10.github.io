@@ -131,7 +131,7 @@
 			},
 			{
 				"id": "intshop",
-				"publish": true,
+				"publish": false,
 				"title": "INTSHOP: Stock & Order Panel",
 				"kind": "Internship project",
 				"year": "2026",

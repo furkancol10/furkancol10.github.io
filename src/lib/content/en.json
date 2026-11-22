@@ -624,6 +624,45 @@
 						"alt": "Booking screen: confirmation"
 					}
 				]
+			},
+			{
+				"id": "intshop",
+				"status": "ready",
+				"title": "INTSHOP: Stock & Order Panel",
+				"kind": "Internship project",
+				"year": "2026",
+				"summary": "A three-role stock and store app for admins, dealers and customers. Live demo is open, code is on GitHub.",
+				"problem": "Admins, dealers and customers needed to work on the same product catalog with different permissions.",
+				"solution": "A three-role application: the admin manages the catalog and price-change requests, dealers set their own stock and prices, customers shop in the store. Stock movements, login logs and charted reports.",
+				"result": "Live application: frontend on Vercel, API and database on Render. Runs locally with a single Docker Compose command. On first open the demo API (Render free tier) may take about 15 s to wake up. Code: github.com/furkancol10/INTSHOP",
+				"facts": [
+					["3", "roles (admin, dealer, customer)"],
+					["Docker", "one-command local setup"],
+					["Live", "Vercel + Render"]
+				],
+				"tags": [".NET 8", "Dapper", "Svelte 5", "Tailwind", "PostgreSQL", "Docker"],
+				"demo": null,
+				"demo_url": "https://stok-panel-three.vercel.app",
+				"shots": [
+					{
+						"src": "intshop-magaza.webp",
+						"w": 1100,
+						"h": 688,
+						"alt": "INTSHOP store page: product cards with the best dealer prices"
+					},
+					{
+						"src": "intshop-bayi-stok.webp",
+						"w": 1100,
+						"h": 688,
+						"alt": "INTSHOP dealer page: stock management"
+					},
+					{
+						"src": "intshop-admin-urunler.webp",
+						"w": 1100,
+						"h": 688,
+						"alt": "INTSHOP admin page: product list"
+					}
+				]
 			}
 		]
 	}

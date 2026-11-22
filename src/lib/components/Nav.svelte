@@ -18,6 +18,7 @@
 	const links = $derived([
 		{ href: `${home}#hizmetler`, label: c.nav.services },
 		{ href: `${home}#projeler`, label: c.nav.projects },
+		{ href: `${prefix(lang)}/${lang === 'en' ? 'examples' : 'ornekler'}/`, label: c.nav.examples },
 		{ href: `${prefix(lang)}/${lang === 'en' ? 'about' : 'ben-kimim'}/`, label: c.nav.whoami },
 		{ href: `${prefix(lang)}/blog/`, label: c.nav.blog }
 	]);

@@ -23,7 +23,8 @@
 		"close": "Kapat",
 		"theme": "Temayı değiştir",
 		"language": "Dil",
-		"whoami": "Ben kimim"
+		"whoami": "Ben kimim",
+		"examples": "Örnekler"
 	},
 	"hero": {
 		"badge": "Yeni projelere açığım",
@@ -520,5 +521,109 @@
 			],
 			"see_projects": "Projelerime bak"
 		}
+	},
+	"examples": {
+		"meta_title": "Örnekler · Furkan Çöl",
+		"meta_description": "Yaptığım küçük araçların canlı demoları ve vaka notları: ROI hesaplayıcı, randevu sistemi.",
+		"eyebrow": "Örnekler",
+		"title": "Çalışan örnekler",
+		"lead": "Tarayıcıda deneyebileceğiniz araçlar ve her birinin sorun, çözüm, sonuç notu.",
+		"labels": {
+			"problem": "Sorun",
+			"solution": "Çözüm",
+			"result": "Sonuç",
+			"live": "Canlı demo",
+			"demo": "Demoyu aç",
+			"detail": "Ayrıntı",
+			"back": "Tüm örnekler",
+			"tech": "Teknolojiler",
+			"screens": "Ekran görüntüleri",
+			"coming": "Yakında",
+			"ready": "Hazır",
+			"soon_note": "Henüz yayında demo yok.",
+			"loading": "Hesaplayıcı yükleniyor…",
+			"noscript": "Demo için JavaScript gerekir.",
+			"contact": "Benzerini isterseniz yazın"
+		},
+		"items": [
+			{
+				"id": "roi-hesaplayici",
+				"status": "ready",
+				"title": "ROI Hesaplayıcı",
+				"kind": "Örnek proje",
+				"year": "2026",
+				"summary": "Kendini kaç ayda öder? Kaydırıcılı, grafikli, sektöre göre ayarlanan hesaplayıcı; sonuç teklif formuna taşınır.",
+				"problem": "Cihaz satan işletmeler müşteriye \"kendini kaç ayda öder?\" sorusunu yanıtlayamıyor, potansiyel müşteri Excel'e bakıp vazgeçiyordu.",
+				"solution": "Sitede çalışan, kaydırıcılı ve grafikli bir hesaplayıcı yaptım. Hesap sonucu teklif formunu otomatik doldurur. Sektör farkı tek bir ayar nesnesiyle yönetilir; yeni sektör bir giriş eklemek kadar. Mobilde okunur grafik ve tr-TR binlik ayırıcılı giriş gibi kullanım sorunlarını da giderdim.",
+				"result": "Tek script etiketiyle gömülen, bağımlılıksız (~20 KB) bir araç. Ziyaretçi kendi rakamlarıyla geri dönüşü görüp tek tıkla talep bırakabiliyor. Talepler tarayıcıda listelenir, CSV olarak indirilir.",
+				"facts": [
+					["3", "hazır sektör (fitness, estetik, GES)"],
+					["~20 KB", "tek dosya, bağımlılık yok"],
+					["360 px", "mobil uyumlu, açık/koyu tema"]
+				],
+				"tags": ["JavaScript", "Web bileşeni", "SVG grafik", "Node test"],
+				"demo": {
+					"type": "roi",
+					"sector": "ges",
+					"note": "Tüm rakamlar örnektir."
+				},
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "roi-desktop.webp",
+						"w": 1100,
+						"h": 1812,
+						"alt": "ROI hesaplayıcı, masaüstü görünümü"
+					},
+					{
+						"src": "roi-dark.webp",
+						"w": 900,
+						"h": 1731,
+						"alt": "ROI hesaplayıcı, koyu tema"
+					},
+					{
+						"src": "roi-mobil.webp",
+						"w": 360,
+						"h": 2092,
+						"alt": "ROI hesaplayıcı, 360 piksel mobil görünüm"
+					}
+				]
+			},
+			{
+				"id": "randevu-sistemi",
+				"status": "soon",
+				"title": "Randevu Sistemi (kuaför / güzellik salonu)",
+				"kind": "Örnek proje, geliştiriliyor",
+				"year": "2026",
+				"summary": "Salonlar için online randevu: hizmet, kişi, saat seç; aynı saate iki randevu veritabanı seviyesinde engellenir.",
+				"problem": "Kuaför ve güzellik salonları randevuyu telefon ve WhatsApp'ta defterle yönetiyor; aynı saate çift randevu ve unutulan müşteri olağan.",
+				"solution": "Müşteri hizmeti, personeli (ya da \"fark etmez\"), günü ve saati seçer; ad ve telefonla onaylar. Boş saatler çalışma saati, izin, mevcut randevu ve hizmet süresinden hesaplanır. Çakışma PostgreSQL'de kısıtla engellenir: aynı anda gelen iki istekten biri \"bu saat az önce doldu\" yanıtı alır. Hatırlatma ücretsiz: takvim dosyası (.ics), WhatsApp ve e-posta bağlantıları. Salon sahibi için ayrı yönetim paneli planlı.",
+				"result": "Devam ediyor. Müşteri tarafı (hizmet, saat, onay) 360 px ekranda çalışıyor; yönetim paneli, yönetilen randevu sayfası ve yayın sırada. Canlı demo hazır olunca buraya eklenecek.",
+				"facts": [],
+				"tags": ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle", "Zod", "Playwright"],
+				"demo": null,
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "randevu-slotlar.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Randevu ekranı: gün ve saat seçimi"
+					},
+					{
+						"src": "randevu-form.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Randevu ekranı: ad ve telefon formu"
+					},
+					{
+						"src": "randevu-onay.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Randevu ekranı: onay"
+					}
+				]
+			}
+		]
 	}
 }

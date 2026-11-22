@@ -28,7 +28,9 @@ export default defineConfig({
 				handleHttpError: ({ path, status, message }) => {
 					if (
 						status === 404 &&
-						['/about', '/about/', '/en/ben-kimim', '/en/ben-kimim/'].includes(path)
+						(['/about', '/about/', '/en/ben-kimim', '/en/ben-kimim/'].includes(path) ||
+							// Aynı kural örnekler için: /ornekler/ yalnızca TR, /en/examples/ yalnızca EN
+							/^\/(examples|en\/ornekler)(\/.*)?$/.test(path))
 					)
 						return;
 					throw new Error(message);

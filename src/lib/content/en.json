@@ -23,7 +23,8 @@
 		"close": "Close",
 		"theme": "Toggle theme",
 		"language": "Language",
-		"whoami": "About me"
+		"whoami": "About me",
+		"examples": "Examples"
 	},
 	"hero": {
 		"badge": "Available for new projects",
@@ -519,5 +520,109 @@
 			],
 			"see_projects": "See my projects"
 		}
+	},
+	"examples": {
+		"meta_title": "Examples · Furkan Çöl",
+		"meta_description": "Live demos and case notes for small tools I built: an ROI calculator and a booking system.",
+		"eyebrow": "Examples",
+		"title": "Working examples",
+		"lead": "Tools you can try in the browser, each with a problem, solution, result note.",
+		"labels": {
+			"problem": "Problem",
+			"solution": "Solution",
+			"result": "Result",
+			"live": "Live demo",
+			"demo": "Open demo",
+			"detail": "Details",
+			"back": "All examples",
+			"tech": "Tech",
+			"screens": "Screenshots",
+			"coming": "Coming soon",
+			"ready": "Ready",
+			"soon_note": "No live demo yet.",
+			"loading": "Loading calculator…",
+			"noscript": "The demo needs JavaScript.",
+			"contact": "Want something similar? Get in touch"
+		},
+		"items": [
+			{
+				"id": "roi-hesaplayici",
+				"status": "ready",
+				"title": "ROI Calculator",
+				"kind": "Sample project",
+				"year": "2026",
+				"summary": "How many months until it pays for itself? A slider-and-chart calculator tuned per industry; the result carries over to the quote form.",
+				"problem": "Businesses that sell equipment could not answer \"how fast does it pay back?\", and prospects looked at a spreadsheet and walked away.",
+				"solution": "I built a calculator with sliders and a chart that runs on the site. The result pre-fills the quote form. Industry differences live in one config object; a new industry is one added entry. I also fixed usability issues such as a readable chart on mobile and tr-TR thousands separators in inputs.",
+				"result": "A dependency-free (~20 KB) tool embedded with one script tag. Visitors see the payback with their own numbers and leave a request in one click. Requests are listed in the browser and exported as CSV.",
+				"facts": [
+					["3", "ready industries (fitness, aesthetics, solar)"],
+					["~20 KB", "single file, no dependencies"],
+					["360 px", "mobile-ready, light/dark theme"]
+				],
+				"tags": ["JavaScript", "Web component", "SVG chart", "Node tests"],
+				"demo": {
+					"type": "roi",
+					"sector": "ges",
+					"note": "All figures are samples."
+				},
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "roi-desktop.webp",
+						"w": 1100,
+						"h": 1812,
+						"alt": "ROI calculator, desktop view"
+					},
+					{
+						"src": "roi-dark.webp",
+						"w": 900,
+						"h": 1731,
+						"alt": "ROI calculator, dark theme"
+					},
+					{
+						"src": "roi-mobil.webp",
+						"w": 360,
+						"h": 2092,
+						"alt": "ROI calculator, 360 px mobile view"
+					}
+				]
+			},
+			{
+				"id": "randevu-sistemi",
+				"status": "soon",
+				"title": "Booking System (hair / beauty salon)",
+				"kind": "Sample project, in progress",
+				"year": "2026",
+				"summary": "Online booking for salons: pick a service, a person and a time; double bookings are blocked at the database level.",
+				"problem": "Hair and beauty salons manage bookings by phone and WhatsApp with a notebook; double bookings and forgotten clients are routine.",
+				"solution": "The client picks a service, a staff member (or \"anyone\"), a day and a time, then confirms with name and phone. Free slots are computed from working hours, time off, existing bookings and service length. Conflicts are blocked by a PostgreSQL constraint: of two simultaneous requests, one gets \"this slot was just taken\". Reminders cost nothing: calendar file (.ics), WhatsApp and email links. A separate admin panel for the owner is planned.",
+				"result": "In progress. The client side (service, time, confirmation) works on a 360 px screen; the admin panel, a manage-booking page and deployment are next. A live demo will be added here when ready.",
+				"facts": [],
+				"tags": ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle", "Zod", "Playwright"],
+				"demo": null,
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "randevu-slotlar.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Booking screen: day and time selection"
+					},
+					{
+						"src": "randevu-form.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Booking screen: name and phone form"
+					},
+					{
+						"src": "randevu-onay.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Booking screen: confirmation"
+					}
+				]
+			}
+		]
 	}
 }

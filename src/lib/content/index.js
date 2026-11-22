@@ -14,6 +14,9 @@ if (ids(tr) !== ids(en)) {
 	throw new Error(`TR ve EN projeleri uyuşmuyor:\n  tr: ${ids(tr)}\n  en: ${ids(en)}`);
 }
 
+const exIds = (/** @type {Content} */ c) => c.examples.items.map((e) => e.id).join(',');
+if (exIds(tr) !== exIds(en)) throw new Error('TR ve EN örnekleri uyuşmuyor');
+
 export { site };
 
 /** @param {string} lang */

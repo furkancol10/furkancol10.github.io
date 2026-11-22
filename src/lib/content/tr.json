@@ -543,6 +543,8 @@
 			"soon_note": "Henüz yayında demo yok.",
 			"loading": "Hesaplayıcı yükleniyor…",
 			"noscript": "Demo için JavaScript gerekir.",
+			"load_error": "Demo yüklenemedi. Sayfayı yenileyin.",
+			"demo_lang_note": "",
 			"contact": "Benzerini isterseniz yazın"
 		},
 		"items": [

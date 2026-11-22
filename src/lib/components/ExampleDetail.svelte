@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	import { prefix } from '#lib/content/index.js';
 
 	/** Tek örneğin sayfası: demo, sorun → çözüm → sonuç, teknolojiler, ekran görüntüleri. */
@@ -15,23 +14,57 @@
 	/** @type {HTMLElement | undefined} */
 	let roiHost = $state();
 	let loaded = $state(false);
+	let failed = $state(false);
+	let mounted = $state(false);
 
-	// Demo yalnızca tarayıcıda yüklenir (önceden üretilen sayfada script çalışmaz).
-	// Script ilk yüklemede kutuyu kendisi bulur; sayfaya sonradan gelinirse ROI.init ile başlatılır.
-	onMount(() => {
-		if (p.demo?.type !== 'roi' || !roiHost) return;
-		const host = roiHost;
+	/** @type {Promise<void> | undefined} */
+	let scriptPromise;
+	function loadWidget() {
 		/** @type {any} */
 		const w = window;
-		if (w.ROI) {
-			w.ROI.init(host);
-			loaded = true;
-			return;
-		}
-		const s = document.createElement('script');
-		s.src = WIDGET;
-		s.onload = () => (loaded = true);
-		document.head.append(s);
+		if (w.ROI) return Promise.resolve();
+		scriptPromise ??= new Promise((resolve, reject) => {
+			let s = /** @type {HTMLScriptElement | null} */ (
+				document.querySelector(`script[src="${WIDGET}"]`)
+			);
+			if (!s) {
+				s = document.createElement('script');
+				s.src = WIDGET;
+				document.head.append(s);
+			}
+			s.addEventListener('load', () => resolve());
+			s.addEventListener('error', () => {
+				scriptPromise = undefined;
+				s?.remove();
+				reject(new Error('roi widget'));
+			});
+		});
+		return scriptPromise;
+	}
+
+	// Demo yalnızca tarayıcıda yüklenir (önceden üretilen sayfada script çalışmaz).
+	// Örnek (p.id) veya kutu değişince yeniden başlar; ROI.init aynı kutuda tekrar çalışmaz.
+	$effect(() => {
+		mounted = true;
+		const host = roiHost;
+		void p.id;
+		loaded = false;
+		failed = false;
+		if (p.demo?.type !== 'roi' || !host) return;
+		let alive = true;
+		loadWidget().then(
+			() => {
+				if (!alive) return;
+				/** @type {any} */ (window).ROI.init(host);
+				loaded = true;
+			},
+			() => {
+				if (alive) failed = true;
+			}
+		);
+		return () => {
+			alive = false;
+		};
 	});
 </script>
 
@@ -48,11 +81,16 @@
 		<section class="mt-12" aria-label={L.live}>
 			<h2 class="font-mono text-xs tracking-[0.25em] text-violet uppercase">{L.live}</h2>
 			<div class="glow-card mt-4 p-4 md:p-6">
-				<div bind:this={roiHost} data-roi-calculator data-sector={p.demo.sector}></div>
-				{#if !loaded}<p class="p-4 text-sm text-muted">{L.loading}</p>{/if}
+				<div bind:this={roiHost} lang="tr" data-roi-calculator data-sector={p.demo.sector}></div>
+				{#if failed}
+					<p role="alert" class="p-4 text-sm text-muted">{L.load_error}</p>
+				{:else if mounted && !loaded}
+					<p role="status" class="p-4 text-sm text-muted">{L.loading}</p>
+				{/if}
 				<noscript><p class="p-4 text-sm text-muted">{L.noscript}</p></noscript>
 			</div>
 			<p class="mt-3 text-sm text-muted">{p.demo.note}</p>
+			{#if L.demo_lang_note}<p class="mt-1 text-sm text-muted">{L.demo_lang_note}</p>{/if}
 		</section>
 	{:else if p.demo_url}
 		<p class="mt-8">

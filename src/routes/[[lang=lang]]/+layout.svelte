@@ -9,9 +9,13 @@
 	let { data, children } = $props();
 	// Ana sayfa ve Ben kimim sayfası kapanış (iletişim) bölümüyle biter; küçük altbilgi yalnızca diğer sayfalarda
 	const closing = $derived(
-		['/[[lang=lang]]', '/[[lang=lang]]/ben-kimim', '/[[lang=lang]]/about'].includes(
-			page.route.id ?? ''
-		)
+		[
+			'/[[lang=lang]]',
+			'/[[lang=lang]]/ben-kimim',
+			'/[[lang=lang]]/about',
+			'/[[lang=lang]]/ornekler',
+			'/[[lang=lang]]/examples'
+		].includes(page.route.id ?? '')
 	);
 </script>
 

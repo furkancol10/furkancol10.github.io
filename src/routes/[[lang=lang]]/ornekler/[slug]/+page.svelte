@@ -14,7 +14,7 @@
 	path="{prefix(data.lang)}/ornekler/{data.slug}/"
 	lang={data.lang}
 	alternates={data.alternates}
-	image="/assets/examples/{item.shots[0].src}"
+	image={item.shots[0] ? `/assets/examples/${item.shots[0].src}` : undefined}
 />
 
 <ExampleDetail {c} lang={data.lang} {item} />

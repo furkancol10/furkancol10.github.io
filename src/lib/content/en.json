@@ -542,6 +542,8 @@
 			"soon_note": "No live demo yet.",
 			"loading": "Loading calculator…",
 			"noscript": "The demo needs JavaScript.",
+			"load_error": "Could not load the demo. Please reload the page.",
+			"demo_lang_note": "The demo interface is in Turkish.",
 			"contact": "Want something similar? Get in touch"
 		},
 		"items": [

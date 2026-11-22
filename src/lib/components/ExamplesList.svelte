@@ -19,14 +19,16 @@
 		{#each x.items as p (p.id)}
 			<li class="reveal" use:reveal>
 				<a href="{base}{p.id}/" class="glow-card flex h-full flex-col p-7 md:p-8" use:spotlight>
-					<img
-						src="/assets/examples/{p.shots[0].src}"
-						width={p.shots[0].w}
-						height={p.shots[0].h}
-						alt=""
-						loading="lazy"
-						class="mb-6 h-52 w-full rounded-xl border border-line object-cover object-top"
-					/>
+					{#if p.shots[0]}
+						<img
+							src="/assets/examples/{p.shots[0].src}"
+							width={p.shots[0].w}
+							height={p.shots[0].h}
+							alt=""
+							loading="lazy"
+							class="mb-6 h-52 w-full rounded-xl border border-line object-cover object-top"
+						/>
+					{/if}
 					<p class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted">
 						<span>{p.kind} · {p.year}</span>
 						<span

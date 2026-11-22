@@ -523,7 +523,7 @@
 	},
 	"examples": {
 		"meta_title": "Examples · Furkan Çöl",
-		"meta_description": "Live demos and case notes for small tools I built: an ROI calculator and a booking system.",
+		"meta_description": "Live demos and case notes for small tools I built: an ROI calculator, booking system and QR menu.",
 		"eyebrow": "Examples",
 		"title": "Working examples",
 		"lead": "Tools you can try in the browser, each with a problem, solution, result note.",
@@ -592,18 +592,22 @@
 			},
 			{
 				"id": "randevu-sistemi",
-				"status": "soon",
+				"status": "ready",
 				"title": "Booking System (hair / beauty salon)",
-				"kind": "Sample project, in progress",
+				"kind": "Sample project",
 				"year": "2026",
 				"summary": "Online booking for salons: pick a service, a person and a time; double bookings are blocked at the database level.",
 				"problem": "Hair and beauty salons manage bookings by phone and WhatsApp with a notebook; double bookings and forgotten clients are routine.",
-				"solution": "The client picks a service, a staff member (or \"anyone\"), a day and a time, then confirms with name and phone. Free slots are computed from working hours, time off, existing bookings and service length. Conflicts are blocked by a PostgreSQL constraint: of two simultaneous requests, one gets \"this slot was just taken\". Reminders cost nothing: calendar file (.ics), WhatsApp and email links. A separate admin panel for the owner is planned.",
-				"result": "In progress. The client side (service, time, confirmation) works on a 360 px screen; the admin panel, a manage-booking page and deployment are next. A live demo will be added here when ready.",
-				"facts": [],
+				"solution": "The client picks a service, a staff member (or \"anyone\"), a day and a time, then confirms with name and phone. Free slots are computed from working hours, time off, existing bookings and service length. Conflicts are blocked by a PostgreSQL constraint: of two simultaneous requests, one gets \"this slot was just taken\". Reminders cost nothing: calendar file (.ics), WhatsApp and email links. The salon owner manages the calendar, services and staff from a separate admin panel.",
+				"result": "The client booking flow, admin panel (login, daily/weekly calendar, confirm/cancel, WhatsApp reminders, services/staff/working hours) and the client self-service cancel link are live in the demo. The demo resets every night; demo admin credentials are pre-filled on the login page. Code: github.com/furkancol10/fc-randevu-sistemi",
+				"facts": [
+					["Conflicts", "blocked by database constraint"],
+					["360 px", "mobile-first interface"],
+					["Live", "Vercel + Neon"]
+				],
 				"tags": ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle", "Zod", "Playwright"],
 				"demo": null,
-				"demo_url": "",
+				"demo_url": "https://fc-randevu-sistemi.vercel.app/demo-kuafor",
 				"shots": [
 					{
 						"src": "randevu-slotlar.webp",
@@ -622,6 +626,51 @@
 						"w": 540,
 						"h": 1110,
 						"alt": "Booking screen: confirmation"
+					},
+					{
+						"src": "randevu-admin-takvim.webp",
+						"w": 1100,
+						"h": 859,
+						"alt": "Admin panel: weekly booking calendar"
+					}
+				]
+			},
+			{
+				"id": "qr-menu",
+				"status": "ready",
+				"title": "QR Menu (cafe / restaurant)",
+				"kind": "Sample project",
+				"year": "2026",
+				"summary": "A sign-up-free TR/EN QR menu for cafes and restaurants: cart-to-WhatsApp ordering with table numbers, plus a category, item and table admin panel.",
+				"problem": "Printed cafe and restaurant menus go stale whenever prices or availability change, and international guests need a second menu. Third-party QR menu platforms add monthly fees and vendor lock-in.",
+				"solution": "Guests scan the table QR code and browse categories, allergens, sold-out flags and prices in Turkish or English on a 360 px mobile menu with no sign-up. Cart items and the verified table label turn into a pre-filled WhatsApp order message in one tap; orders are not stored in the database. From the admin panel, owners manage categories, items, one-tap sold-out status, tables and printable A4 QR table cards, with prices stored as integer kuruş.",
+				"result": "The live demo runs the customer menu, TR/EN switcher, cart-to-WhatsApp flow and admin panel (demo credentials pre-filled on the login page). Demo data resets nightly; image uploads are disabled on the public demo in favor of a built-in gallery. Code: github.com/furkancol10/fc-qr-menu",
+				"facts": [
+					["TR / EN", "inline translations with TR fallback"],
+					["360 px", "mobile menu and A4 QR card print"],
+					["Live", "Vercel + Neon"]
+				],
+				"tags": ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle", "Zod", "qrcode", "Playwright"],
+				"demo": null,
+				"demo_url": "https://fc-qr-menu.vercel.app/demo-kafe",
+				"shots": [
+					{
+						"src": "qr-menu-menu.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "QR Menu screen: categories, item cards, allergen badges and table label"
+					},
+					{
+						"src": "qr-menu-sepet.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "QR Menu cart drawer: selected items, order note and WhatsApp order button"
+					},
+					{
+						"src": "qr-menu-en.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "QR Menu English view with sticky cart bar"
 					}
 				]
 			},

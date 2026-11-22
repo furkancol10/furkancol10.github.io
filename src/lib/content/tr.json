@@ -524,7 +524,7 @@
 	},
 	"examples": {
 		"meta_title": "Örnekler · Furkan Çöl",
-		"meta_description": "Yaptığım küçük araçların canlı demoları ve vaka notları: ROI hesaplayıcı, randevu sistemi.",
+		"meta_description": "Yaptığım küçük araçların canlı demoları ve vaka notları: ROI hesaplayıcı, randevu sistemi, QR menü.",
 		"eyebrow": "Örnekler",
 		"title": "Çalışan örnekler",
 		"lead": "Tarayıcıda deneyebileceğiniz araçlar ve her birinin sorun, çözüm, sonuç notu.",
@@ -593,18 +593,22 @@
 			},
 			{
 				"id": "randevu-sistemi",
-				"status": "soon",
+				"status": "ready",
 				"title": "Randevu Sistemi (kuaför / güzellik salonu)",
-				"kind": "Örnek proje, geliştiriliyor",
+				"kind": "Örnek proje",
 				"year": "2026",
 				"summary": "Salonlar için online randevu: hizmet, kişi, saat seç; aynı saate iki randevu veritabanı seviyesinde engellenir.",
 				"problem": "Kuaför ve güzellik salonları randevuyu telefon ve WhatsApp'ta defterle yönetiyor; aynı saate çift randevu ve unutulan müşteri olağan.",
-				"solution": "Müşteri hizmeti, personeli (ya da \"fark etmez\"), günü ve saati seçer; ad ve telefonla onaylar. Boş saatler çalışma saati, izin, mevcut randevu ve hizmet süresinden hesaplanır. Çakışma PostgreSQL'de kısıtla engellenir: aynı anda gelen iki istekten biri \"bu saat az önce doldu\" yanıtı alır. Hatırlatma ücretsiz: takvim dosyası (.ics), WhatsApp ve e-posta bağlantıları. Salon sahibi için ayrı yönetim paneli planlı.",
-				"result": "Devam ediyor. Müşteri tarafı (hizmet, saat, onay) 360 px ekranda çalışıyor; yönetim paneli, yönetilen randevu sayfası ve yayın sırada. Canlı demo hazır olunca buraya eklenecek.",
-				"facts": [],
+				"solution": "Müşteri hizmeti, personeli (ya da \"fark etmez\"), günü ve saati seçer; ad ve telefonla onaylar. Boş saatler çalışma saati, izin, mevcut randevu ve hizmet süresinden hesaplanır. Çakışma PostgreSQL'de kısıtla engellenir: aynı anda gelen iki istekten biri \"bu saat az önce doldu\" yanıtı alır. Hatırlatma ücretsiz: takvim dosyası (.ics), WhatsApp ve e-posta bağlantıları. Salon sahibi tüm takvimi, hizmetleri ve personeli ayrı yönetim panelinden yönetir.",
+				"result": "Müşteri akışı, yönetim paneli (giriş, günlük/haftalık takvim, onay/iptal, WhatsApp hatırlatma, hizmet/personel/çalışma saati) ve müşterinin kendi randevusunu iptal edebildiği bağlantı canlı demoda çalışıyor. Demo her gece sıfırlanır; yönetim paneli demo giriş bilgisi giriş sayfasında hazır. Kod: github.com/furkancol10/fc-randevu-sistemi",
+				"facts": [
+					["Çakışma", "veritabanı kısıtıyla engellenir"],
+					["360 px", "mobil uyumlu arayüz"],
+					["Canlı", "Vercel + Neon"]
+				],
 				"tags": ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle", "Zod", "Playwright"],
 				"demo": null,
-				"demo_url": "",
+				"demo_url": "https://fc-randevu-sistemi.vercel.app/demo-kuafor",
 				"shots": [
 					{
 						"src": "randevu-slotlar.webp",
@@ -623,6 +627,51 @@
 						"w": 540,
 						"h": 1110,
 						"alt": "Randevu ekranı: onay"
+					},
+					{
+						"src": "randevu-admin-takvim.webp",
+						"w": 1100,
+						"h": 859,
+						"alt": "Yönetim paneli: haftalık randevu takvimi"
+					}
+				]
+			},
+			{
+				"id": "qr-menu",
+				"status": "ready",
+				"title": "QR Menü (kafe / restoran)",
+				"kind": "Örnek proje",
+				"year": "2026",
+				"summary": "Kafe ve restoranlar için üyeliksiz, TR/EN QR menü: masa numarasıyla sepetten WhatsApp siparişi ve kategori/ürün/masa yönetim paneli.",
+				"problem": "Kafe ve restoranlarda basılı menü fiyat ya da stok değişince eskiyor; yabancı müşteriler için ayrı menü gerekiyor. Üçüncü parti QR menü servisleri ise aylık abonelik ve platform bağımlılığı getiriyor.",
+				"solution": "Müşteri masadaki QR kodu okutur, üye olmadan 360 px mobil menüde kategorileri, alerjenleri, tükendi bilgisini ve TL fiyatları TR/EN görür. Sepetteki ürünler ve doğrulanan masa numarası tek tıkla hazır WhatsApp sipariş mesajına dönüşür; sipariş veritabanında tutulmaz. Yönetim panelinden kategori, ürün, tek tıkla tükendi durumu, masa ve yazdırılabilir A4 QR masa kartları yönetilir; fiyatlar kuruş cinsinden tam sayı saklanır.",
+				"result": "Canlı demoda müşteri menüsü, TR/EN geçişi, sepet/WhatsApp akışı ve yönetim paneli (giriş bilgileri sayfada hazır) çalışıyor. Demo verisi her gece başlangıç hâline döner; demoda görsel yükleme kapalı olup hazır galeriden seçilir. Kod: github.com/furkancol10/fc-qr-menu",
+				"facts": [
+					["TR / EN", "satır içi çeviri, yedek Türkçe"],
+					["360 px", "mobil menü ve A4 QR kart baskısı"],
+					["Canlı", "Vercel + Neon"]
+				],
+				"tags": ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle", "Zod", "qrcode", "Playwright"],
+				"demo": null,
+				"demo_url": "https://fc-qr-menu.vercel.app/demo-kafe",
+				"shots": [
+					{
+						"src": "qr-menu-menu.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "QR Menü ekranı: kategoriler, ürün kartları, alerjen etiketleri ve masa bilgisi"
+					},
+					{
+						"src": "qr-menu-sepet.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "QR Menü sepet ekranı: seçilen ürünler, sipariş notu ve WhatsApp ile sipariş düğmesi"
+					},
+					{
+						"src": "qr-menu-en.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "QR Menü İngilizce görünümü ve alt sepet çubuğu"
 					}
 				]
 			},

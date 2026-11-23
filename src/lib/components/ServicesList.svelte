@@ -38,7 +38,7 @@
 		color: var(--ed-ink);
 	}
 	.svc :global(:focus-visible) {
-		outline: 3px solid var(--ed-accent);
+		outline: 3px solid var(--ed-ink);
 		outline-offset: 3px;
 	}
 	.kick {

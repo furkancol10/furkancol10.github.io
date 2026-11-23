@@ -69,7 +69,6 @@
 			"problem": "Sorun",
 			"solution": "Çözüm",
 			"result": "Sonuç",
-			"demos": "Hazır örnek demolar",
 			"live": "Canlı demo",
 			"code": "Kaynak kod",
 			"case": "Vakayı oku",
@@ -494,29 +493,7 @@
 			"region": "TR / 2026",
 			"tilt": "Kesimi eğ",
 			"tilt_aria": "Addaki renk kesiminin eğimini değiştir",
-			"hello": "Merhaba de:",
-			"kicker": "Neler yapıyorum"
-		},
-		"hero": {
-			"l1": "Belgelerden veriye,",
-			"l2": "fikirden çalışan",
-			"l3": "yazılıma.",
-			"or_write": "ya da yazın:"
-		},
-		"receipt": {
-			"alt": "Uydurma bir market fişi: Yıldız Gıda, 14.03.2026, toplam 480,45",
-			"ledger": {
-				"company": "Firma",
-				"tax": "VKN",
-				"date": "Tarih",
-				"vat1": "KDV %1",
-				"vat20": "KDV %20",
-				"vat": "Toplam KDV",
-				"total": "Genel toplam"
-			},
-			"verified": "Doğrulandı.",
-			"verdict": "2,48 + 38,36 = 40,84 ve 250,30 + 230,15 = 480,45: program, okuduğu rakamları birbiriyle kontrol etti.",
-			"caption": "Fiş uydurma; sağdaki değerler Fiş OCR programının bu fotoğraftan ürettiği gerçek çıktı, elle düzeltilmedi."
+			"hello": "Merhaba de:"
 		},
 		"measure": {
 			"statement": "Freelance işlerde küçük işletmelerin ve muhasebe süreçlerinin elle yapılan, tekrarlayan işlerini yazılıma devrediyorum.",

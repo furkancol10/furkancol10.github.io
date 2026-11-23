@@ -69,7 +69,6 @@
 			"problem": "Problem",
 			"solution": "Solution",
 			"result": "Result",
-			"demos": "Ready example demos",
 			"live": "Live demo",
 			"code": "Source code",
 			"case": "Read the case",
@@ -496,29 +495,7 @@
 			"region": "EN / 2026",
 			"tilt": "Tilt the cut",
 			"tilt_aria": "Change the angle of the colour split in the name",
-			"hello": "Say hello:",
-			"kicker": "What I do"
-		},
-		"hero": {
-			"l1": "Documents into data,",
-			"l2": "ideas into working",
-			"l3": "software.",
-			"or_write": "or write to me:"
-		},
-		"receipt": {
-			"alt": "A fictional grocery receipt: Yıldız Gıda, 14 March 2026, total 480.45",
-			"ledger": {
-				"company": "Company",
-				"tax": "Tax ID",
-				"date": "Date",
-				"vat1": "VAT 1%",
-				"vat20": "VAT 20%",
-				"vat": "Total VAT",
-				"total": "Grand total"
-			},
-			"verified": "Verified.",
-			"verdict": "2.48 + 38.36 = 40.84 and 250.30 + 230.15 = 480.45: the program cross-checked the numbers it read.",
-			"caption": "The receipt is fictional; the values on the right are the real output of the Receipt OCR program for this photo, not edited by hand."
+			"hello": "Say hello:"
 		},
 		"measure": {
 			"statement": "I hand the repetitive, manual work of small businesses and bookkeeping over to software.",

@@ -111,10 +111,11 @@
 					if (e.isIntersecting) active = Number(/** @type {HTMLElement} */ (e.target).dataset.i);
 				}
 			},
-			{ threshold: 0.55 }
+			// Scene crossing the viewport centre line is the active one; height-independent, so open case panels cannot stall it
+			{ rootMargin: '-50% 0px -50% 0px', threshold: 0 }
 		);
 		root?.querySelectorAll('.scene').forEach((el) => io.observe(el));
-		const io2 = new IntersectionObserver(([e]) => (railOn = e.isIntersecting), { threshold: 0.05 });
+		const io2 = new IntersectionObserver(([e]) => (railOn = e.isIntersecting), { threshold: 0 });
 		if (root) io2.observe(root);
 
 		return () => {
@@ -241,7 +242,8 @@
 		scroll-margin-top: -6rem;
 	}
 	.scene :global(:focus-visible) {
-		outline: 3px solid currentColor;
+		/* var(--fg), not currentColor: .cta:hover flips color to the scene bg, which would hide the ring */
+		outline: 3px solid var(--fg);
 		outline-offset: 4px;
 		border-radius: 4px;
 	}
@@ -281,9 +283,9 @@
 	}
 	h3 {
 		margin: 0;
-		font: 400 clamp(52px, 17vw, 96px) / 0.92 var(--ed-display);
+		font: 400 clamp(52px, 17vw, 96px) / 1 var(--ed-display);
 		text-transform: uppercase;
-		overflow-wrap: anywhere;
+		overflow-wrap: break-word;
 	}
 	.wsum {
 		margin: clamp(14px, 2vw, 24px) 0 0;

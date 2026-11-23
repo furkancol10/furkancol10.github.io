@@ -34,31 +34,31 @@
 		<span>{w.role}</span><span class="mid">{w.skills}</span><span>{w.region}</span>
 	</p>
 
-	<div class="stage">
-		<div class="plane" aria-hidden="true"></div>
-		<h1 class="word">
-			<span class="layer la"><span class="wd">{first}</span> <span class="wd">{rest.join(' ')}</span></span>
-			<span class="layer lb" aria-hidden="true"
-				><span class="wd">{first}</span> <span class="wd">{rest.join(' ')}</span></span
-			>
-		</h1>
-	</div>
+	<h1 class="hh">
+		<span class="stage">
+			<span class="plane" aria-hidden="true"></span>
+			<span class="word">
+				<span class="layer la"><span class="wd">{first}</span> <span class="wd">{rest.join(' ')}</span></span>
+				<span class="layer lb" aria-hidden="true"
+					><span class="wd">{first}</span> <span class="wd">{rest.join(' ')}</span></span
+				>
+			</span>
+		</span>
+		<span class="sr-only">. </span><span class="line">{offer}</span>
+	</h1>
 
-	<div class="offer">
-		<p class="line">{offer}</p>
-		<p class="hw-lead">{lead}</p>
-		<div class="acts">
-			<button
-				type="button"
-				class="pillbtn"
-				aria-pressed={tilted}
-				aria-label="{w.tilt}. {w.tilt_aria}"
-				onclick={() => (tilted = !tilted)}
-			>
-				{w.tilt}<span class="dot" aria-hidden="true"></span>
-			</button>
-			<span class="mailwrap">{w.hello} <EmailLink showAddress class="hw-mail" /></span>
-		</div>
+	<p class="hw-lead">{lead}</p>
+	<div class="acts">
+		<button
+			type="button"
+			class="pillbtn"
+			aria-pressed={tilted}
+			aria-label="{w.tilt}. {w.tilt_aria}"
+			onclick={() => (tilted = !tilted)}
+		>
+			{w.tilt}<span class="dot" aria-hidden="true"></span>
+		</button>
+		<span class="mailwrap">{w.hello} <EmailLink showAddress class="hw-mail" /></span>
 	</div>
 </header>
 
@@ -83,9 +83,18 @@
 	.hw.tilted {
 		--tilt: -2.6vw;
 	}
+	.hh {
+		display: contents;
+		font-weight: 400;
+	}
 	.hw :global(:focus-visible) {
-		outline: 3px solid var(--ed-accent);
+		outline: 3px solid var(--ed-ink);
 		outline-offset: 3px;
+	}
+	/* Koyu zemin üzerindeki öğeler (alt yarı) için açık halka */
+	.hw :global(.pillbtn:focus-visible),
+	.hw :global(.hw-mail:focus-visible) {
+		outline-color: var(--ed-paper);
 	}
 	.hw-meta {
 		display: flex;
@@ -99,11 +108,14 @@
 	}
 	/* Sahne tam genişlik: iki katman ve zemin düzlemi aynı kutuda, kesim çizgisi birebir örtüşür */
 	.stage {
+		display: block;
+		margin-top: auto;
 		position: relative;
 		margin-inline: calc(-1 * var(--pad));
 		padding-block: 0.1em;
 	}
 	.plane {
+		display: block;
 		position: absolute;
 		inset: calc(50% - 6vw) 0 -200vh;
 		z-index: -1;
@@ -112,6 +124,7 @@
 		transition: clip-path 0.5s var(--ease-ui, ease);
 	}
 	.word {
+		display: block;
 		position: relative;
 		margin: 0;
 		font-family: var(--ed-display);
@@ -131,15 +144,19 @@
 		position: absolute;
 		inset: 0;
 		color: var(--top);
-		clip-path: polygon(0 calc(50% + var(--tilt)), 100% calc(50% - var(--tilt)), 100% 100%, 0 100%);
+		clip-path: polygon(
+			0 calc(50% + var(--tilt)),
+			100% calc(50% - var(--tilt)),
+			100% calc(100% + 0.4em),
+			0 calc(100% + 0.4em)
+		);
 		transition: clip-path 0.5s var(--ease-ui, ease);
 	}
-	.offer {
+	.line {
+		display: block;
+		margin: auto 0 10px;
 		max-width: 1100px;
 		color: var(--top);
-	}
-	.line {
-		margin: 0 0 10px;
 		font-family: var(--ed-display);
 		text-transform: uppercase;
 		font-size: clamp(26px, 4.2vw, 60px);
@@ -147,11 +164,13 @@
 	}
 	.hw-lead {
 		margin: 0 0 22px;
+		color: var(--top);
 		max-width: 52ch;
 		font-size: clamp(15px, 1.3vw, 18px);
 		line-height: 1.5;
 	}
 	.acts {
+		color: var(--top);
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -179,8 +198,13 @@
 	.pillbtn:active {
 		transform: scale(0.95);
 	}
+	.pillbtn[aria-pressed='true'] {
+		background: transparent;
+		color: var(--top);
+	}
 	.pillbtn[aria-pressed='true'] .dot {
 		transform: translateX(6px) scale(1.25);
+		background: var(--top);
 	}
 	.dot {
 		width: 12px;
@@ -212,7 +236,7 @@
 			display: none;
 		}
 		.word {
-			font-size: 33vw;
+			font-size: 31vw;
 			line-height: 1.04;
 			white-space: normal;
 		}
@@ -220,7 +244,7 @@
 			display: block;
 		}
 		.wd + .wd {
-			margin-top: 0.02em;
+			margin-top: 0.07em;
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {

@@ -523,7 +523,7 @@
 	},
 	"examples": {
 		"meta_title": "Examples · Furkan Çöl",
-		"meta_description": "Live demos and case notes for small tools I built: an ROI calculator, booking system, QR menu, mini CRM and price tracker.",
+		"meta_description": "Demos and case notes for small tools I built: an ROI calculator, booking system, QR menu, mini CRM and price tracker.",
 		"eyebrow": "Examples",
 		"title": "Working examples",
 		"lead": "Tools you can try in the browser, each with a problem, solution, result note.",
@@ -590,7 +590,7 @@
 						"alt": "ROI calculator, 360 px mobile view"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/fc-roi-hesaplayici"
 			},
 			{
 				"id": "randevu-sistemi",
@@ -636,7 +636,7 @@
 						"alt": "Admin panel: weekly booking calendar"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/fc-randevu-sistemi"
 			},
 			{
 				"id": "qr-menu",
@@ -676,7 +676,7 @@
 						"alt": "QR Menu English view with sticky cart bar"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/fc-qr-menu"
 			},
 			{
 				"id": "intshop",
@@ -716,7 +716,7 @@
 						"alt": "INTSHOP admin page: product list"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/INTSHOP"
 			},
 			{
 				"id": "mini-crm",
@@ -781,7 +781,7 @@
 				"facts": [
 					["3", "rules: target price, percent, stock"],
 					["223", "automated tests"],
-					["dry_run", "no Telegram sending in the demo"]
+					["dry_run", "no Telegram sending in the local demo"]
 				],
 				"tags": [
 					"FastAPI",

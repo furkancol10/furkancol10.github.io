@@ -524,7 +524,7 @@
 	},
 	"examples": {
 		"meta_title": "Örnekler · Furkan Çöl",
-		"meta_description": "Yaptığım küçük araçların canlı demoları ve vaka notları: ROI hesaplayıcı, randevu sistemi, QR menü, mini CRM, fiyat takip.",
+		"meta_description": "Yaptığım küçük araçların demoları ve vaka notları: ROI hesaplayıcı, randevu sistemi, QR menü, mini CRM, fiyat takip.",
 		"eyebrow": "Örnekler",
 		"title": "Çalışan örnekler",
 		"lead": "Tarayıcıda deneyebileceğiniz araçlar ve her birinin sorun, çözüm, sonuç notu.",
@@ -591,7 +591,7 @@
 						"alt": "ROI hesaplayıcı, 360 piksel mobil görünüm"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/fc-roi-hesaplayici"
 			},
 			{
 				"id": "randevu-sistemi",
@@ -637,7 +637,7 @@
 						"alt": "Yönetim paneli: haftalık randevu takvimi"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/fc-randevu-sistemi"
 			},
 			{
 				"id": "qr-menu",
@@ -677,7 +677,7 @@
 						"alt": "QR Menü İngilizce görünümü ve alt sepet çubuğu"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/fc-qr-menu"
 			},
 			{
 				"id": "intshop",
@@ -717,7 +717,7 @@
 						"alt": "INTSHOP admin ekranı: ürün listesi"
 					}
 				],
-				"code_url": ""
+				"code_url": "https://github.com/furkancol10/INTSHOP"
 			},
 			{
 				"id": "mini-crm",
@@ -782,7 +782,7 @@
 				"facts": [
 					["3", "kural: hedef fiyat, yüzde, stok"],
 					["223", "otomatik test"],
-					["dry_run", "demoda Telegram gönderimi yok"]
+					["dry_run", "yerel demoda Telegram gönderimi yok"]
 				],
 				"tags": [
 					"FastAPI",

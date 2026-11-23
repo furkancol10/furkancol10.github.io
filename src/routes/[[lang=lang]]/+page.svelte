@@ -4,7 +4,7 @@
 	import HeroWordmark from '#lib/components/HeroWordmark.svelte';
 	import ServicesList from '#lib/components/ServicesList.svelte';
 	import Measure from '#lib/components/Measure.svelte';
-	import Projects from '#lib/components/Projects.svelte';
+	import WorkScenes from '#lib/components/WorkScenes.svelte';
 	import Demo from '#lib/components/Demo.svelte';
 	import About from '#lib/components/About.svelte';
 	import Process from '#lib/components/Process.svelte';
@@ -39,8 +39,7 @@
 
 <HeroWordmark {c} />
 <ServicesList {c} />
-<!-- STEP2: WorkScenes slot; for now keep the existing <Projects/> there -->
-<Projects {c} lang={data.lang} />
+<WorkScenes {c} lang={data.lang} />
 <Measure {c} lang={data.lang} />
 <Demo {c} lang={data.lang} />
 <Pricing {c} lang={data.lang} />

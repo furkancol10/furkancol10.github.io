@@ -71,11 +71,16 @@
 			"result": "Sonuç",
 			"demos": "Hazır örnek demolar",
 			"live": "Canlı demo",
-			"code": "Kaynak kod"
+			"code": "Kaynak kod",
+			"case": "Vakayı oku",
+			"open": "Örneği aç",
+			"block": "Örnekler ve projeler"
 		},
 		"items": [
 			{
 				"id": "fis-ocr",
+				"short": "Fiş OCR",
+				"scene": { "bg": "#C8F23B", "fg": "#0B0B0D" },
 				"publish": true,
 				"title": "Fiş OCR",
 				"kind": "Müşteri projesi",
@@ -96,6 +101,8 @@
 			},
 			{
 				"id": "cari-takip",
+				"short": "Cari Takip",
+				"scene": { "bg": "#12B5A6", "fg": "#0B0B0D" },
 				"publish": true,
 				"title": "Cari Takip: Alacak ve Taksit Takibi",
 				"kind": "Örnek proje",
@@ -116,6 +123,8 @@
 			},
 			{
 				"id": "pdf-excel",
+				"short": "PDF → Excel",
+				"scene": { "bg": "#EFEBDD", "fg": "#0B0B0D" },
 				"publish": true,
 				"title": "Taranmış PDF → Excel",
 				"kind": "Araç",
@@ -135,6 +144,8 @@
 			},
 			{
 				"id": "intshop",
+				"short": "INTSHOP",
+				"scene": { "bg": "#D3263C", "fg": "#FFFFFF" },
 				"publish": true,
 				"title": "INTSHOP: Stok ve Sipariş Paneli",
 				"kind": "Staj projesi",
@@ -153,6 +164,8 @@
 			},
 			{
 				"id": "sql-mastery",
+				"short": "SQL Mastery",
+				"scene": { "bg": "#0F5C48", "fg": "#FFFFFF" },
 				"publish": true,
 				"title": "SQL Mastery",
 				"kind": "Açık kaynak",
@@ -574,6 +587,8 @@
 		"items": [
 			{
 				"id": "roi-hesaplayici",
+				"short": "ROI",
+				"scene": { "bg": "#FF5A36", "fg": "#0B0B0D" },
 				"status": "ready",
 				"title": "ROI Hesaplayıcı",
 				"kind": "Örnek proje",
@@ -618,6 +633,8 @@
 			},
 			{
 				"id": "randevu-sistemi",
+				"short": "Randevu",
+				"scene": { "bg": "#FFC21A", "fg": "#0B0B0D" },
 				"status": "ready",
 				"title": "Randevu Sistemi (kuaför / güzellik salonu)",
 				"kind": "Örnek proje",
@@ -664,6 +681,8 @@
 			},
 			{
 				"id": "qr-menu",
+				"short": "QR Menü",
+				"scene": { "bg": "#17C27A", "fg": "#0B0B0D" },
 				"status": "ready",
 				"title": "QR Menü (kafe / restoran)",
 				"kind": "Örnek proje",
@@ -704,6 +723,8 @@
 			},
 			{
 				"id": "mini-crm",
+				"short": "Mini CRM",
+				"scene": { "bg": "#2438F5", "fg": "#FFFFFF" },
 				"status": "soon",
 				"title": "Mini CRM: Teklif ve İş Takip Paneli",
 				"kind": "Örnek proje",
@@ -753,6 +774,8 @@
 			},
 			{
 				"id": "fiyat-takip",
+				"short": "Fiyat Takip",
+				"scene": { "bg": "#FF4F8B", "fg": "#0B0B0D" },
 				"status": "soon",
 				"title": "Rakip Fiyat ve Stok Takibi (Telegram uyarılı)",
 				"kind": "Örnek proje",

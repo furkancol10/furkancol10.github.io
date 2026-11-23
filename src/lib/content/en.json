@@ -71,11 +71,16 @@
 			"result": "Result",
 			"demos": "Ready example demos",
 			"live": "Live demo",
-			"code": "Source code"
+			"code": "Source code",
+			"case": "Read the case",
+			"open": "Open example",
+			"block": "Examples and projects"
 		},
 		"items": [
 			{
 				"id": "fis-ocr",
+				"short": "Receipt OCR",
+				"scene": { "bg": "#C8F23B", "fg": "#0B0B0D" },
 				"publish": true,
 				"title": "Receipt OCR",
 				"kind": "Client project",
@@ -96,6 +101,8 @@
 			},
 			{
 				"id": "cari-takip",
+				"short": "Ledger",
+				"scene": { "bg": "#12B5A6", "fg": "#0B0B0D" },
 				"publish": true,
 				"title": "Cari Takip: Receivables & Installment Tracker",
 				"kind": "Sample project",
@@ -116,6 +123,8 @@
 			},
 			{
 				"id": "pdf-excel",
+				"short": "PDF → Excel",
+				"scene": { "bg": "#EFEBDD", "fg": "#0B0B0D" },
 				"publish": true,
 				"title": "Scanned PDF → Excel",
 				"kind": "Tool",
@@ -135,6 +144,8 @@
 			},
 			{
 				"id": "intshop",
+				"short": "INTSHOP",
+				"scene": { "bg": "#D3263C", "fg": "#FFFFFF" },
 				"publish": true,
 				"title": "INTSHOP: Stock & Order Panel",
 				"kind": "Internship project",
@@ -153,6 +164,8 @@
 			},
 			{
 				"id": "sql-mastery",
+				"short": "SQL Mastery",
+				"scene": { "bg": "#0F5C48", "fg": "#FFFFFF" },
 				"publish": true,
 				"title": "SQL Mastery",
 				"kind": "Open source",
@@ -569,6 +582,8 @@
 		"items": [
 			{
 				"id": "roi-hesaplayici",
+				"short": "ROI",
+				"scene": { "bg": "#FF5A36", "fg": "#0B0B0D" },
 				"status": "ready",
 				"title": "ROI Calculator",
 				"kind": "Sample project",
@@ -613,6 +628,8 @@
 			},
 			{
 				"id": "randevu-sistemi",
+				"short": "Booking",
+				"scene": { "bg": "#FFC21A", "fg": "#0B0B0D" },
 				"status": "ready",
 				"title": "Booking System (hair / beauty salon)",
 				"kind": "Sample project",
@@ -659,6 +676,8 @@
 			},
 			{
 				"id": "qr-menu",
+				"short": "QR Menu",
+				"scene": { "bg": "#17C27A", "fg": "#0B0B0D" },
 				"status": "ready",
 				"title": "QR Menu (cafe / restaurant)",
 				"kind": "Sample project",
@@ -699,6 +718,8 @@
 			},
 			{
 				"id": "mini-crm",
+				"short": "Mini CRM",
+				"scene": { "bg": "#2438F5", "fg": "#FFFFFF" },
 				"status": "soon",
 				"title": "Mini CRM: Quote and Job Tracking Panel",
 				"kind": "Sample project",
@@ -748,6 +769,8 @@
 			},
 			{
 				"id": "fiyat-takip",
+				"short": "Price Watch",
+				"scene": { "bg": "#FF4F8B", "fg": "#0B0B0D" },
 				"status": "soon",
 				"title": "Competitor Price and Stock Tracker (Telegram alerts)",
 				"kind": "Sample project",

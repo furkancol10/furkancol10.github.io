@@ -65,10 +65,11 @@
 		return apiPromise;
 	}
 
-	/** @param {string} key */
-	function fail(key) {
+	/** @param {string} key @param {string} [code] kısa teşhis kodu (gizli bilgi içermez) */
+	function fail(key, code = '') {
 		status = 'error';
-		message = u[/** @type {'error' | 'expired'} */ (key)];
+		const base = u[/** @type {'error' | 'expired'} */ (key)];
+		message = code ? `${base} [${code.slice(0, 24)}]` : base;
 	}
 
 	function removeWidget() {
@@ -94,6 +95,8 @@
 		const onAbort = () => req.abort();
 		ctrl?.signal.addEventListener('abort', onAbort);
 		const timer = setTimeout(onAbort, TIMEOUT_MS);
+		// Teşhis kodu: net = bağlantı/CORS/zaman aşımı, wNNN = Worker'ın HTTP durumu, json = geçersiz yanıt
+		let errCode = 'net';
 		try {
 			const res = await fetch(site.wa_worker_url, {
 				method: 'POST',
@@ -101,8 +104,10 @@
 				body: JSON.stringify({ token, lang, topic: wa.topic || undefined }),
 				signal: req.signal
 			});
-			const data = await res.json();
+			errCode = 'w' + res.status;
+			const data = await res.json().catch(() => null);
 			if (my !== gen) return;
+			if (!data) errCode = 'json';
 			if (!res.ok || typeof data.url !== 'string' || !data.url.startsWith('https://wa.me/'))
 				throw new Error('bad');
 			waUrl = data.url;
@@ -114,7 +119,7 @@
 				} catch {}
 			} else message = u.blocked;
 		} catch {
-			if (my === gen) fail('error');
+			if (my === gen) fail('error', errCode);
 		} finally {
 			clearTimeout(timer);
 			ctrl?.signal.removeEventListener('abort', onAbort);
@@ -142,12 +147,12 @@
 				theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
 				language: lang,
 				callback: (/** @type {string} */ t) => redeem(t, my),
-				'error-callback': () => my === gen && !settled && fail('error'),
+				'error-callback': (/** @type {string} */ c) => my === gen && !settled && fail('error', 't' + c),
 				'timeout-callback': () => my === gen && !settled && fail('expired'),
 				'expired-callback': () => my === gen && !settled && fail('expired')
 			});
-		} catch {
-			if (my === gen) fail('error');
+		} catch (e) {
+			if (my === gen) fail('error', e instanceof Error ? e.message : '');
 		}
 	}
 

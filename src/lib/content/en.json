@@ -146,7 +146,6 @@
 				],
 				"tags": [".NET 8", "Dapper", "Svelte 5", "Tailwind", "PostgreSQL", "Docker"],
 				"links": [
-					["live", "https://stok-panel-three.vercel.app"],
 					["code", "https://github.com/furkancol10/INTSHOP"]
 				]
 			},

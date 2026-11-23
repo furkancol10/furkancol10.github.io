@@ -131,7 +131,7 @@
 			},
 			{
 				"id": "intshop",
-				"publish": false,
+				"publish": true,
 				"title": "INTSHOP: Stok ve Sipariş Paneli",
 				"kind": "Staj projesi",
 				"year": "2026",
@@ -678,46 +678,6 @@
 					}
 				],
 				"code_url": "https://github.com/furkancol10/fc-qr-menu"
-			},
-			{
-				"id": "intshop",
-				"status": "ready",
-				"title": "INTSHOP: Stok ve Sipariş Paneli",
-				"kind": "Staj projesi",
-				"year": "2026",
-				"summary": "Admin, bayi ve müşteri için üç rollü stok ve mağaza uygulaması. Canlı demosu açık, kodu GitHub'da.",
-				"problem": "Admin, bayi ve müşterinin aynı ürün kataloğu üzerinde farklı yetkilerle çalışması gerekiyordu.",
-				"solution": "Üç rollü uygulama: admin kataloğu ve fiyat değişikliği taleplerini yönetir, bayiler kendi stok ve fiyatını belirler, müşteriler mağazadan alışveriş yapar. Stok hareketleri, giriş logları ve grafikli raporlar.",
-				"result": "Canlıda çalışan uygulama: arayüz Vercel'de, API ve veritabanı Render'da. Yerelde Docker Compose ile tek komutla ayağa kalkıyor. İlk açılışta demo API'si (Render ücretsiz katman) uyanana kadar yaklaşık 15 sn sürebilir. Kod: github.com/furkancol10/INTSHOP",
-				"facts": [
-					["3", "rol (admin, bayi, müşteri)"],
-					["Docker", "tek komutla yerel kurulum"],
-					["Canlı", "Vercel + Render"]
-				],
-				"tags": [".NET 8", "Dapper", "Svelte 5", "Tailwind", "PostgreSQL", "Docker"],
-				"demo": null,
-				"demo_url": "https://stok-panel-three.vercel.app",
-				"shots": [
-					{
-						"src": "intshop-magaza.webp",
-						"w": 1100,
-						"h": 688,
-						"alt": "INTSHOP mağaza ekranı: ürün kartları ve en uygun bayi fiyatları"
-					},
-					{
-						"src": "intshop-bayi-stok.webp",
-						"w": 1100,
-						"h": 688,
-						"alt": "INTSHOP bayi ekranı: stok yönetimi"
-					},
-					{
-						"src": "intshop-admin-urunler.webp",
-						"w": 1100,
-						"h": 688,
-						"alt": "INTSHOP admin ekranı: ürün listesi"
-					}
-				],
-				"code_url": "https://github.com/furkancol10/INTSHOP"
 			},
 			{
 				"id": "mini-crm",

@@ -1,7 +1,6 @@
 <script>
-	import { reveal } from '#lib/actions.js';
+	import { inview } from '#lib/motion.js';
 	import demo from '#lib/content/demo.json';
-	import SectionHeading from './SectionHeading.svelte';
 
 	/**
 	 * Fiş OCR canlı demosu. Fişler uydurma; sonuçlar programın bu fotoğraflar için gerçek çıktısı
@@ -45,10 +44,10 @@
 	const status = $derived(/** @type {'OK' | 'DUZELTILDI' | 'EKSIK'} */ (r.durum));
 	const tone = $derived(
 		status === 'OK'
-			? 'bg-emerald-500/12 text-emerald-700 dark:text-emerald-300'
+			? 'st-ok'
 			: status === 'DUZELTILDI'
-				? 'bg-amber-400/15 text-amber-700 dark:text-amber-300'
-				: 'bg-rose-500/12 text-rose-700 dark:text-rose-300'
+				? 'st-fix'
+				: 'st-miss'
 	);
 
 	/** @param {number} i */
@@ -59,37 +58,35 @@
 	}
 </script>
 
-<section class="mx-auto max-w-[1320px] px-[clamp(20px,4vw,56px)] py-24 md:py-32" aria-labelledby="demo">
-	<SectionHeading id="demo" eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
+<div class="v2">
+	<section class="wrap block" aria-labelledby="demo">
+		<div class="sec-head">
+			<p class="eyebrow">{t.eyebrow}</p>
+			<h2 id="demo"><span class="mk" use:inview><span>{t.title}</span></span></h2>
+			<p class="lead">{t.lead}</p>
+		</div>
 
-	<div class="reveal" use:reveal>
 		<!-- Fiş seçici -->
-		<div class="mb-6 flex flex-wrap gap-2" role="tablist" aria-label={t.pick}>
+		<div class="fchips" role="tablist" aria-label={t.pick} style="margin-bottom: 24px">
 			{#each demo.fisler as f, i (f.id)}
 				<button
 					type="button"
 					role="tab"
+					class="fchip"
 					aria-selected={i === current}
 					aria-controls="demo-panel"
 					onclick={() => pick(i)}
-					class="rounded-full border px-4 py-2 text-sm transition-colors {i === current
-						? 'border-transparent bg-ink text-bg'
-						: 'border-line text-muted hover:border-line-strong hover:text-ink'}"
 				>
 					{names[f.id] ?? f.id}
 				</button>
 			{/each}
 		</div>
 
-		<div
-			id="demo-panel"
-			role="tabpanel"
-			class="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
-		>
+		<div id="demo-panel" role="tabpanel" class="demo-grid">
 			<!-- Fotoğraf + tarama ışığı -->
-			<div class="glow-card relative self-start p-3">
+			<div class="panel demo-shot">
 				{#key pass}
-					<div class="relative overflow-clip rounded-xl">
+					<div class="scan">
 						<img
 							src="/assets/demo/{fis.img}"
 							alt={names[fis.id]}
@@ -97,7 +94,6 @@
 							height={fis.h}
 							loading="lazy"
 							decoding="async"
-							class="block h-auto w-full"
 						/>
 						<span class="demo-scan" aria-hidden="true"></span>
 					</div>
@@ -105,74 +101,64 @@
 			</div>
 
 			<!-- Okunan alanlar -->
-			<div class="glow-card p-6 md:p-8" aria-live="polite">
+			<div class="panel pad" aria-live="polite">
 				{#key pass}
 					<div class="demo-result">
-						<div class="flex flex-wrap items-center gap-3">
-							<span class="rounded-full px-3 py-1 text-sm font-medium {tone}"
-								>{t.status[status]}</span
-							>
-							<p class="text-sm text-muted">{t.status_help[status]}</p>
+						<div class="demo-status">
+							<span class="tag {tone}">{t.status[status]}</span>
+							<p class="meta">{t.status_help[status]}</p>
 						</div>
 
-						<dl class="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
+						<dl class="demo-fields">
 							{#each fieldKeys as k (k)}
-								<div class={k === 'firma' ? 'col-span-2 sm:col-span-3' : ''}>
-									<dt class="font-mono text-xs tracking-[0.15em] text-muted uppercase">
-										{t.fields[k]}
-									</dt>
-									<dd class="mt-1 font-mono text-[15px]">
-										{k === 'tarih' ? date(r.tarih) : field(k)}
-									</dd>
+								<div class={k === 'firma' ? 'wide' : ''}>
+									<dt>{t.fields[k]}</dt>
+									<dd>{k === 'tarih' ? date(r.tarih) : field(k)}</dd>
 								</div>
 							{/each}
 							<div>
-								<dt class="font-mono text-xs tracking-[0.15em] text-muted uppercase">
-									{t.fields.odeme}
-								</dt>
-								<dd class="mt-1 font-mono text-[15px]">{payment}</dd>
+								<dt>{t.fields.odeme}</dt>
+								<dd>{payment}</dd>
 							</div>
 						</dl>
 
-						<div class="mt-6 overflow-x-auto">
-							<table class="w-full font-mono text-sm">
-								<thead class="text-xs tracking-[0.12em] text-muted uppercase">
-									<tr class="border-b border-line">
-										{#each t.kdv_head as h, i (h)}
-											<th class="py-2 font-normal {i ? 'text-right' : 'text-left'}">{h}</th>
+						<div class="kdv">
+							<table>
+								<thead>
+									<tr>
+										{#each t.kdv_head as h (h)}
+											<th scope="col">{h}</th>
 										{/each}
 									</tr>
 								</thead>
 								<tbody>
 									{#each r.kdv as k (k.oran)}
-										<tr class="border-b border-line">
-											<td class="py-2">%{k.oran}</td>
-											<td class="py-2 text-right">{num.format(k.matrah)}</td>
-											<td class="py-2 text-right">{num.format(k.kdv)}</td>
-											<td class="py-2 text-right">{num.format(k.toplam)}</td>
+										<tr>
+											<td>%{k.oran}</td>
+											<td>{num.format(k.matrah)}</td>
+											<td>{num.format(k.kdv)}</td>
+											<td>{num.format(k.toplam)}</td>
 										</tr>
 									{/each}
 								</tbody>
 							</table>
 						</div>
 
-						<dl class="mt-5 grid grid-cols-2 gap-4">
+						<dl class="demo-tot">
 							<div>
-								<dt class="text-sm text-muted">{t.toplam_kdv}</dt>
-								<dd class="mt-1 font-mono text-xl">{num.format(r.toplam_kdv)}</dd>
+								<dt>{t.toplam_kdv}</dt>
+								<dd>{num.format(r.toplam_kdv)}</dd>
 							</div>
 							<div>
-								<dt class="text-sm text-muted">{t.genel_toplam}</dt>
-								<dd class="mt-1 text-gradient font-mono text-2xl font-semibold">
-									{num.format(r.genel_toplam)}
-								</dd>
+								<dt>{t.genel_toplam}</dt>
+								<dd class="grand grad">{num.format(r.genel_toplam)}</dd>
 							</div>
 						</dl>
 
 						{#if r.notlar.length}
-							<div class="mt-6 rounded-xl border border-line bg-ink/[0.03] p-4">
-								<p class="font-mono text-xs tracking-[0.15em] text-muted uppercase">{t.notes}</p>
-								<ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
+							<div class="demo-notes">
+								<p class="eyebrow">{t.notes}</p>
+								<ul>
 									{#each r.notlar as n (n)}<li>{note(n)}</li>{/each}
 								</ul>
 							</div>
@@ -180,7 +166,7 @@
 
 						<button
 							type="button"
-							class="mt-6 text-sm text-violet hover:underline"
+							class="jsonbtn"
 							aria-expanded={showJson}
 							onclick={() => (showJson = !showJson)}
 						>
@@ -188,18 +174,13 @@
 							{showJson ? '↑' : '↓'}
 						</button>
 						{#if showJson}
-							<pre
-								class="mt-3 max-h-80 overflow-auto rounded-xl border border-line bg-ink/[0.03] p-4 text-xs leading-relaxed">{JSON.stringify(
-									r,
-									null,
-									2
-								)}</pre>
+							<pre class="demo-json">{JSON.stringify(r, null, 2)}</pre>
 						{/if}
 					</div>
 				{/key}
 			</div>
 		</div>
 
-		<p class="mt-5 max-w-3xl text-sm text-muted">{t.disclaimer}</p>
-	</div>
-</section>
+		<p class="meta demo-disc">{t.disclaimer}</p>
+	</section>
+</div>

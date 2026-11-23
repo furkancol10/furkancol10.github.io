@@ -1,6 +1,5 @@
 <script>
-	import { reveal, spotlight } from '#lib/actions.js';
-	import SectionHeading from './SectionHeading.svelte';
+	import { inview } from '#lib/motion.js';
 
 	/**
 	 * Yalnızca gerçek yorumlar: { quote, name, role } — içerikte dizi boşsa bölüm hiç görünmez.
@@ -12,18 +11,23 @@
 </script>
 
 {#if items.length}
-	<section class="mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32" aria-labelledby="yorumlar">
-		<SectionHeading id="yorumlar" eyebrow={c.testimonials.eyebrow} title={c.testimonials.title} />
-		<div class="grid gap-5 md:grid-cols-2">
-			{#each items as t, i (t.name + i)}
-				<figure class="reveal glow-card p-7" use:reveal={i * 90} use:spotlight>
-					<blockquote class="text-lg leading-relaxed">“{t.quote}”</blockquote>
-					<figcaption class="mt-5 text-sm text-muted">
-						<span class="text-ink">{t.name}</span>{#if t.role}
-							· {t.role}{/if}
-					</figcaption>
-				</figure>
-			{/each}
-		</div>
-	</section>
+	<div class="v2">
+		<section class="wrap block" aria-labelledby="yorumlar">
+			<div class="sec-head">
+				<p class="eyebrow">{c.testimonials.eyebrow}</p>
+				<h2 id="yorumlar"><span class="mk" use:inview><span>{c.testimonials.title}</span></span></h2>
+			</div>
+			<div class="quotes">
+				{#each items as t, i (t.name + i)}
+					<figure>
+						<blockquote>“{t.quote}”</blockquote>
+						<figcaption>
+							<b>{t.name}</b>{#if t.role}
+								· {t.role}{/if}
+						</figcaption>
+					</figure>
+				{/each}
+			</div>
+		</section>
+	</div>
 {/if}

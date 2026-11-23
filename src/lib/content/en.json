@@ -139,7 +139,7 @@
 				"alt": "INTSHOP store page: product cards with the best dealer prices",
 				"problem": "Admins, dealers and customers needed to work on the same product catalog with different permissions.",
 				"solution": "A three-role application: the admin manages the catalog and price-change requests, dealers set their own stock and prices, customers shop in the store. Stock movements, login logs and charted reports.",
-				"result": "Live application: frontend on Vercel, API and database on Render. Runs locally with a single Docker Compose command.",
+				"result": "Runs locally with a single Docker Compose command; the admin, dealer and customer roles come with ready demo data. The live demo is offline for now, the code is on GitHub.",
 				"stats": [
 					["3", "roles"],
 					["Docker", "one-command setup"]

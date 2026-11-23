@@ -139,7 +139,7 @@
 				"alt": "INTSHOP mağaza ekranı: ürün kartları ve en uygun bayi fiyatları",
 				"problem": "Admin, bayi ve müşterinin aynı ürün kataloğu üzerinde farklı yetkilerle çalışması gerekiyordu.",
 				"solution": "Üç rollü uygulama: admin kataloğu ve fiyat değişikliği taleplerini yönetir, bayiler kendi stok ve fiyatını belirler, müşteriler mağazadan alışveriş yapar. Stok hareketleri, giriş logları ve grafikli raporlar.",
-				"result": "Canlıda çalışan uygulama: arayüz Vercel'de, API ve veritabanı Render'da. Yerelde Docker Compose ile tek komutla ayağa kalkıyor.",
+				"result": "Yerelde Docker Compose ile tek komutla ayağa kalkıyor; admin, bayi ve müşteri rolleri hazır demo verisiyle gelir. Canlı demo şu an kapalı, kod GitHub'da.",
 				"stats": [
 					["3", "rol"],
 					["Docker", "tek komutla kurulum"]

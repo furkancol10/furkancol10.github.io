@@ -22,6 +22,7 @@
 			<p class="lead" style="--t:.9s">{c.hero.lead}</p>
 			<p class="hero-links" style="--t:1.1s">
 				<a class="pill" href="#projeler">{c.hero.cta_primary}</a>
+				<a class="pill ghost" href="#iletisim">{c.hero.cta_secondary}</a>
 				<span>{h.or_write} <EmailLink showAddress class="mail" /></span>
 			</p>
 		</div>

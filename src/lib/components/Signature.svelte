@@ -3,11 +3,10 @@
 
 	/**
 	 * El yazısı "Furkan Çöl" (Great Vibes yollarından).
-	 * `draw`: harfler kalemle yazılıyormuş gibi çizilir (yalnızca html.intro varken, bkz. app.css).
 	 * `gradient`: dolgu mor-mavi gradyan; yoksa yazı rengini (currentColor) alır.
-	 * @type {{ class?: string, draw?: boolean, gradient?: boolean, target?: boolean }}
+	 * @type {{ class?: string, gradient?: boolean }}
 	 */
-	let { class: klass = '', draw = false, gradient = false, target = false } = $props();
+	let { class: klass = '', gradient = false } = $props();
 
 	const uid = $props.id();
 	const gid = `sig-${uid}`;
@@ -18,8 +17,7 @@
 
 <svg
 	viewBox={name.viewBox}
-	class="{klass} {draw ? 'sig-draw' : ''}"
-	data-signature-target={target ? '' : undefined}
+	class={klass}
 	aria-hidden="true"
 	focusable="false"
 >
@@ -32,7 +30,7 @@
 			</linearGradient>
 		</defs>
 	{/if}
-	<!-- İnce el yazısı küçük boyutta kaybolmasın diye hafif kontur (çizim animasyonunda app.css yönetir) -->
+	<!-- İnce el yazısı küçük boyutta kaybolmasın diye hafif kontur -->
 	<g fill={paint} stroke={paint} stroke-width="2.2" stroke-linejoin="round">
 		{#each name.glyphs as d, i (i)}
 			<path {d} pathLength="1" style="--i:{i}" />

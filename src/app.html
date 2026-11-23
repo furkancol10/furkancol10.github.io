@@ -16,18 +16,9 @@
 					document.querySelector('meta[name="theme-color"]').content = '#f6f6fc';
 				}
 			} catch (e) {}
-			try {
-				// Giriş animasyonu oturumda bir kez; hareket azaltma tercih edildiyse hiç
-				if (
-					!sessionStorage.getItem('intro') &&
-					!matchMedia('(prefers-reduced-motion: reduce)').matches
-				) {
-					document.documentElement.classList.add('intro');
-				}
-			} catch (e) {}
 			document.documentElement.classList.add('js');
 			setTimeout(function () {
-				if (!window.__hydrated) document.documentElement.classList.remove('js', 'intro');
+				if (!window.__hydrated) document.documentElement.classList.remove('js');
 			}, 3000);
 		</script>
 		%sveltekit.head%

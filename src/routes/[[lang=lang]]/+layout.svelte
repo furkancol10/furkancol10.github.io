@@ -2,7 +2,6 @@
 	import Nav from '#lib/components/Nav.svelte';
 	import Footer from '#lib/components/Footer.svelte';
 	import LangSuggest from '#lib/components/LangSuggest.svelte';
-	import Intro from '#lib/components/Intro.svelte';
 	import { site } from '#lib/content/index.js';
 	import { page } from '$app/state';
 
@@ -34,7 +33,6 @@
 	{/if}
 </svelte:head>
 
-<Intro />
 <Nav c={data.c} lang={data.lang} />
 <main id="icerik" tabindex="-1" class="outline-none">
 	{@render children()}

@@ -66,7 +66,7 @@
 	>
 		<a href={home} class="flex shrink-0 items-center gap-2" aria-label={site.name}>
 			<Mark class="size-9 drop-shadow-[0_4px_14px_rgb(124_58_237/0.35)]" />
-			<Signature gradient target class="h-8 w-auto" />
+			<Signature gradient class="hidden h-8 w-auto sm:block" />
 		</a>
 
 		<ul class="hidden items-center gap-1 text-sm text-muted lg:flex">
@@ -119,7 +119,7 @@
 			<button
 				type="button"
 				onclick={toggleTheme}
-				class="grid size-9 place-items-center rounded-full border border-line text-muted transition-colors hover:border-line-strong hover:text-ink"
+				class="hidden size-9 place-items-center rounded-full border border-line text-muted transition-colors hover:border-line-strong hover:text-ink sm:grid"
 				aria-label={c.nav.theme}
 				title={c.nav.theme}
 			>
@@ -149,8 +149,7 @@
 				</svg>
 			</button>
 
-			<a href="{home}#iletisim" class="pill hidden !py-2 text-sm md:inline-block">{c.nav.contact}</a
-			>
+			<a href="{home}#iletisim" class="pill !px-4 !py-2 text-sm">{c.nav.contact}</a>
 			<button
 				type="button"
 				class="grid size-9 place-items-center rounded-full border border-line lg:hidden"
@@ -191,6 +190,40 @@
 					>
 				</li>
 			{/each}
+			<!-- Tema düğmesi küçük ekranda üstte yer tutmasın diye menüde -->
+			<li class="sm:hidden">
+				<button
+					type="button"
+					onclick={toggleTheme}
+					class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-muted hover:bg-ink/5 hover:text-ink"
+				>
+					<svg
+						viewBox="0 0 24 24"
+						class="size-4 dark:hidden"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.8"
+						aria-hidden="true"
+					>
+						<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" stroke-linejoin="round" />
+					</svg>
+					<svg
+						viewBox="0 0 24 24"
+						class="hidden size-4 dark:block"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.8"
+						aria-hidden="true"
+					>
+						<circle cx="12" cy="12" r="4" />
+						<path
+							d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+							stroke-linecap="round"
+						/>
+					</svg>
+					{c.nav.theme}
+				</button>
+			</li>
 		</ul>
 	{/if}
 </header>

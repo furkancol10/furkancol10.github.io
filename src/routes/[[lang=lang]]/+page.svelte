@@ -44,8 +44,8 @@
 <Services {c} />
 <Projects {c} />
 <Demo {c} lang={data.lang} />
+<Pricing {c} lang={data.lang} />
 <Process {c} />
 <About {c} lang={data.lang} />
-<Pricing {c} lang={data.lang} />
 <Testimonials {c} />
 <Contact {c} />

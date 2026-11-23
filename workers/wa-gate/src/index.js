@@ -1,9 +1,10 @@
 // WhatsApp geçidi: Turnstile doğrulaması geçen isteğe wa.me bağlantısını verir.
 // Numara yalnızca Worker sırrında (WHATSAPP_NUMBER) durur; sitede, depoda ya da günlükte yoktur.
 
-const ORIGINS = ['https://furkancol.me', 'http://localhost:5173'];
+const ORIGINS = ['https://furkancol.me'];
 const VERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-const MAX_BODY = 2048;
+const MAX_BODY = 4096;
+const VERIFY_TIMEOUT_MS = 5000;
 
 const MESSAGES = {
 	tr: {
@@ -22,12 +23,51 @@ const MESSAGES = {
 	}
 };
 
-/** @param {Request} req */
-function cors(req) {
+/** Geliştirme kökenleri yalnızca DEV_ORIGINS (virgüllü) ile açılır; üretimde boştur. @param {string | undefined} dev */
+const origins = (dev) => [
+	...ORIGINS,
+	...(dev ?? '')
+		.split(',')
+		.map((x) => x.trim())
+		.filter(Boolean)
+];
+
+/** Gövdeyi en çok MAX_BODY bayt okur; aşarsa akışı keser ve null döner. @param {Request} req */
+async function readBody(req) {
+	const len = Number(req.headers.get('Content-Length'));
+	if (Number.isFinite(len) && len > MAX_BODY) {
+		await req.body?.cancel().catch(() => {});
+		return null;
+	}
+	if (!req.body) return '';
+	const reader = req.body.getReader();
+	const parts = [];
+	let size = 0;
+	for (;;) {
+		const { done, value } = await reader.read();
+		if (done) break;
+		size += value.byteLength;
+		if (size > MAX_BODY) {
+			await reader.cancel().catch(() => {});
+			return null;
+		}
+		parts.push(value);
+	}
+	const all = new Uint8Array(size);
+	let off = 0;
+	for (const p of parts) {
+		all.set(p, off);
+		off += p.byteLength;
+	}
+	return new TextDecoder().decode(all);
+}
+
+/** @param {Request} req @param {string | undefined} dev */
+function cors(req, dev) {
 	const origin = req.headers.get('Origin') ?? '';
 	/** @type {Record<string, string>} */
 	const h = { Vary: 'Origin' };
-	if (ORIGINS.includes(origin)) {
+	if (origins(dev).includes(origin)) {
 		h['Access-Control-Allow-Origin'] = origin;
 		h['Access-Control-Allow-Methods'] = 'POST, OPTIONS';
 		h['Access-Control-Allow-Headers'] = 'Content-Type';
@@ -44,9 +84,9 @@ const json = (body, status, headers) =>
 	});
 
 export default {
-	/** @param {Request} req @param {{ TURNSTILE_SECRET?: string, WHATSAPP_NUMBER?: string }} env */
+	/** @param {Request} req @param {{ TURNSTILE_SECRET?: string, WHATSAPP_NUMBER?: string, DEV_ORIGINS?: string }} env */
 	async fetch(req, env) {
-		const headers = cors(req);
+		const headers = cors(req, env.DEV_ORIGINS);
 		if (req.method === 'OPTIONS') {
 			return new Response(null, {
 				status: headers['Access-Control-Allow-Origin'] ? 204 : 403,
@@ -57,8 +97,8 @@ export default {
 			return json({ error: 'method' }, 405, { ...headers, Allow: 'POST, OPTIONS' });
 		if (!headers['Access-Control-Allow-Origin']) return json({ error: 'forbidden' }, 403, headers);
 
-		const raw = await req.text();
-		if (raw.length > MAX_BODY) return json({ error: 'too_large' }, 413, headers);
+		const raw = await readBody(req);
+		if (raw === null) return json({ error: 'too_large' }, 413, headers);
 		/** @type {any} */
 		let body;
 		try {
@@ -71,7 +111,10 @@ export default {
 			return json({ error: 'bad_request' }, 400, headers);
 		}
 		const lang = body.lang === 'en' ? 'en' : 'tr';
-		const topic = typeof body.topic === 'string' && body.topic in MESSAGES[lang] ? body.topic : '_';
+		const topic =
+			typeof body.topic === 'string' && Object.hasOwn(MESSAGES[lang], body.topic)
+				? body.topic
+				: '_';
 
 		if (!env.TURNSTILE_SECRET || !/^\d{6,15}$/.test(env.WHATSAPP_NUMBER ?? '')) {
 			return json({ error: 'server' }, 500, headers);
@@ -85,8 +128,15 @@ export default {
 
 		let ok = false;
 		try {
-			const res = await fetch(VERIFY, { method: 'POST', body: form });
-			ok = res.ok && (await res.json()).success === true;
+			const res = await fetch(VERIFY, {
+				method: 'POST',
+				body: form,
+				signal: AbortSignal.timeout(VERIFY_TIMEOUT_MS)
+			});
+			const out = res.ok ? await res.json() : null;
+			// Token başka bir ana makinede üretildiyse (aynı widget birden çok alan adına izinliyse) reddedilir
+			const host = new URL(req.headers.get('Origin') ?? '').hostname;
+			ok = out?.success === true && (out.hostname === undefined || out.hostname === host);
 		} catch {
 			return json({ error: 'verify' }, 502, headers);
 		}

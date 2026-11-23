@@ -2,6 +2,7 @@
 	import { site } from '#lib/content/index.js';
 	import { inview } from '#lib/motion.js';
 	import { page } from '$app/state';
+	import { onMount } from 'svelte';
 	import { waEnabled, openWhatsApp, wa } from '#lib/whatsapp.svelte.js';
 	import Signature from './Signature.svelte';
 	import EmailLink from './EmailLink.svelte';
@@ -12,13 +13,29 @@
 
 	// Konu çipi: Fiyat ve örnek sayfalarındaki bağlantılar /?topic=ocr#iletisim ile önceden seçtirir
 	let topic = $state('');
-	$effect(() => {
-		const t = page.url.searchParams.get('topic');
+	const pick = (/** @type {string | null} */ t) => {
 		if (t && c.contact.topics.some((x) => x.id === t)) topic = t;
+	};
+	$effect(() => pick(page.url.searchParams.get('topic')));
+	// Aynı bağlantıya yeniden tıklamak adresi değiştirmez; tıklamayı yakalayıp çipi yeniden seçeriz
+	onMount(() => {
+		/** @param {MouseEvent} e */
+		const onClick = (e) => {
+			const a = /** @type {Element | null} */ (e.target)?.closest?.('a[href*="topic="]');
+			if (a) pick(new URL(/** @type {HTMLAnchorElement} */ (a).href).searchParams.get('topic'));
+		};
+		document.addEventListener('click', onClick);
+		return () => document.removeEventListener('click', onClick);
 	});
 	$effect(() => {
 		wa.topic = topic;
 	});
+	// Bu bileşen sayfadan çıkınca seçili konu başka sayfalardaki WhatsApp mesajına sızmasın
+	onMount(() => () => {
+		wa.topic = '';
+	});
+	let mounted = $state(false);
+	onMount(() => (mounted = true));
 
 	/** @type {'idle' | 'sending' | 'ok' | 'error'} */
 	let status = $state('idle');
@@ -80,7 +97,7 @@
 				</div>
 				<ul class="reach">
 					<li><EmailLink showAddress class="big-mail" /></li>
-					{#if waEnabled}
+					{#if waEnabled && mounted}
 						<li><button type="button" onclick={openWhatsApp}>{c.contact.whatsapp} ↗</button></li>
 					{/if}
 					<li><a href={site.bionluk} rel="noopener">{c.contact.bionluk} ↗</a></li>

@@ -211,8 +211,8 @@
 		"whatsapp_ui": {
 			"title": "WhatsApp'a geçmeden önce",
 			"hint": "Spam'i önlemek için kısa bir doğrulama gerekiyor.",
-			"verifying": "Doğrulanıyor…",
 			"opening": "Doğrulandı, WhatsApp açılıyor…",
+			"blocked": "Açılır pencere engellendi. Aşağıdaki bağlantıyla devam edin.",
 			"error": "Doğrulama ya da bağlantı başarısız oldu.",
 			"expired": "Doğrulama süresi doldu.",
 			"retry": "Tekrar dene",

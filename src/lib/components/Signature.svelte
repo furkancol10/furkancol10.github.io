@@ -28,7 +28,7 @@
 	<!-- İnce el yazısı küçük boyutta kaybolmasın diye hafif kontur -->
 	<g fill={paint} stroke={paint} stroke-width="2.2" stroke-linejoin="round">
 		{#each name.glyphs as d, i (i)}
-			<path {d} pathLength="1" style="--i:{i}" />
+			<path {d} pathLength="1" />
 		{/each}
 	</g>
 </svg>

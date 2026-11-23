@@ -22,6 +22,13 @@
 	/** @type {Promise<void> | undefined} */
 	let apiPromise;
 
+	/** Her açılış/kapanışta artar: eski start()/redeem() çağrıları sonucu yok sayar. */
+	let gen = 0;
+	/** @type {AbortController | undefined} */
+	let ctrl;
+	/** @type {Element | null} */
+	let trigger = null;
+
 	/** Turnstile betiği yalnızca düğmeye basılınca yüklenir. */
 	function loadApi() {
 		/** @type {any} */
@@ -31,7 +38,15 @@
 			const s = document.createElement('script');
 			s.src = API;
 			s.async = true;
-			s.onload = () => resolve();
+			s.onload = () => {
+				// Engelleyici boş bir yanıt verirse onload tetiklenir ama turnstile tanımsız kalır
+				if (w.turnstile) resolve();
+				else {
+					apiPromise = undefined;
+					s.remove();
+					reject(new Error('stub'));
+				}
+			};
 			s.onerror = () => {
 				apiPromise = undefined;
 				reject(new Error('load'));
@@ -47,8 +62,9 @@
 		message = u[/** @type {'error' | 'expired'} */ (key)];
 	}
 
-	/** @param {string} token */
-	async function redeem(token) {
+	/** @param {string} token @param {number} my */
+	async function redeem(token, my) {
+		if (my !== gen) return;
 		status = 'opening';
 		message = u.opening;
 		try {
@@ -56,56 +72,75 @@
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ token, lang, topic: wa.topic || undefined }),
-				signal: AbortSignal.timeout(TIMEOUT_MS)
+				signal: AbortSignal.any([AbortSignal.timeout(TIMEOUT_MS), ...(ctrl ? [ctrl.signal] : [])])
 			});
 			const data = await res.json();
-			if (!res.ok || typeof data.url !== 'string') throw new Error('bad');
+			if (my !== gen) return;
+			if (!res.ok || typeof data.url !== 'string' || !data.url.startsWith('https://wa.me/'))
+				throw new Error('bad');
 			waUrl = data.url;
-			window.open(data.url, '_blank', 'noopener');
+			if (!window.open(data.url, '_blank', 'noopener')) message = u.blocked;
 		} catch {
-			fail('error');
+			if (my === gen) fail('error');
 		}
 	}
 
 	async function start() {
+		const my = ++gen;
+		ctrl?.abort();
+		ctrl = new AbortController();
 		status = 'loading';
 		message = u.loading;
 		waUrl = '';
 		try {
 			await loadApi();
+			if (my !== gen || !box || !wa.open) return;
+			/** @type {any} */
+			const w = window;
+			if (widgetId !== undefined) w.turnstile.remove(widgetId);
+			widgetId = undefined;
+			box.replaceChildren();
+			status = 'verifying';
+			message = u.hint;
+			widgetId = w.turnstile.render(box, {
+				sitekey: site.turnstile_site_key,
+				theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+				language: lang,
+				callback: (/** @type {string} */ t) => redeem(t, my),
+				'error-callback': () => my === gen && fail('error'),
+				'timeout-callback': () => my === gen && fail('expired'),
+				'expired-callback': () => my === gen && fail('expired')
+			});
 		} catch {
-			return fail('error');
+			if (my === gen) fail('error');
 		}
-		if (!box || !wa.open) return;
-		/** @type {any} */
-		const w = window;
-		if (widgetId !== undefined) w.turnstile.remove(widgetId);
-		box.replaceChildren();
-		status = 'verifying';
-		message = u.hint;
-		widgetId = w.turnstile.render(box, {
-			sitekey: site.turnstile_site_key,
-			theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
-			language: lang,
-			callback: redeem,
-			'error-callback': () => fail('error'),
-			'timeout-callback': () => fail('expired'),
-			'expired-callback': () => fail('expired')
-		});
 	}
 
 	function teardown() {
 		/** @type {any} */
 		const w = window;
-		if (widgetId !== undefined && w.turnstile) w.turnstile.remove(widgetId);
+		gen++;
+		ctrl?.abort();
+		try {
+			if (widgetId !== undefined && w.turnstile) w.turnstile.remove(widgetId);
+		} catch {}
 		widgetId = undefined;
 		waUrl = '';
 		wa.open = false;
+		// Tetikleyici kapanan mobil menüdeyse (odak body'ye düşer) menü düğmesine geri ver
+		if (!trigger || trigger === document.body || !trigger.isConnected) {
+			const t = /** @type {HTMLElement | null} */ (
+				document.querySelector('[aria-controls="mobil-menu"]')
+			);
+			if (t && t.offsetParent) t.focus();
+		}
+		trigger = null;
 	}
 
 	$effect(() => {
 		if (!dlg) return;
 		if (wa.open && !dlg.open) {
+			trigger = document.activeElement;
 			dlg.showModal();
 			start();
 		} else if (!wa.open && dlg.open) dlg.close();

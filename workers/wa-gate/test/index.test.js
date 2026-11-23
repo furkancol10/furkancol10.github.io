@@ -48,3 +48,104 @@ test('çok büyük gövde -> 413', async () => {
 	const res = await worker.fetch(req('POST', { token: 'a'.repeat(5000) }), env);
 	assert.equal(res.status, 413);
 });
+
+test('geçerli 2048 karakterlik (CF azami) token kabul edilir (gövde sınırı ~4 KB)', async () => {
+	mockVerify(true);
+	const res = await worker.fetch(
+		req('POST', { token: 'a'.repeat(2048), lang: 'tr', topic: 'ocr' }),
+		env
+	);
+	assert.equal(res.status, 200);
+});
+
+test('2048 karakterden uzun token -> 400', async () => {
+	mockVerify(true);
+	const res = await worker.fetch(req('POST', { token: 'a'.repeat(2049) }), env);
+	assert.equal(res.status, 400);
+});
+
+for (const topic of ['toString', '__proto__', 'constructor', 'hasOwnProperty']) {
+	test(`konu "${topic}" -> varsayılan mesaj`, async () => {
+		mockVerify(true);
+		const res = await worker.fetch(req('POST', { token: 't', lang: 'tr', topic }), env);
+		assert.equal(res.status, 200);
+		const { url } = await res.json();
+		const text = decodeURIComponent(url.split('?text=')[1]);
+		assert.match(text, /görüşmek istiyorum/);
+	});
+}
+
+test('Content-Length sınırı aşarsa gövde okunmadan 413', async () => {
+	mockVerify(true);
+	let pulled = false;
+	const body = new ReadableStream({
+		pull(c) {
+			if (pulled) return c.close();
+			pulled = true;
+			c.enqueue(new TextEncoder().encode('x'));
+		}
+	});
+	const r = new Request('https://wa.example/', {
+		method: 'POST',
+		headers: { Origin: 'https://furkancol.me', 'Content-Length': '150000000' },
+		body,
+		duplex: 'half'
+	});
+	const res = await worker.fetch(r, env);
+	assert.equal(res.status, 413);
+	assert.equal(pulled, false);
+});
+
+test('Content-Length olmayan akış sınırda kesilir', async () => {
+	mockVerify(true);
+	let chunks = 0;
+	const body = new ReadableStream({
+		pull(c) {
+			chunks++;
+			if (chunks > 1000) return c.close();
+			c.enqueue(new Uint8Array(1024));
+		}
+	});
+	const r = new Request('https://wa.example/', {
+		method: 'POST',
+		headers: { Origin: 'https://furkancol.me' },
+		body,
+		duplex: 'half'
+	});
+	const res = await worker.fetch(r, env);
+	assert.equal(res.status, 413);
+	assert.ok(chunks < 50, `akış erken kesilmedi (${chunks} parça okundu)`);
+});
+
+test('localhost kökeni üretimde kapalı, DEV_ORIGINS ile açılır', async () => {
+	mockVerify(true);
+	const dev = 'http://localhost:5173';
+	let res = await worker.fetch(req('POST', { token: 't' }, dev), env);
+	assert.equal(res.status, 403);
+	assert.equal(res.headers.get('Access-Control-Allow-Origin'), null);
+	res = await worker.fetch(req('POST', { token: 't' }, dev), { ...env, DEV_ORIGINS: dev });
+	assert.equal(res.status, 200);
+	assert.equal(res.headers.get('Access-Control-Allow-Origin'), dev);
+});
+
+test('siteverify hostname istek köken hostname ile uyuşmazsa 403', async () => {
+	globalThis.fetch = async () =>
+		new Response(JSON.stringify({ success: true, hostname: 'baska.example' }));
+	let res = await worker.fetch(req('POST', { token: 't' }), env);
+	assert.equal(res.status, 403);
+	globalThis.fetch = async () =>
+		new Response(JSON.stringify({ success: true, hostname: 'furkancol.me' }));
+	res = await worker.fetch(req('POST', { token: 't' }), env);
+	assert.equal(res.status, 200);
+});
+
+test('siteverify çağrısına zaman aşımı sinyali verilir', async () => {
+	/** @type {any} */
+	let init;
+	globalThis.fetch = async (_u, i) => {
+		init = i;
+		return new Response(JSON.stringify({ success: true }));
+	};
+	await worker.fetch(req('POST', { token: 't' }), env);
+	assert.ok(init?.signal instanceof AbortSignal);
+});

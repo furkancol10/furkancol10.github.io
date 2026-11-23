@@ -1,6 +1,8 @@
 <script>
 	import '@fontsource/anton/latin-400.css';
 	import '@fontsource/anton/latin-ext-400.css';
+	import antonLatin from '@fontsource/anton/files/anton-latin-400-normal.woff2?url';
+	import geistLatin from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 	import { site } from '#lib/content/index.js';
 	import EmailLink from './EmailLink.svelte';
 
@@ -21,6 +23,11 @@
 
 	let tilted = $state(false);
 </script>
+
+<svelte:head>
+	<link rel="preload" as="font" type="font/woff2" href={antonLatin} crossorigin="anonymous" />
+	<link rel="preload" as="font" type="font/woff2" href={geistLatin} crossorigin="anonymous" />
+</svelte:head>
 
 <header class="hw ed" class:tilted>
 	<p class="hw-meta">

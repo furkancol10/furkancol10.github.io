@@ -486,4 +486,14 @@
 }
 
 /* Editoryal bölümler (HeroWordmark, ServicesList): site temasından bağımsız sabit krem + mürekkep */
-.ed { --ed-paper: #eeebdc; --ed-ink: #121212; --ed-accent: #ff4d1c; --ed-display: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; }
+.ed { --ed-paper: #eeebdc; --ed-ink: #121212; --ed-accent: #ff4d1c; --ed-display: 'Anton', 'Anton Fallback', Impact, 'Arial Narrow Bold', sans-serif; }
+
+/* Anton henüz inmediyse metrikleri eşlenmiş yedek: takas sırasında kutular yeniden boyutlanmaz */
+@font-face {
+	font-family: 'Anton Fallback';
+	src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Helvetica Bold');
+	size-adjust: 66.5%;
+	ascent-override: 177%;
+	descent-override: 49.5%;
+	line-gap-override: 0%;
+}

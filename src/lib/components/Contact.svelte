@@ -21,8 +21,16 @@
 	onMount(() => {
 		/** @param {MouseEvent} e */
 		const onClick = (e) => {
+			if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey)
+				return;
 			const a = /** @type {Element | null} */ (e.target)?.closest?.('a[href*="topic="]');
-			if (a) pick(new URL(/** @type {HTMLAnchorElement} */ (a).href).searchParams.get('topic'));
+			if (!a || a instanceof SVGElement) return;
+			try {
+				const u = new URL(/** @type {HTMLAnchorElement} */ (a).href, location.href);
+				// Yalnızca bu sayfadaki iletişim bağlantısı (aynı köken ve yol) çipi değiştirir
+				if (u.origin !== location.origin || u.pathname !== location.pathname) return;
+				pick(u.searchParams.get('topic'));
+			} catch {}
 		};
 		document.addEventListener('click', onClick);
 		return () => document.removeEventListener('click', onClick);

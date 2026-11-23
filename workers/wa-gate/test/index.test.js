@@ -11,7 +11,7 @@ const req = (method, body, origin = 'https://furkancol.me') =>
 		body: body === undefined ? undefined : JSON.stringify(body)
 	});
 const mockVerify = (success) => {
-	globalThis.fetch = async () => new Response(JSON.stringify({ success }));
+	globalThis.fetch = async () => new Response(JSON.stringify({ success, hostname: 'furkancol.me' }));
 };
 
 test('geçerli token -> wa.me bağlantısı, konuya göre metin', async () => {
@@ -148,4 +148,30 @@ test('siteverify çağrısına zaman aşımı sinyali verilir', async () => {
 	};
 	await worker.fetch(req('POST', { token: 't' }), env);
 	assert.ok(init?.signal instanceof AbortSignal);
+});
+
+test('siteverify hostname yoksa üretimde 403 (fail-open değil), DEV_ORIGINS ile geçer', async () => {
+	globalThis.fetch = async () => new Response(JSON.stringify({ success: true }));
+	let res = await worker.fetch(req('POST', { token: 't' }), env);
+	assert.equal(res.status, 403);
+	const dev = 'http://localhost:5173';
+	res = await worker.fetch(req('POST', { token: 't' }, dev), { ...env, DEV_ORIGINS: dev });
+	assert.equal(res.status, 200);
+});
+
+test('gövde akışı hata verirse 413 ile biter, özel durum sızmaz', async () => {
+	mockVerify(true);
+	const body = new ReadableStream({
+		pull() {
+			throw new Error('boom');
+		}
+	});
+	const r = new Request('https://wa.example/', {
+		method: 'POST',
+		headers: { Origin: 'https://furkancol.me' },
+		body,
+		duplex: 'half'
+	});
+	const res = await worker.fetch(r, env);
+	assert.equal(res.status, 413);
 });

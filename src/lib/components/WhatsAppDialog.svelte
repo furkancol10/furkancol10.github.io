@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { site } from '#lib/content/index.js';
 	import { waEnabled, wa } from '#lib/whatsapp.svelte.js';
 
@@ -28,29 +29,37 @@
 	let ctrl;
 	/** @type {Element | null} */
 	let trigger = null;
+	/** @type {HTMLElement | null} */
+	let lastClick = null;
+	/** Token kullanıldıktan sonra widget geri çağrıları yok sayılır. */
+	let settled = false;
 
-	/** Turnstile betiği yalnızca düğmeye basılınca yüklenir. */
+	/** Turnstile betiği yalnızca düğmeye basılınca yüklenir; takılırsa zaman aşımıyla reddedilir ve yeniden denenebilir. */
 	function loadApi() {
 		/** @type {any} */
 		const w = window;
 		if (w.turnstile) return Promise.resolve();
 		apiPromise ??= new Promise((resolve, reject) => {
 			const s = document.createElement('script');
+			let timer = 0;
+			/** @param {string} why */
+			const bail = (why) => {
+				clearTimeout(timer);
+				apiPromise = undefined;
+				s.remove();
+				reject(new Error(why));
+			};
+			timer = window.setTimeout(() => bail('timeout'), TIMEOUT_MS);
 			s.src = API;
 			s.async = true;
 			s.onload = () => {
 				// Engelleyici boş bir yanıt verirse onload tetiklenir ama turnstile tanımsız kalır
-				if (w.turnstile) resolve();
-				else {
-					apiPromise = undefined;
-					s.remove();
-					reject(new Error('stub'));
-				}
+				if (w.turnstile) {
+					clearTimeout(timer);
+					resolve();
+				} else bail('stub');
 			};
-			s.onerror = () => {
-				apiPromise = undefined;
-				reject(new Error('load'));
-			};
+			s.onerror = () => bail('load');
 			document.head.append(s);
 		});
 		return apiPromise;
@@ -62,31 +71,59 @@
 		message = u[/** @type {'error' | 'expired'} */ (key)];
 	}
 
+	function removeWidget() {
+		/** @type {any} */
+		const w = window;
+		try {
+			if (widgetId !== undefined && w.turnstile) w.turnstile.remove(widgetId);
+		} catch {}
+		widgetId = undefined;
+		box?.replaceChildren();
+	}
+
 	/** @param {string} token @param {number} my */
 	async function redeem(token, my) {
-		if (my !== gen) return;
+		if (my !== gen || settled) return;
+		// Token tek kullanımlık: widget artık yeni geri çağrı ya da otomatik yenileme üretmesin
+		settled = true;
+		removeWidget();
 		status = 'opening';
 		message = u.opening;
+		// AbortSignal.any her tarayıcıda yok; sinyalleri elle bağlarız
+		const req = new AbortController();
+		const onAbort = () => req.abort();
+		ctrl?.signal.addEventListener('abort', onAbort);
+		const timer = setTimeout(onAbort, TIMEOUT_MS);
 		try {
 			const res = await fetch(site.wa_worker_url, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ token, lang, topic: wa.topic || undefined }),
-				signal: AbortSignal.any([AbortSignal.timeout(TIMEOUT_MS), ...(ctrl ? [ctrl.signal] : [])])
+				signal: req.signal
 			});
 			const data = await res.json();
 			if (my !== gen) return;
 			if (!res.ok || typeof data.url !== 'string' || !data.url.startsWith('https://wa.me/'))
 				throw new Error('bad');
 			waUrl = data.url;
-			if (!window.open(data.url, '_blank', 'noopener')) message = u.blocked;
+			// 'noopener' özelliği window.open'ı her zaman null döndürür; onsuz açıp opener'ı elle keseriz
+			const win = window.open(data.url, '_blank');
+			if (win) {
+				try {
+					win.opener = null;
+				} catch {}
+			} else message = u.blocked;
 		} catch {
 			if (my === gen) fail('error');
+		} finally {
+			clearTimeout(timer);
+			ctrl?.signal.removeEventListener('abort', onAbort);
 		}
 	}
 
 	async function start() {
 		const my = ++gen;
+		settled = false;
 		ctrl?.abort();
 		ctrl = new AbortController();
 		status = 'loading';
@@ -97,9 +134,7 @@
 			if (my !== gen || !box || !wa.open) return;
 			/** @type {any} */
 			const w = window;
-			if (widgetId !== undefined) w.turnstile.remove(widgetId);
-			widgetId = undefined;
-			box.replaceChildren();
+			removeWidget();
 			status = 'verifying';
 			message = u.hint;
 			widgetId = w.turnstile.render(box, {
@@ -107,40 +142,57 @@
 				theme: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
 				language: lang,
 				callback: (/** @type {string} */ t) => redeem(t, my),
-				'error-callback': () => my === gen && fail('error'),
-				'timeout-callback': () => my === gen && fail('expired'),
-				'expired-callback': () => my === gen && fail('expired')
+				'error-callback': () => my === gen && !settled && fail('error'),
+				'timeout-callback': () => my === gen && !settled && fail('expired'),
+				'expired-callback': () => my === gen && !settled && fail('expired')
 			});
 		} catch {
 			if (my === gen) fail('error');
 		}
 	}
 
+	/** @param {Element | null} el */
+	const visible = (el) => !!el && el.isConnected && el.getClientRects().length > 0;
+
 	function teardown() {
-		/** @type {any} */
-		const w = window;
 		gen++;
 		ctrl?.abort();
-		try {
-			if (widgetId !== undefined && w.turnstile) w.turnstile.remove(widgetId);
-		} catch {}
-		widgetId = undefined;
+		removeWidget();
 		waUrl = '';
 		wa.open = false;
-		// Tetikleyici kapanan mobil menüdeyse (odak body'ye düşer) menü düğmesine geri ver
-		if (!trigger || trigger === document.body || !trigger.isConnected) {
-			const t = /** @type {HTMLElement | null} */ (
-				document.querySelector('[aria-controls="mobil-menu"]')
-			);
-			if (t && t.offsetParent) t.focus();
-		}
+		// Odak, diyaloğu açan düğmeye döner; o yoksa/gizliyse (kapanan mobil menü) menü düğmesine
+		const t = /** @type {HTMLElement | null} */ (
+			document.querySelector('[aria-controls="mobil-menu"]')
+		);
+		if (visible(trigger)) /** @type {HTMLElement} */ (trigger).focus();
+		else if (visible(t)) t?.focus();
 		trigger = null;
 	}
+
+	// Safari düğmeye tıklayınca odağı body'de bırakır; açan öğeyi tıklamadan kendimiz kaydederiz
+	onMount(() => {
+		/** @param {MouseEvent} e */
+		const rec = (e) => {
+			const el = /** @type {Element | null} */ (e.target)?.closest?.('button, a');
+			lastClick = el instanceof HTMLElement ? el : null;
+		};
+		document.addEventListener('click', rec, true);
+		return () => {
+			document.removeEventListener('click', rec, true);
+			// Bileşen açıkken sökülürse: uçuştaki işi kes, widget'ı kaldır, ortak durumu sıfırla
+			gen++;
+			ctrl?.abort();
+			removeWidget();
+			wa.open = false;
+		};
+	});
 
 	$effect(() => {
 		if (!dlg) return;
 		if (wa.open && !dlg.open) {
-			trigger = document.activeElement;
+			trigger =
+				lastClick ?? (document.activeElement === document.body ? null : document.activeElement);
+			lastClick = null;
 			dlg.showModal();
 			start();
 		} else if (!wa.open && dlg.open) dlg.close();

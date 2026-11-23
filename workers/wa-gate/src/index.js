@@ -44,7 +44,13 @@ async function readBody(req) {
 	const parts = [];
 	let size = 0;
 	for (;;) {
-		const { done, value } = await reader.read();
+		let chunk;
+		try {
+			chunk = await reader.read();
+		} catch {
+			return null;
+		}
+		const { done, value } = chunk;
 		if (done) break;
 		size += value.byteLength;
 		if (size > MAX_BODY) {
@@ -136,7 +142,8 @@ export default {
 			const out = res.ok ? await res.json() : null;
 			// Token başka bir ana makinede üretildiyse (aynı widget birden çok alan adına izinliyse) reddedilir
 			const host = new URL(req.headers.get('Origin') ?? '').hostname;
-			ok = out?.success === true && (out.hostname === undefined || out.hostname === host);
+			// hostname yoksa üretimde reddedilir; yalnızca yerel geliştirmede (DEV_ORIGINS) denetim atlanır
+			ok = out?.success === true && (env.DEV_ORIGINS ? true : out.hostname === host);
 		} catch {
 			return json({ error: 'verify' }, 502, headers);
 		}

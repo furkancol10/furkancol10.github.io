@@ -8,6 +8,6 @@ Telefon numarası sitede, depoda ya da JS paketinde bulunmaz. Ziyaretçi Turnsti
 4. `wrangler deploy`; çıkan Worker adresini not edin.
 5. `src/lib/content/site.json` içinde `turnstile_site_key` (site key) ve `wa_worker_url` (Worker adresi) alanlarını doldurun, siteyi yeniden derleyin. İkisi de doluyken WhatsApp düğmesi görünür.
 
-Yerel geliştirme: `DEV_ORIGINS` (isteğe bağlı, virgülle ayrılmış köken listesi, örn. `http://localhost:5173`) yalnızca yerel Worker için verilir; üretimde boş bırakılır, localhost kökenleri kapalıdır. Worker ayrıca Turnstile'ın döndürdüğü `hostname` ile isteğin Origin ana makinesini karşılaştırır.
+Yerel geliştirme: `DEV_ORIGINS` (isteğe bağlı, virgülle ayrılmış köken listesi, örn. `http://localhost:5173`) yalnızca yerel Worker için verilir; üretimde boş bırakılır, localhost kökenleri kapalıdır. Worker ayrıca Turnstile'ın döndürdüğü `hostname` ile isteğin Origin ana makinesini karşılaştırır; `hostname` yoksa ya da uyuşmazsa istek reddedilir. Yalnızca `DEV_ORIGINS` verilmişse (yerel geliştirme, Cloudflare test anahtarları) bu denetim atlanır.
 
 Test: `node --test workers/wa-gate/test/*.test.js`. Mesaj metinleri `src/index.js` içindeki `MESSAGES` tablosundadır.

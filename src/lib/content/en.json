@@ -207,18 +207,6 @@
 			{ "id": "wp", "label": "WordPress migration" },
 			{ "id": "other", "label": "Other" }
 		],
-		"whatsapp": "WhatsApp",
-		"whatsapp_ui": {
-			"title": "Before opening WhatsApp",
-			"hint": "A quick check is needed to keep out spam.",
-			"opening": "Verified, opening WhatsApp…",
-			"blocked": "The popup was blocked. Continue with the link below.",
-			"error": "Verification or connection failed.",
-			"expired": "Verification expired.",
-			"retry": "Try again",
-			"close": "Close",
-			"loading": "Loading…"
-		},
 		"github": "GitHub",
 		"form": {
 			"name": "Your name",

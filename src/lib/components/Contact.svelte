@@ -3,7 +3,6 @@
 	import { inview } from '#lib/motion.js';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
-	import { waEnabled, openWhatsApp, wa } from '#lib/whatsapp.svelte.js';
 	import Signature from './Signature.svelte';
 	import EmailLink from './EmailLink.svelte';
 
@@ -32,18 +31,9 @@
 				pick(u.searchParams.get('topic'));
 			} catch {}
 		};
-		document.addEventListener('click', onClick);
-		return () => document.removeEventListener('click', onClick);
+		document.addEventListener('click', onClick, true);
+		return () => document.removeEventListener('click', onClick, true);
 	});
-	$effect(() => {
-		wa.topic = topic;
-	});
-	// Bu bileşen sayfadan çıkınca seçili konu başka sayfalardaki WhatsApp mesajına sızmasın
-	onMount(() => () => {
-		wa.topic = '';
-	});
-	let mounted = $state(false);
-	onMount(() => (mounted = true));
 
 	/** @type {'idle' | 'sending' | 'ok' | 'error'} */
 	let status = $state('idle');
@@ -105,9 +95,6 @@
 				</div>
 				<ul class="reach">
 					<li><EmailLink showAddress class="big-mail" /></li>
-					{#if waEnabled && mounted}
-						<li><button type="button" onclick={openWhatsApp}>{c.contact.whatsapp} ↗</button></li>
-					{/if}
 					<li><a href={site.bionluk} rel="noopener">{c.contact.bionluk} ↗</a></li>
 					<li><a href={site.github} rel="me noopener">{c.contact.github} ↗</a></li>
 				</ul>

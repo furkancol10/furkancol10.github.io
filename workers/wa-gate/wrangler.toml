@@ -1,7 +1,0 @@
-name = "wa-gate"
-main = "src/index.js"
-compatibility_date = "2025-01-01"
-# Sırlar (TURNSTILE_SECRET, WHATSAPP_NUMBER) buraya yazılmaz: `wrangler secret put` ile eklenir.
-# workers.dev adresi açık kalsın (site bu adresi çağırır), önizleme adresleri kapalı
-workers_dev = true
-preview_urls = false

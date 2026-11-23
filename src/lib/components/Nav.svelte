@@ -3,7 +3,6 @@
 	import { page } from '$app/state';
 	import { prefix, site } from '#lib/content/index.js';
 	import { langPaths, rememberLang } from '#lib/i18n.js';
-	import { waEnabled, openWhatsApp } from '#lib/whatsapp.svelte.js';
 	import Mark from './Mark.svelte';
 	import Signature from './Signature.svelte';
 
@@ -191,18 +190,6 @@
 					>
 				</li>
 			{/each}
-			{#if waEnabled}
-				<li>
-					<button
-						type="button"
-						class="block w-full rounded-xl px-4 py-3 text-left text-muted hover:bg-ink/5 hover:text-ink"
-						onclick={() => {
-							open = false;
-							openWhatsApp();
-						}}>{c.contact.whatsapp}</button
-					>
-				</li>
-			{/if}
 			<!-- Tema düğmesi küçük ekranda üstte yer tutmasın diye menüde -->
 			<li class="sm:hidden">
 				<button

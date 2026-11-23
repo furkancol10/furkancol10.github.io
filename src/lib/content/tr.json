@@ -475,6 +475,15 @@
 		]
 	},
 	"v2": {
+		"wordmark": {
+			"role": "Yazılım geliştirici",
+			"skills": "OCR, otomasyon, web",
+			"region": "TR / 2026",
+			"tilt": "Kesimi eğ",
+			"tilt_aria": "Addaki renk kesiminin eğimini değiştir",
+			"hello": "Merhaba de:",
+			"kicker": "Neler yapıyorum"
+		},
 		"hero": {
 			"l1": "Belgelerden veriye,",
 			"l2": "fikirden çalışan",

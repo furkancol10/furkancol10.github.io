@@ -484,3 +484,6 @@
 		.ex-facts { grid-template-columns: 1fr; }
 	}
 }
+
+/* Editoryal bölümler (HeroWordmark, ServicesList): site temasından bağımsız sabit krem + mürekkep */
+.ed { --ed-paper: #eeebdc; --ed-ink: #121212; --ed-accent: #ff4d1c; --ed-display: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; }

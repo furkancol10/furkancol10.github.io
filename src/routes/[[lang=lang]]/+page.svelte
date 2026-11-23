@@ -1,10 +1,9 @@
 <script>
 	import { prefix, site } from '#lib/content/index.js';
 	import Seo from '#lib/components/Seo.svelte';
-	import Hero from '#lib/components/Hero.svelte';
-	import Strip from '#lib/components/Strip.svelte';
+	import HeroWordmark from '#lib/components/HeroWordmark.svelte';
+	import ServicesList from '#lib/components/ServicesList.svelte';
 	import Measure from '#lib/components/Measure.svelte';
-	import Services from '#lib/components/Services.svelte';
 	import Projects from '#lib/components/Projects.svelte';
 	import Demo from '#lib/components/Demo.svelte';
 	import About from '#lib/components/About.svelte';
@@ -38,11 +37,11 @@
 	jsonld={person}
 />
 
-<Hero {c} lang={data.lang} />
-<Strip {c} />
-<Measure {c} lang={data.lang} />
-<Services {c} />
+<HeroWordmark {c} />
+<ServicesList {c} />
+<!-- STEP2: WorkScenes slot; for now keep the existing <Projects/> there -->
 <Projects {c} lang={data.lang} />
+<Measure {c} lang={data.lang} />
 <Demo {c} lang={data.lang} />
 <Pricing {c} lang={data.lang} />
 <Process {c} />

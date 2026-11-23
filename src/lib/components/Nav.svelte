@@ -23,6 +23,9 @@
 		{ href: `${prefix(lang)}/blog/`, label: c.nav.blog }
 	]);
 
+	// Ana sayfanın üstünde (krem kahraman) menü sabit açık tonda okunur; kaydırınca ya da menü açılınca temaya döner
+	const onCream = $derived(page.route.id === '/[[lang=lang]]' && !scrolled && !open);
+
 	const paths = $derived(langPaths(page.url.pathname, page.data.alternates));
 	const langs = $derived([
 		{ code: 'tr', label: 'TR', name: 'Türkçe', href: paths.tr },
@@ -56,9 +59,10 @@
 </a>
 
 <header
+	data-tone={onCream ? 'cream' : undefined}
 	class="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 {scrolled ||
 	open
-		? 'border-b border-line bg-bg/70 backdrop-blur-xl'
+		? 'border-b border-line bg-bg/85 backdrop-blur-xl'
 		: 'border-b border-transparent'}"
 >
 	<nav
@@ -227,3 +231,19 @@
 		</ul>
 	{/if}
 </header>
+
+<style>
+	/* Krem kahraman üzerinde: bu başlığın içindeki renk değişkenlerini açık temaya sabitler (html sınıfına dokunmaz) */
+	header[data-tone='cream'] {
+		color: #121212;
+		--bg: #eeebdc;
+		--ink: #121212;
+		--muted: #3d3d36;
+		--line: rgba(18, 18, 18, 0.18);
+		--line-strong: rgba(18, 18, 18, 0.35);
+		--violet: #6d28d9;
+		--grad-a: #6d28d9;
+		--grad-b: #2563eb;
+		--grad-c: #0891b2;
+	}
+</style>

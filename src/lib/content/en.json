@@ -477,6 +477,15 @@
 		]
 	},
 	"v2": {
+		"wordmark": {
+			"role": "Software developer",
+			"skills": "OCR, automation, web",
+			"region": "EN / 2026",
+			"tilt": "Tilt the cut",
+			"tilt_aria": "Change the angle of the colour split in the name",
+			"hello": "Say hello:",
+			"kicker": "What I do"
+		},
 		"hero": {
 			"l1": "Documents into data,",
 			"l2": "ideas into working",

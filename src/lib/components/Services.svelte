@@ -15,6 +15,13 @@
 						<h3>{s.title}</h3>
 						<p>{s.text}</p>
 						<p class="tech">{s.tags.join(' · ')}</p>
+						{#if s.links?.length}
+							<p class="links">
+								{#each s.links as l (l.href)}
+									<a href={l.href}>{l.label} {l.href.startsWith('#') ? '↓' : '→'}</a>
+								{/each}
+							</p>
+						{/if}
 					</li>
 				{/each}
 			</ul>

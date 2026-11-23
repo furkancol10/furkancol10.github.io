@@ -41,21 +41,24 @@
 			{
 				"title": "Documents → Excel (OCR)",
 				"text": "Tools that extract company, date, VAT, totals or table data from receipts and scanned PDFs into Excel/JSON. They run on your own computer or server; documents never go to the cloud. Values are cross-checked, and anything uncertain is flagged.",
-				"tags": ["Python", "OCR", "Excel", "JSON"]
+				"tags": ["Python", "OCR", "Excel", "JSON"],
+				"links": [{ "label": "Try the live demo", "href": "#demo" }]
 			},
 			{
 				"title": "Web & desktop applications",
 				"text": "Stock and order panels, admin dashboards, price calculators and ordering sites. Role-based access, reports, mobile-friendly UI; deployed on Vercel, Render or Cloudflare. Offline desktop programs as a single .exe (e.g. receivables and installment tracking).",
 				"tags": ["Svelte", ".NET", "Django", "PostgreSQL", "Flet", "SQLite"],
-				"link": {
-					"label": "Moving from WordPress",
-					"href": "/en/wordpress/"
-				}
+				"links": [
+					{ "label": "Booking system example", "href": "/en/examples/randevu-sistemi/" },
+					{ "label": "QR menu example", "href": "/en/examples/qr-menu/" },
+					{ "label": "Moving from WordPress", "href": "/en/wordpress/" }
+				]
 			},
 			{
 				"title": "Automation & APIs",
 				"text": "Handing repetitive work over to scripts: data collection, report and Excel generation. Deploying your tools to your server as an API: HTTPS, API keys, hardening, load testing and documentation.",
-				"tags": ["FastAPI", "Nginx", "Linux", "Load testing"]
+				"tags": ["FastAPI", "Nginx", "Linux", "Load testing"],
+				"links": [{ "label": "All examples", "href": "/en/examples/" }]
 			}
 		],
 		"eyebrow": "Services"
@@ -66,6 +69,7 @@
 			"problem": "Problem",
 			"solution": "Solution",
 			"result": "Result",
+			"demos": "Ready example demos",
 			"live": "Live demo",
 			"code": "Source code"
 		},
@@ -145,9 +149,7 @@
 					["Docker", "one-command setup"]
 				],
 				"tags": [".NET 8", "Dapper", "Svelte 5", "Tailwind", "PostgreSQL", "Docker"],
-				"links": [
-					["code", "https://github.com/furkancol10/INTSHOP"]
-				]
+				"links": [["code", "https://github.com/furkancol10/INTSHOP"]]
 			},
 			{
 				"id": "sql-mastery",
@@ -198,6 +200,25 @@
 		"email": "Email",
 		"eyebrow": "Contact",
 		"channels_title": "Reach me directly",
+		"topic_label": "Topic (optional)",
+		"topics": [
+			{ "id": "ocr", "label": "OCR / Automation" },
+			{ "id": "web", "label": "Web / Tool" },
+			{ "id": "wp", "label": "WordPress migration" },
+			{ "id": "other", "label": "Other" }
+		],
+		"whatsapp": "WhatsApp",
+		"whatsapp_ui": {
+			"title": "Before opening WhatsApp",
+			"hint": "A quick check is needed to keep out spam.",
+			"verifying": "Verifying…",
+			"opening": "Verified, opening WhatsApp…",
+			"error": "Verification or connection failed.",
+			"expired": "Verification expired.",
+			"retry": "Try again",
+			"close": "Close",
+			"loading": "Loading…"
+		},
 		"github": "GitHub",
 		"form": {
 			"name": "Your name",
@@ -417,6 +438,7 @@
 		"lead": "The exact price depends on your project and samples. These are the prices for the basic scope.",
 		"from": "TL and up",
 		"quote": "Get a quote",
+		"ask": "Ask for a quote",
 		"currency": "TL",
 		"items": [
 			{
@@ -526,6 +548,7 @@
 		"eyebrow": "Examples",
 		"title": "Working examples",
 		"lead": "Tools you can try in the browser, each with a problem, solution, result note.",
+		"filters": { "label": "Filter by status", "all": "All", "shown": "Showing {n} examples" },
 		"labels": {
 			"problem": "Problem",
 			"solution": "Solution",

@@ -42,7 +42,7 @@
 <Strip {c} />
 <Measure {c} lang={data.lang} />
 <Services {c} />
-<Projects {c} />
+<Projects {c} lang={data.lang} />
 <Demo {c} lang={data.lang} />
 <Pricing {c} lang={data.lang} />
 <Process {c} />

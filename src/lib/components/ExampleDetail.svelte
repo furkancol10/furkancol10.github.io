@@ -159,6 +159,6 @@
 	{/if}
 
 	<p class="mt-14">
-		<a href="{prefix(lang)}/#iletisim" class="pill inline-block">{L.contact}</a>
+		<a href="{prefix(lang)}/?topic=web#iletisim" class="pill inline-block">{L.contact}</a>
 	</p>
 </article>

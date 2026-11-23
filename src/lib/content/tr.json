@@ -41,21 +41,24 @@
 			{
 				"title": "Belge → Excel (OCR)",
 				"text": "Fiş ve taranmış PDF'lerdeki firma, tarih, KDV, toplam ya da tablo verisini Excel/JSON'a aktaran araçlar. Sizin bilgisayarınızda ya da sunucunuzda çalışır; belgeler buluta gönderilmez. Okunan değerler birbiriyle kontrol edilir, emin olunamayan belge işaretlenir.",
-				"tags": ["Python", "OCR", "Excel", "JSON"]
+				"tags": ["Python", "OCR", "Excel", "JSON"],
+				"links": [{ "label": "Canlı demoyu dene", "href": "#demo" }]
 			},
 			{
 				"title": "Web ve masaüstü uygulamaları",
 				"text": "Stok ve sipariş panelleri, yönetim ekranları, fiyat hesaplayıcı ve sipariş siteleri. Rol bazlı yetki, raporlar, mobil uyumlu arayüz; Vercel, Render ya da Cloudflare üzerinde yayında. Masaüstünde internet gerektirmeyen tek .exe programlar (ör. alacak ve taksit takibi).",
 				"tags": ["Svelte", ".NET", "Django", "PostgreSQL", "Flet", "SQLite"],
-				"link": {
-					"label": "WordPress'ten geçiş",
-					"href": "/wordpress/"
-				}
+				"links": [
+					{ "label": "Randevu sistemi örneği", "href": "/ornekler/randevu-sistemi/" },
+					{ "label": "QR menü örneği", "href": "/ornekler/qr-menu/" },
+					{ "label": "WordPress'ten geçiş", "href": "/wordpress/" }
+				]
 			},
 			{
 				"title": "Otomasyon ve API",
 				"text": "Tekrarlayan işleri betiklere devretmek: veri toplama, rapor ve Excel üretimi. Araçlarınızı sunucunuza API olarak kurmak: HTTPS, API anahtarı, güvenlik ayarları, yük testi ve doküman.",
-				"tags": ["FastAPI", "Nginx", "Linux", "Yük testi"]
+				"tags": ["FastAPI", "Nginx", "Linux", "Yük testi"],
+				"links": [{ "label": "Tüm örnekler", "href": "/ornekler/" }]
 			}
 		],
 		"eyebrow": "Hizmetler"
@@ -66,6 +69,7 @@
 			"problem": "Sorun",
 			"solution": "Çözüm",
 			"result": "Sonuç",
+			"demos": "Hazır örnek demolar",
 			"live": "Canlı demo",
 			"code": "Kaynak kod"
 		},
@@ -145,9 +149,7 @@
 					["Docker", "tek komutla kurulum"]
 				],
 				"tags": [".NET 8", "Dapper", "Svelte 5", "Tailwind", "PostgreSQL", "Docker"],
-				"links": [
-					["code", "https://github.com/furkancol10/INTSHOP"]
-				]
+				"links": [["code", "https://github.com/furkancol10/INTSHOP"]]
 			},
 			{
 				"id": "sql-mastery",
@@ -198,6 +200,25 @@
 		"email": "E-posta",
 		"eyebrow": "İletişim",
 		"channels_title": "Doğrudan ulaşın",
+		"topic_label": "Konu (isteğe bağlı)",
+		"topics": [
+			{ "id": "ocr", "label": "OCR / Otomasyon" },
+			{ "id": "web", "label": "Web / Araç" },
+			{ "id": "wp", "label": "WordPress geçişi" },
+			{ "id": "other", "label": "Diğer" }
+		],
+		"whatsapp": "WhatsApp",
+		"whatsapp_ui": {
+			"title": "WhatsApp'a geçmeden önce",
+			"hint": "Spam'i önlemek için kısa bir doğrulama gerekiyor.",
+			"verifying": "Doğrulanıyor…",
+			"opening": "Doğrulandı, WhatsApp açılıyor…",
+			"error": "Doğrulama ya da bağlantı başarısız oldu.",
+			"expired": "Doğrulama süresi doldu.",
+			"retry": "Tekrar dene",
+			"close": "Kapat",
+			"loading": "Yükleniyor…"
+		},
 		"github": "GitHub",
 		"form": {
 			"name": "Adınız",
@@ -415,6 +436,7 @@
 		"lead": "Kesin fiyat, işinizi ve örneklerinizi gördükten sonra belli olur. Aşağıdakiler en temel kapsamın fiyatıdır.",
 		"from": "TL'den başlayan",
 		"quote": "Teklif alın",
+		"ask": "Teklif iste",
 		"currency": "TL",
 		"items": [
 			{
@@ -527,6 +549,11 @@
 		"eyebrow": "Örnekler",
 		"title": "Çalışan örnekler",
 		"lead": "Tarayıcıda deneyebileceğiniz araçlar ve her birinin sorun, çözüm, sonuç notu.",
+		"filters": {
+			"label": "Duruma göre filtrele",
+			"all": "Tümü",
+			"shown": "{n} örnek gösteriliyor"
+		},
 		"labels": {
 			"problem": "Sorun",
 			"solution": "Çözüm",

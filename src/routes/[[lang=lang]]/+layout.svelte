@@ -1,6 +1,7 @@
 <script>
 	import Nav from '#lib/components/Nav.svelte';
 	import Footer from '#lib/components/Footer.svelte';
+	import WhatsAppDialog from '#lib/components/WhatsAppDialog.svelte';
 	import LangSuggest from '#lib/components/LangSuggest.svelte';
 	import { site } from '#lib/content/index.js';
 	import { page } from '$app/state';
@@ -40,4 +41,5 @@
 {#if !closing}
 	<Footer c={data.c} year={data.year} />
 {/if}
+<WhatsAppDialog c={data.c} lang={data.lang} />
 <LangSuggest lang={data.lang} suggest={data.suggest} />

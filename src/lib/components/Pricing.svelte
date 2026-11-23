@@ -1,5 +1,5 @@
 <script>
-	import { site } from '#lib/content/index.js';
+	import { prefix, site } from '#lib/content/index.js';
 	import { inview } from '#lib/motion.js';
 
 	/**
@@ -10,6 +10,9 @@
 	let { c, lang } = $props();
 	const p = $derived(c.pricing);
 	const fmt = $derived(new Intl.NumberFormat(lang === 'en' ? 'en-US' : 'tr-TR'));
+	/** Fiyat kartı kimliği → iletişim formundaki konu çipi */
+	/** @type {Record<string, string>} */
+	const TOPIC = { ocr: 'ocr', desktop: 'web', web: 'wp' };
 	/** @param {string} href */
 	const target = (href) => (href === 'BIONLUK' ? site.bionluk : href);
 </script>
@@ -35,6 +38,7 @@
 										rel={item.cta.href === 'BIONLUK' ? 'noopener' : undefined}
 										>{item.cta.label} {target(item.cta.href).startsWith('http') ? '↗' : '→'}</a
 									>
+									<a href="{prefix(lang)}/?topic={TOPIC[item.id] ?? 'other'}#iletisim">{p.ask} →</a>
 								</p>
 							</li>
 						{/each}

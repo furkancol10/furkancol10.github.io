@@ -1,12 +1,24 @@
 <script>
 	import { site } from '#lib/content/index.js';
 	import { inview } from '#lib/motion.js';
+	import { page } from '$app/state';
+	import { waEnabled, openWhatsApp, wa } from '#lib/whatsapp.svelte.js';
 	import Signature from './Signature.svelte';
 	import EmailLink from './EmailLink.svelte';
 
 	/** @type {{ c: import('#lib/content/index.js').Content }} */
 	let { c } = $props();
 	const f = $derived(c.contact.form);
+
+	// Konu çipi: Fiyat ve örnek sayfalarındaki bağlantılar /?topic=ocr#iletisim ile önceden seçtirir
+	let topic = $state('');
+	$effect(() => {
+		const t = page.url.searchParams.get('topic');
+		if (t && c.contact.topics.some((x) => x.id === t)) topic = t;
+	});
+	$effect(() => {
+		wa.topic = topic;
+	});
 
 	/** @type {'idle' | 'sending' | 'ok' | 'error'} */
 	let status = $state('idle');
@@ -24,7 +36,10 @@
 				headers: { Accept: 'application/json' }
 			});
 			status = res.ok ? 'ok' : 'error';
-			if (res.ok) form.reset();
+			if (res.ok) {
+				form.reset();
+				topic = '';
+			}
 		} catch {
 			status = 'error';
 		}
@@ -65,6 +80,9 @@
 				</div>
 				<ul class="reach">
 					<li><EmailLink showAddress class="big-mail" /></li>
+					{#if waEnabled}
+						<li><button type="button" onclick={openWhatsApp}>{c.contact.whatsapp} ↗</button></li>
+					{/if}
 					<li><a href={site.bionluk} rel="noopener">{c.contact.bionluk} ↗</a></li>
 					<li><a href={site.github} rel="me noopener">{c.contact.github} ↗</a></li>
 				</ul>
@@ -86,6 +104,15 @@
 						<span>{f.email}</span>
 						<input name="email" type="email" required autocomplete="email" />
 					</label>
+					<fieldset class="wide topics">
+						<legend>{c.contact.topic_label}</legend>
+						{#each c.contact.topics as t (t.id)}
+							<label class="chip">
+								<input type="radio" name="topic" value={t.id} bind:group={topic} />
+								<span>{t.label}</span>
+							</label>
+						{/each}
+					</fieldset>
 					<label class="wide">
 						<span>{f.message}</span>
 						<textarea name="message" required rows="4"></textarea>

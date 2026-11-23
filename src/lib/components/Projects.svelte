@@ -1,12 +1,16 @@
 <script>
+	import { prefix } from '#lib/content/index.js';
 	import { inview } from '#lib/motion.js';
 	import { tilt } from '#lib/actions.js';
 
-	/** @type {{ c: import('#lib/content/index.js').Content }} */
-	let { c } = $props();
+	/** @type {{ c: import('#lib/content/index.js').Content, lang: string }} */
+	let { c, lang } = $props();
 
 	const items = $derived(c.projects.items.filter((p) => p.publish));
 	const L = $derived(c.projects.labels);
+	// Hazır örnek demolar: örnekler listesinden (durumu "ready" olanlar)
+	const exBase = $derived(`${prefix(lang)}/${lang === 'en' ? 'examples' : 'ornekler'}/`);
+	const demos = $derived(c.examples.items.filter((e) => e.status === 'ready'));
 	/** @type {('problem' | 'solution' | 'result')[]} */
 	const parts = ['problem', 'solution', 'result'];
 	// Görselli projeler: "shot" (görsel altta) ya da "offset" (görsel solda). Fiş OCR'ın görseli ana sayfadaki fiştir.
@@ -107,5 +111,13 @@
 				</article>
 			{/if}
 		{/each}
+
+		<p class="proj-demos links">
+			<b>{L.demos}:</b>
+			{#each demos as e (e.id)}
+				<a href="{exBase}{e.id}/">{e.title.replace(/ \(.*\)$/, '')} →</a>
+			{/each}
+			<a href={exBase}>{c.examples.title} →</a>
+		</p>
 	</section>
 </div>

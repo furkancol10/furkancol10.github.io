@@ -6,6 +6,16 @@
 	/** @type {{ c: import('#lib/content/index.js').Content, lang: string }} */
 	let { c, lang } = $props();
 	const x = $derived(c.examples);
+	/** @type {'all' | 'ready' | 'soon'} */
+	let filter = $state('all');
+	const chips = $derived([
+		{ key: 'all', label: x.filters.all },
+		{ key: 'ready', label: x.labels.ready },
+		{ key: 'soon', label: x.labels.coming }
+	]);
+	/** @param {{ status: string }} p */
+	const shows = (p) => filter === 'all' || p.status === filter;
+	const shown = $derived(x.items.filter(shows).length);
 	const base = $derived(`${prefix(lang)}/${lang === 'en' ? 'examples' : 'ornekler'}/`);
 </script>
 
@@ -15,9 +25,26 @@
 	<h1 class="mt-4 text-5xl font-semibold tracking-tight md:text-6xl">{x.title}</h1>
 	<p class="mt-5 max-w-2xl text-lg text-muted">{x.lead}</p>
 
-	<ul class="mt-14 grid gap-5 md:grid-cols-2">
+	<div class="mt-10 flex flex-wrap items-center gap-2" role="group" aria-label={x.filters.label}>
+		{#each chips as ch (ch.key)}
+			<button
+				type="button"
+				aria-pressed={filter === ch.key}
+				onclick={() => (filter = /** @type {'all' | 'ready' | 'soon'} */ (ch.key))}
+				class="rounded-full border px-4 py-1.5 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet {filter ===
+				ch.key
+					? 'border-transparent bg-ink text-bg'
+					: 'border-line text-muted hover:text-ink'}">{ch.label}</button
+			>
+		{/each}
+		<span class="sr-only" role="status" aria-live="polite"
+			>{x.filters.shown.replace('{n}', String(shown))}</span
+		>
+	</div>
+
+	<ul class="mt-8 grid gap-5 md:grid-cols-2">
 		{#each x.items as p (p.id)}
-			<li class="reveal" use:reveal>
+			<li class="reveal" class:hidden={!shows(p)} use:reveal>
 				<a href="{base}{p.id}/" class="glow-card flex h-full flex-col p-7 md:p-8" use:spotlight>
 					{#if p.shots[0]}
 						<img

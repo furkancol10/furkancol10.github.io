@@ -15,12 +15,7 @@
 	const [vx, , vw] = name.viewBox.split(' ').map(Number);
 </script>
 
-<svg
-	viewBox={name.viewBox}
-	class={klass}
-	aria-hidden="true"
-	focusable="false"
->
+<svg viewBox={name.viewBox} class={klass} aria-hidden="true" focusable="false">
 	{#if gradient}
 		<defs>
 			<linearGradient id={gid} gradientUnits="userSpaceOnUse" x1={vx} y1="0" x2={vx + vw} y2="0">

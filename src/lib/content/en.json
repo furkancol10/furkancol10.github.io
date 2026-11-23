@@ -523,7 +523,7 @@
 	},
 	"examples": {
 		"meta_title": "Examples · Furkan Çöl",
-		"meta_description": "Live demos and case notes for small tools I built: an ROI calculator, booking system and QR menu.",
+		"meta_description": "Live demos and case notes for small tools I built: an ROI calculator, booking system, QR menu, mini CRM and price tracker.",
 		"eyebrow": "Examples",
 		"title": "Working examples",
 		"lead": "Tools you can try in the browser, each with a problem, solution, result note.",
@@ -544,7 +544,8 @@
 			"noscript": "The demo needs JavaScript.",
 			"load_error": "Could not load the demo. Please reload the page.",
 			"demo_lang_note": "The demo interface is in Turkish.",
-			"contact": "Want something similar? Get in touch"
+			"contact": "Want something similar? Get in touch",
+			"code": "Code (GitHub)"
 		},
 		"items": [
 			{
@@ -588,7 +589,8 @@
 						"h": 2092,
 						"alt": "ROI calculator, 360 px mobile view"
 					}
-				]
+				],
+				"code_url": ""
 			},
 			{
 				"id": "randevu-sistemi",
@@ -633,7 +635,8 @@
 						"h": 859,
 						"alt": "Admin panel: weekly booking calendar"
 					}
-				]
+				],
+				"code_url": ""
 			},
 			{
 				"id": "qr-menu",
@@ -672,7 +675,8 @@
 						"h": 1110,
 						"alt": "QR Menu English view with sticky cart bar"
 					}
-				]
+				],
+				"code_url": ""
 			},
 			{
 				"id": "intshop",
@@ -710,6 +714,105 @@
 						"w": 1100,
 						"h": 688,
 						"alt": "INTSHOP admin page: product list"
+					}
+				],
+				"code_url": ""
+			},
+			{
+				"id": "mini-crm",
+				"status": "soon",
+				"title": "Mini CRM: Quote and Job Tracking Panel",
+				"kind": "Sample project",
+				"year": "2026",
+				"code_url": "https://github.com/furkancol10/fc-mini-crm",
+				"summary": "Customer, job, VAT quote and payment tracking for repair shops and small agencies; customers approve quotes from a tracking link with no login.",
+				"problem": "Repair shops and small agencies keep device intake in notebooks, quotes in spreadsheets and payments in loose notes. After revisions nobody is sure which quote was approved, and customers keep calling for status. Enterprise CRMs are too heavy for a small team.",
+				"solution": "Everything from request to delivery hangs off a single job record: an 8-stage workflow (kanban on desktop, status tabs at 360 px), itemized quotes with 0/10/20% VAT, revision versioning and a print view. Money is computed as integer kuruş; one approved quote per job is enforced by a database index and concurrent status changes by a row lock. Customers open a random link (no personal data shown) to see the job history and approve or reject a quote. Admins see payments and balance; technicians see only their own jobs, enforced server-side.",
+				"result": "No live demo yet. The app runs locally with Docker Compose and ready-made demo data (8 customers, 14 jobs, quotes and payments); the code is on GitHub. Business rules are covered by unit tests, real PostgreSQL integration tests, and Playwright end-to-end tests at 360 px and desktop.",
+				"facts": [
+					["8", "workflow stages"],
+					["2", "roles: admin, technician"],
+					["360 px", "mobile-ready interface"]
+				],
+				"tags": [
+					"SvelteKit",
+					"TypeScript",
+					"PostgreSQL",
+					"Drizzle",
+					"Zod",
+					"Tailwind",
+					"Vitest",
+					"Playwright"
+				],
+				"demo": null,
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "mini-crm-pano.webp",
+						"w": 1100,
+						"h": 760,
+						"alt": "Mini CRM dashboard: open quote total, monthly approved, active and overdue job cards, latest activity"
+					},
+					{
+						"src": "mini-crm-teklif.webp",
+						"w": 1000,
+						"h": 900,
+						"alt": "Mini CRM job detail: itemized VAT quote versions with approve, reject and revise buttons"
+					},
+					{
+						"src": "mini-crm-takip.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Mini CRM customer tracking page at 360 px mobile: job status and a quote awaiting approval"
+					}
+				]
+			},
+			{
+				"id": "fiyat-takip",
+				"status": "soon",
+				"title": "Competitor Price and Stock Tracker (Telegram alerts)",
+				"kind": "Sample project",
+				"year": "2026",
+				"code_url": "https://github.com/furkancol10/fc-fiyat-takip",
+				"summary": "A panel for micro e-commerce sellers that watches competitor product pages for price and stock changes with rules and alerts you on Telegram.",
+				"problem": "In a small shop, opening each competitor page to check price and stock takes time. Noticing late that a rival cut a price or sold out delays your own pricing decisions. Most sellers do not need a complex tool, just a plain screen of tracked products and a heads-up when something changes.",
+				"solution": "Products and competitor page URLs are added from the panel; three rule types exist: price below a target, percentage drop and stock change. Each rule has its own cooldown so the same alert is not repeated back to back. The first reading is the baseline and alerts fire only on later changes. A competitor page that breaks is logged as an error, the run continues and the last valid price is kept. No AI; plain explicit rules. The demo only reads its own built-in mock store, and Telegram alerts show up as records (dry_run); with a bot token configured, the message really goes out.",
+				"result": "No live demo yet. The app runs locally with Docker Compose: change a price in the mock store and watch the alert appear, with a price history chart per competitor in the panel. Panel forms are CSRF-protected, requests are rate-limited per IP, and the limit is 10 products and 20 competitors. 223 automated tests pass on a clean checkout. Code on GitHub.",
+				"facts": [
+					["3", "rules: target price, percent, stock"],
+					["223", "automated tests"],
+					["dry_run", "no Telegram sending in the demo"]
+				],
+				"tags": [
+					"FastAPI",
+					"Python",
+					"Jinja2",
+					"PostgreSQL",
+					"psycopg3",
+					"httpx",
+					"Telegram",
+					"pytest"
+				],
+				"demo": null,
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "fiyat-takip-panel.webp",
+						"w": 1000,
+						"h": 1118,
+						"alt": "Price tracker panel: competitor prices, stock status and a below-target-price alert"
+					},
+					{
+						"src": "fiyat-takip-gecmis.webp",
+						"w": 1000,
+						"h": 591,
+						"alt": "Price tracker product page: price history chart and readings table for a competitor"
+					},
+					{
+						"src": "fiyat-takip-mobil.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Price tracker panel at 360 px mobile"
 					}
 				]
 			}

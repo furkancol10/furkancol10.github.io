@@ -104,6 +104,12 @@
 		</p>
 	{/if}
 
+	{#if p.code_url}
+		<p class="mt-4">
+			<a href={p.code_url} rel="noopener" class="pill inline-block">{L.code} ↗</a>
+		</p>
+	{/if}
+
 	<div class="mt-14 space-y-8">
 		{#each parts as k (k)}
 			<section>

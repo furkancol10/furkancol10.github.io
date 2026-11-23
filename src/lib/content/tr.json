@@ -524,7 +524,7 @@
 	},
 	"examples": {
 		"meta_title": "Örnekler · Furkan Çöl",
-		"meta_description": "Yaptığım küçük araçların canlı demoları ve vaka notları: ROI hesaplayıcı, randevu sistemi, QR menü.",
+		"meta_description": "Yaptığım küçük araçların canlı demoları ve vaka notları: ROI hesaplayıcı, randevu sistemi, QR menü, mini CRM, fiyat takip.",
 		"eyebrow": "Örnekler",
 		"title": "Çalışan örnekler",
 		"lead": "Tarayıcıda deneyebileceğiniz araçlar ve her birinin sorun, çözüm, sonuç notu.",
@@ -545,7 +545,8 @@
 			"noscript": "Demo için JavaScript gerekir.",
 			"load_error": "Demo yüklenemedi. Sayfayı yenileyin.",
 			"demo_lang_note": "",
-			"contact": "Benzerini isterseniz yazın"
+			"contact": "Benzerini isterseniz yazın",
+			"code": "Kod (GitHub)"
 		},
 		"items": [
 			{
@@ -589,7 +590,8 @@
 						"h": 2092,
 						"alt": "ROI hesaplayıcı, 360 piksel mobil görünüm"
 					}
-				]
+				],
+				"code_url": ""
 			},
 			{
 				"id": "randevu-sistemi",
@@ -634,7 +636,8 @@
 						"h": 859,
 						"alt": "Yönetim paneli: haftalık randevu takvimi"
 					}
-				]
+				],
+				"code_url": ""
 			},
 			{
 				"id": "qr-menu",
@@ -673,7 +676,8 @@
 						"h": 1110,
 						"alt": "QR Menü İngilizce görünümü ve alt sepet çubuğu"
 					}
-				]
+				],
+				"code_url": ""
 			},
 			{
 				"id": "intshop",
@@ -711,6 +715,105 @@
 						"w": 1100,
 						"h": 688,
 						"alt": "INTSHOP admin ekranı: ürün listesi"
+					}
+				],
+				"code_url": ""
+			},
+			{
+				"id": "mini-crm",
+				"status": "soon",
+				"title": "Mini CRM: Teklif ve İş Takip Paneli",
+				"kind": "Örnek proje",
+				"year": "2026",
+				"code_url": "https://github.com/furkancol10/fc-mini-crm",
+				"summary": "Teknik servis ve küçük ajanslar için müşteri, iş, KDV'li teklif ve tahsilat takibi; müşteri giriş yapmadan takip bağlantısından teklifi onaylar.",
+				"problem": "Teknik servislerde ve küçük ajanslarda cihaz kabulü defterde, teklifler tablolarda, tahsilatlar ayrı notlarda kalıyor. Revizyonlarda hangi teklifin onaylandığı karışıyor, müşteri işin durumunu telefonla soruyor. Kurumsal CRM'ler ise küçük ekibe ağır geliyor.",
+				"solution": "Talepten teslime her şey tek iş kaydı etrafında toplanır: 8 aşamalı akış (masaüstünde kanban, 360 px'te durum sekmeleri), kalemli %0/%10/%20 KDV'li teklif, revizyon sürümleme ve yazdırma görünümü. Para kuruş cinsinden tam sayı hesaplanır; aynı işte tek onaylı teklif veritabanı indeksiyle, eşzamanlı durum geçişleri satır kilidiyle korunur. Müşteri rastgele bağlantıyla (kişisel veri göstermeden) iş geçmişini görür, teklifi onaylar ya da reddeder. Yönetici tahsilat ve bakiyeyi görür; teknisyen yalnız kendi işlerini, sunucu tarafında kısıtlı.",
+				"result": "Henüz canlı demo yok. Uygulama yerelde Docker Compose ve hazır demo verisiyle (8 müşteri, 14 iş, teklif ve tahsilatlar) çalışıyor; kod GitHub'da. İş kuralları birim testleriyle, gerçek PostgreSQL entegrasyon testleriyle ve 360 px ile masaüstünde Playwright uçtan uca testleriyle doğrulanıyor.",
+				"facts": [
+					["8", "aşamalı iş akışı"],
+					["2", "rol: yönetici, teknisyen"],
+					["360 px", "mobil uyumlu arayüz"]
+				],
+				"tags": [
+					"SvelteKit",
+					"TypeScript",
+					"PostgreSQL",
+					"Drizzle",
+					"Zod",
+					"Tailwind",
+					"Vitest",
+					"Playwright"
+				],
+				"demo": null,
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "mini-crm-pano.webp",
+						"w": 1100,
+						"h": 760,
+						"alt": "Mini CRM panosu: açık teklif tutarı, aylık onaylanan, aktif ve geciken iş kartları, son işlem kayıtları"
+					},
+					{
+						"src": "mini-crm-teklif.webp",
+						"w": 1000,
+						"h": 900,
+						"alt": "Mini CRM iş detayı: kalemli KDV'li teklif sürümleri, onayla, reddet ve revize et düğmeleri"
+					},
+					{
+						"src": "mini-crm-takip.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Mini CRM müşteri takip ekranı 360 px mobilde: iş durumu ve onay bekleyen teklif"
+					}
+				]
+			},
+			{
+				"id": "fiyat-takip",
+				"status": "soon",
+				"title": "Rakip Fiyat ve Stok Takibi (Telegram uyarılı)",
+				"kind": "Örnek proje",
+				"year": "2026",
+				"code_url": "https://github.com/furkancol10/fc-fiyat-takip",
+				"summary": "Mikro e-ticaret satıcıları için rakip ürün sayfalarının fiyat ve stokunu kurallarla izleyen, değişimde Telegram'dan haber veren panel.",
+				"problem": "Küçük bir mağazada rakiplerin fiyat ve stokunu tek tek açıp bakmak zaman alır. Rakip indirim yapınca ya da ürün tükenince geç fark etmek fiyat kararını geciktirir. Çoğu satıcı karmaşık bir araç değil, takip ettiği ürünleri sade bir ekranda görmek ve değişimde haberdar olmak istiyor.",
+				"solution": "Ürünler ve rakip sayfa adresleri panelden eklenir; üç kural türü var: hedef fiyatın altına düşme, yüzde indirim ve stok değişimi. Her kuralın kendi bekleme süresi olduğundan aynı uyarı art arda tekrarlanmaz. İlk ölçüm baz alınır, uyarı yalnız sonraki değişimde üretilir. Sayfa bozuk çıkan rakip hata olarak kaydedilir, tur devam eder ve son geçerli fiyat korunur. Yapay zekâ yok; açık kurallar çalışır. Demo yalnızca kendi içindeki sahte mağazayı okur, Telegram uyarıları kayıt olarak görünür (dry_run); bot anahtarı tanımlıysa mesaj gerçekten gider.",
+				"result": "Henüz canlı demo yok. Uygulama yerelde Docker Compose ile çalışıyor: sahte mağazadan fiyat değiştirip uyarının oluşmasını, her rakip için fiyat geçmişi grafiğini panelde izleyebilirsiniz. Panel formları CSRF korumalı, istekler IP başına hız sınırlı; kayıt sınırı 10 ürün ve 20 rakip. 223 otomatik test temiz kopyada geçiyor. Kod GitHub'da.",
+				"facts": [
+					["3", "kural: hedef fiyat, yüzde, stok"],
+					["223", "otomatik test"],
+					["dry_run", "demoda Telegram gönderimi yok"]
+				],
+				"tags": [
+					"FastAPI",
+					"Python",
+					"Jinja2",
+					"PostgreSQL",
+					"psycopg3",
+					"httpx",
+					"Telegram",
+					"pytest"
+				],
+				"demo": null,
+				"demo_url": "",
+				"shots": [
+					{
+						"src": "fiyat-takip-panel.webp",
+						"w": 1000,
+						"h": 1118,
+						"alt": "Fiyat takip paneli: rakip fiyatları, stok durumları ve fiyat eşiği uyarısı"
+					},
+					{
+						"src": "fiyat-takip-gecmis.webp",
+						"w": 1000,
+						"h": 591,
+						"alt": "Fiyat takip ürün sayfası: rakip için fiyat geçmişi grafiği ve ölçüm tablosu"
+					},
+					{
+						"src": "fiyat-takip-mobil.webp",
+						"w": 540,
+						"h": 1110,
+						"alt": "Fiyat takip paneli 360 px mobilde"
 					}
 				]
 			}

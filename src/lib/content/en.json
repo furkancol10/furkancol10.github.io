@@ -697,7 +697,7 @@
 				"id": "mini-crm",
 				"short": "Mini CRM",
 				"scene": { "bg": "#2438F5", "fg": "#FFFFFF" },
-				"status": "soon",
+				"status": "ready",
 				"title": "Mini CRM: Quote and Job Tracking Panel",
 				"kind": "Sample project",
 				"year": "2026",
@@ -705,7 +705,7 @@
 				"summary": "Customer, job, VAT quote and payment tracking for repair shops and small agencies; customers approve quotes from a tracking link with no login.",
 				"problem": "Repair shops and small agencies keep device intake in notebooks, quotes in spreadsheets and payments in loose notes. After revisions nobody is sure which quote was approved, and customers keep calling for status. Enterprise CRMs are too heavy for a small team.",
 				"solution": "Everything from request to delivery hangs off a single job record: an 8-stage workflow (kanban on desktop, status tabs at 360 px), itemized quotes with 0/10/20% VAT, revision versioning and a print view. Money is computed as integer kuruş; one approved quote per job is enforced by a database index and concurrent status changes by a row lock. Customers open a random link (no personal data shown) to see the job history and approve or reject a quote. Admins see payments and balance; technicians see only their own jobs, enforced server-side.",
-				"result": "No live demo yet. The app runs locally with Docker Compose and ready-made demo data (8 customers, 14 jobs, quotes and payments); the code is on GitHub. Business rules are covered by unit tests, real PostgreSQL integration tests, and Playwright end-to-end tests at 360 px and desktop.",
+				"result": "Live demo is up: sign in with one click as Admin or Technician and try it with ready-made data (8 customers, 14 jobs, quotes and payments); data resets every night. Code on GitHub. Business rules are covered by unit tests, real PostgreSQL integration tests, and Playwright end-to-end tests at 360 px and desktop.",
 				"facts": [
 					["8", "workflow stages"],
 					["2", "roles: admin, technician"],
@@ -722,7 +722,7 @@
 					"Playwright"
 				],
 				"demo": null,
-				"demo_url": "",
+				"demo_url": "https://fc-mini-crm.vercel.app/giris",
 				"shots": [
 					{
 						"src": "mini-crm-pano.webp",

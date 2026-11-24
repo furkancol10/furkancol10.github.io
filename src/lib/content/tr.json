@@ -702,7 +702,7 @@
 				"id": "mini-crm",
 				"short": "Mini CRM",
 				"scene": { "bg": "#2438F5", "fg": "#FFFFFF" },
-				"status": "soon",
+				"status": "ready",
 				"title": "Mini CRM: Teklif ve İş Takip Paneli",
 				"kind": "Örnek proje",
 				"year": "2026",
@@ -710,7 +710,7 @@
 				"summary": "Teknik servis ve küçük ajanslar için müşteri, iş, KDV'li teklif ve tahsilat takibi; müşteri giriş yapmadan takip bağlantısından teklifi onaylar.",
 				"problem": "Teknik servislerde ve küçük ajanslarda cihaz kabulü defterde, teklifler tablolarda, tahsilatlar ayrı notlarda kalıyor. Revizyonlarda hangi teklifin onaylandığı karışıyor, müşteri işin durumunu telefonla soruyor. Kurumsal CRM'ler ise küçük ekibe ağır geliyor.",
 				"solution": "Talepten teslime her şey tek iş kaydı etrafında toplanır: 8 aşamalı akış (masaüstünde kanban, 360 px'te durum sekmeleri), kalemli %0/%10/%20 KDV'li teklif, revizyon sürümleme ve yazdırma görünümü. Para kuruş cinsinden tam sayı hesaplanır; aynı işte tek onaylı teklif veritabanı indeksiyle, eşzamanlı durum geçişleri satır kilidiyle korunur. Müşteri rastgele bağlantıyla (kişisel veri göstermeden) iş geçmişini görür, teklifi onaylar ya da reddeder. Yönetici tahsilat ve bakiyeyi görür; teknisyen yalnız kendi işlerini, sunucu tarafında kısıtlı.",
-				"result": "Henüz canlı demo yok. Uygulama yerelde Docker Compose ve hazır demo verisiyle (8 müşteri, 14 iş, teklif ve tahsilatlar) çalışıyor; kod GitHub'da. İş kuralları birim testleriyle, gerçek PostgreSQL entegrasyon testleriyle ve 360 px ile masaüstünde Playwright uçtan uca testleriyle doğrulanıyor.",
+				"result": "Canlı demo yayında: tek tıkla Yönetici ya da Teknisyen olarak girip hazır verilerle (8 müşteri, 14 iş, teklif ve tahsilatlar) deneyebilirsiniz; veriler her gece sıfırlanır. Kod GitHub'da. İş kuralları birim testleriyle, gerçek PostgreSQL entegrasyon testleriyle ve 360 px ile masaüstünde Playwright uçtan uca testleriyle doğrulanıyor.",
 				"facts": [
 					["8", "aşamalı iş akışı"],
 					["2", "rol: yönetici, teknisyen"],
@@ -727,7 +727,7 @@
 					"Playwright"
 				],
 				"demo": null,
-				"demo_url": "",
+				"demo_url": "https://fc-mini-crm.vercel.app/giris",
 				"shots": [
 					{
 						"src": "mini-crm-pano.webp",

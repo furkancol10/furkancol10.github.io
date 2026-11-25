@@ -53,6 +53,16 @@ export function inview(node, { watch = 'self' } = {}) {
 }
 
 /**
+ * Sayaç değeri: easeOutQuart. rAF zaman damgası t, gözlemci callback'inde alınan t0'dan küçük olabilir
+ * (kare başlangıcı, callback'ten önce); ilerleme [0,1] aralığına sıkıştırılır, değer asla negatif olmaz.
+ * @param {number} to @param {number} t @param {number} t0
+ */
+export function countValue(to, t, t0) {
+	const k = Math.max(0, Math.min(1, (t - t0) / 1600));
+	return { k, v: to * (1 - Math.pow(1 - k, 4)) };
+}
+
+/**
  * Sayaç: görünür olunca 0'dan hedef değere sayar. Metin işaretlemede zaten son değerdir (JS yoksa o görünür).
  * @param {HTMLElement} node
  * @param {{ to: number, dec?: number, pre?: string, suf?: string, lang?: string }} o
@@ -72,8 +82,8 @@ export function count(node, o) {
 			io.disconnect();
 			const t0 = performance.now();
 			const step = (/** @type {number} */ t) => {
-				const k = Math.min(1, (t - t0) / 1600);
-				node.textContent = fmt(o.to * (1 - Math.pow(1 - k, 4)));
+				const { k, v } = countValue(o.to, t, t0);
+				node.textContent = fmt(v);
 				if (k < 1) requestAnimationFrame(step);
 			};
 			node.textContent = fmt(0);

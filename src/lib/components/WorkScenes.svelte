@@ -441,7 +441,7 @@
 			order: -1;
 		}
 		h3 {
-			font-size: clamp(88px, 11vw, 190px);
+			font-size: clamp(88px, 11vw, 150px);
 		}
 		.wbrowser .frame {
 			width: min(100%, 720px);

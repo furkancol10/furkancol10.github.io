@@ -1,3 +1,4 @@
+// @ts-nocheck — node:test; svelte-check @types/node içermiyor
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { countValue } from './motion.js';

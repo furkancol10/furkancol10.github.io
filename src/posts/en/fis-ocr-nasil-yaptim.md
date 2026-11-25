@@ -23,7 +23,7 @@ Results:
 
 - On tax receipts (excluding card slips), **72%** of receipts were automatically verified by their own numbers.
 - Across all photos the verified rate was 59%. The gap comes mostly from card slips, which don't contain a VAT breakdown.
-- Average time per receipt was **about 1.7 seconds**, CPU only, no graphics card.
+- Average time per receipt was **about 1.8 seconds**, CPU only, no graphics card.
 
 There is also something I tried and dropped: shrinking large photos before reading gave roughly a 4% speedup, but it changed one result in the test set. I didn't risk accuracy for a small speed gain, so that setting stayed off.
 

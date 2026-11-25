@@ -23,7 +23,7 @@ Sonuçlar:
 
 - Vergi fişlerinde (kart slipleri hariç) fişlerin **%72'si** kendi rakamlarıyla otomatik doğrulandı.
 - Tüm fotoğraflarda doğrulanan oranı %59. Aradaki fark büyük ölçüde KDV dökümü içermeyen kart sliplerinden geliyor.
-- Fiş başına ortalama süre **yaklaşık 1,7 saniye**, ekran kartı olmadan, yalnızca işlemcide.
+- Fiş başına ortalama süre **yaklaşık 1,8 saniye**, ekran kartı olmadan, yalnızca işlemcide.
 
 Denediğim ama bıraktığım bir şey de var: büyük fotoğrafları okumadan önce küçültmek yaklaşık %4 hız kazandırdı, ama test setinde bir sonucu değiştirdi. Küçük bir hız için doğruluğu riske atmadım, bu ayar kapalı kaldı.
 

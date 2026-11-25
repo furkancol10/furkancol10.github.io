@@ -442,7 +442,7 @@
 			{
 				"id": "ocr",
 				"title": "Fiş ve belge OCR",
-				"price": 1500,
+				"price": null,
 				"features": [
 					"Fiş/PDF'den Excel ya da JSON'a aktaran program",
 					"Kendi belgelerinizle ücretsiz deneme",

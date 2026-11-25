@@ -444,7 +444,7 @@
 			{
 				"id": "ocr",
 				"title": "Receipt and document OCR",
-				"price": 1500,
+				"price": null,
 				"features": [
 					"A program that turns receipts/PDFs into Excel or JSON",
 					"Free trial with your own documents",

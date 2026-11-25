@@ -283,7 +283,7 @@
 	}
 	h3 {
 		margin: 0;
-		font: 400 clamp(52px, 17vw, 96px) / 1 var(--ed-display);
+		font: 400 clamp(52px, 17vw, 96px) / 1.16 var(--ed-display);
 		text-transform: uppercase;
 		overflow-wrap: break-word;
 	}

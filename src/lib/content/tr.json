@@ -431,9 +431,9 @@
 	},
 	"pricing": {
 		"publish": true,
-		"eyebrow": "Fiyatlar",
-		"title": "Başlangıç fiyatları",
-		"lead": "Kesin fiyat, işinizi ve örneklerinizi gördükten sonra belli olur. Aşağıdakiler en temel kapsamın fiyatıdır.",
+		"eyebrow": "Hizmetler",
+		"title": "Neler yapıyorum",
+		"lead": "Kesin fiyat, işinizi ve örneklerinizi gördükten sonra belli olur. Her iş için ayrı teklif veriyorum.",
 		"from": "TL'den başlayan",
 		"quote": "Teklif alın",
 		"ask": "Teklif iste",

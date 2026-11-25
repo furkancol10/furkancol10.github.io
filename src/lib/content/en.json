@@ -433,9 +433,9 @@
 	},
 	"pricing": {
 		"publish": true,
-		"eyebrow": "Pricing",
-		"title": "Starting prices",
-		"lead": "The exact price depends on your project and samples. These are the prices for the basic scope.",
+		"eyebrow": "Services",
+		"title": "What I build",
+		"lead": "The exact price depends on your project and samples. I quote each job separately.",
 		"from": "TL and up",
 		"quote": "Get a quote",
 		"ask": "Ask for a quote",
